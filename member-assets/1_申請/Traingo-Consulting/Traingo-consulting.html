@@ -1,0 +1,4148 @@
+<!DOCTYPE html>
+<!-- saved from url=(0126)https://traingo.fp-1.info/tools/consulting/index.html?embedded=1&company=Well%20Consultant%E5%90%88%E5%90%8C%E4%BC%9A%E7%A4%BE -->
+<html lang="ja"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Traingo-consulting</title>
+  <meta name="application-name" content="Traingo-consulting">
+  <meta name="apple-mobile-web-app-title" content="Traingo-consulting">
+  <meta name="theme-color" content="#0f5fd7">
+  <link rel="icon" href="https://traingo.fp-1.info/tools/consulting/favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="https://traingo.fp-1.info/tools/consulting/favicon.svg" type="image/svg+xml">
+  <style>
+    :root {
+      --bg: #f5f7f8;
+      --panel: #fff;
+      --ink: #172026;
+      --muted: #64727a;
+      --line: #d9e0e3;
+      --accent: #176b7a;
+      --ok: #16724b;
+      --bad: #a33b32;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.55; }
+    header { position: sticky; top: 0; z-index: 2; border-bottom: 1px solid var(--line); background: #fff; }
+    .head { max-width: 1120px; margin: 0 auto; padding: 14px 18px; display: flex; justify-content: space-between; gap: 12px; align-items: center; }
+    h1 { margin: 0; font-size: 20px; letter-spacing: 0; }
+    .sub { margin-top: 2px; color: var(--muted); font-size: 12px; }
+    main { max-width: 1120px; margin: 0 auto; padding: 18px; display: grid; grid-template-columns: 220px 1fr; gap: 14px; }
+    nav, section { border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }
+    nav { align-self: start; position: sticky; top: 76px; padding: 8px; }
+    nav button, .btn { width: 100%; min-height: 38px; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--ink); padding: 9px 10px; font-weight: 800; cursor: pointer; }
+    nav button { text-align: left; }
+    nav button + button { margin-top: 6px; }
+    nav button.active { border-color: #a7cfd6; background: #eaf6f8; color: #0f5662; }
+    .btn { width: auto; }
+    .btn.primary { border-color: var(--accent); background: var(--accent); color: #fff; }
+    .btn:disabled { opacity: .5; cursor: not-allowed; }
+    .hidden { display: none !important; }
+    .muted { color: var(--muted); }
+    .toolbar { display: flex; flex-wrap: nowrap; gap: 8px; align-items: center; }
+    .toolbar .btn { width: auto; }
+    .toolbar input, .toolbar select { max-width: 220px; }
+    .account-ops {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+      overflow: visible;
+      white-space: nowrap;
+    }
+        .account-ops .btn {
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .account-ops .toolbar {
+      flex-shrink: 0;
+      width: auto;
+    }
+
+    .tool-note {
+      color: #0b3f8a;
+      font-size: 12px;
+      font-weight: 700;
+      border: 2px solid rgba(11, 63, 138, 0.3);
+      background: rgba(11, 63, 138, 0.08);
+      border-radius: 6px;
+      padding: 6px 10px;
+      width: auto;
+      min-width: 0;
+      max-width: min(100%, 400px);
+      overflow: visible;
+      white-space: normal;
+      margin-top: 0;
+      line-height: 1.4;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .identity-note {
+      margin-top: 6px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      color: #244455;
+      font-size: 11px;
+      line-height: 1.45;
+    }
+    .identity-pill {
+      background: #f0f7ff;
+      border: 1px solid #cbe0f5;
+      border-radius: 999px;
+      padding: 4px 8px;
+      display: inline-flex;
+      gap: 5px;
+      align-items: center;
+      font-weight: 700;
+    }
+    /* Traingo本体に埋め込み表示(?embedded=1)した時は、単体ツール用のヘッダUI（別ツールリンク・管理画面リンク・ログイン中バッジ・ログアウト・プロフィール）を消し、Traingoへ戻るリンクだけ出す */
+    .embedded-only { display: none; }
+    .embedded-mode .standalone-only { display: none !important; }
+    .embedded-mode .embedded-only { display: block; }
+    .embedded-mode #logoutBtn,
+    .embedded-mode #profileEdit { display: none !important; }
+    .back-to-traingo a { color: #2563eb; text-decoration: none; font-weight: 700; }
+    .back-to-traingo a:hover { text-decoration: underline; }
+    .profile-edit { position: relative; flex-shrink: 0; }
+    .profile-edit > summary {
+      list-style: none;
+      cursor: pointer;
+      white-space: nowrap;
+      width: auto;
+    }
+    .profile-edit > summary::-webkit-details-marker { display: none; }
+    .profile-edit[open] > summary { background: #0f5fd7; color: #fff; border-color: #0f5fd7; }
+    .profile-edit .profile-pop {
+      position: absolute;
+      right: 0;
+      top: calc(100% + 6px);
+      z-index: 60;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      box-shadow: 0 12px 30px rgba(15, 40, 80, 0.18);
+      padding: 12px;
+      width: 240px;
+      display: grid;
+      gap: 8px;
+      white-space: normal;
+    }
+    .profile-edit .profile-pop-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: #0b3f8a;
+    }
+    .profile-edit .profile-pop label {
+      display: grid;
+      gap: 4px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #244455;
+    }
+    .profile-edit .profile-pop input { width: 100%; max-width: 100%; }
+    #mdTagFilter {
+      width: 100%;
+      font-size: 12px;
+      padding: 4px 7px;
+      border: 1px solid #c5d4e4;
+      border-radius: 4px;
+      box-sizing: border-box;
+      color: #244455;
+      background: #f5f8fd;
+    }
+    #mdTagInput {
+      font-size: 12px;
+      padding: 4px 7px;
+      border: 1px solid #c5d4e4;
+      border-radius: 4px;
+      box-sizing: border-box;
+      flex: 1;
+      min-width: 0;
+      color: #244455;
+      background: #f5f8fd;
+    }
+    .tag-save-label {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #244455;
+    }
+    .auth-screen {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 30px 18px;
+      display: grid;
+      gap: 10px;
+    }
+    .auth-card {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+      padding: 16px;
+    }
+    .auth-card h2 { margin: 0 0 10px; font-size: 20px; }
+    .auth-card p { margin: 0 0 12px; color: var(--muted); font-size: 12px; }
+    .auth-inputs { display: grid; gap: 10px; max-width: 320px; }
+    .app-shell.hidden, .auth-screen.hidden { display: none; }
+    .content { display: grid; gap: 14px; }
+    section { padding: 14px; }
+    section { scroll-margin-top: 84px; }
+    h2 { margin: 0 0 4px; font-size: 18px; }
+    p { margin: 0 0 12px; color: var(--muted); font-size: 13px; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .wide { grid-column: 1 / -1; }
+    label { display: grid; gap: 5px; color: var(--muted); font-size: 12px; font-weight: 800; }
+    input, textarea { width: 100%; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--ink); padding: 10px; font: inherit; }
+    textarea { min-height: 120px; resize: vertical; }
+    .prompt-list { display: grid; gap: 10px; margin-top: 12px; }
+    .prompt-card { border: 1px solid var(--line); border-radius: 8px; background: #fbfcfd; padding: 10px; }
+    .prompt-head { display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center; margin-bottom: 8px; }
+    .prompt-head h3 { margin: 0; font-size: 15px; }
+    .prompt-head span { display: block; color: var(--muted); font-size: 12px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+    .small-input { min-height: 38px; border: 1px solid var(--line); border-radius: 8px; padding: 9px 10px; background: #fff; color: var(--ink); width: 230px; box-sizing: border-box; }
+    .small-input:focus { outline: none; border-color: #0f5fd7; }
+    .project-management { display: grid; gap: 10px; margin: 10px 0 14px; }
+    .project-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: flex-end;
+      background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+      border: 1px solid #d6e6f5;
+      border-left: 4px solid #0f5fd7;
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0 10px 28px -24px rgba(16, 46, 84, 0.3);
+    }
+    .project-row .wide { flex: 1 1 100%; }
+    .project-switch-list {
+      display: grid;
+      gap: 6px;
+      grid-template-columns: repeat(auto-fit, minmax(130px, max-content));
+      margin-top: 6px;
+      width: 100%;
+    }
+    .project-switch-list .btn.secondary {
+      min-height: 34px;
+      padding: 6px 10px;
+      font-size: 12px;
+    }
+    .project-row label { min-width: 200px; flex: 1 1 220px; }
+    .project-row-title {
+      width: 100%;
+      color: #0f4a6d;
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: 0.01em;
+    }
+    .project-row-title::before {
+      content: '⚬';
+      margin-right: 6px;
+      color: #0f5fd7;
+      font-size: 10px;
+    }
+    .project-row .btn { flex: 0 0 auto; min-height: 40px; }
+    .project-row .btn.primary {
+      box-shadow: 0 4px 12px -6px rgba(15, 95, 215, 0.5);
+    }
+    .project-row .btn.secondary {
+      border-color: #d1dde8;
+      background: #fff;
+      color: #234;
+    }
+    .project-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin: 0 0 8px;
+      font-size: 11px;
+      font-weight: 800;
+      color: #0f4a6d;
+      background: #eaf3ff;
+      border: 1px solid #d4e4ff;
+      border-radius: 999px;
+      padding: 4px 10px;
+      width: fit-content;
+    }
+    .project-note {
+      border: 1px dashed #d2d7de;
+      border-radius: 8px;
+      background: #f6f8fa;
+      padding: 8px 10px;
+      font-size: 11px;
+      color: #57646d;
+    }
+    .project-quick-switch {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+    .project-quick-switch .btn {
+      min-height: 32px;
+      padding: 6px 10px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .project-quick-switch .btn.active {
+      border-color: #0f5fd7;
+      background: #0f5fd7;
+      color: #fff;
+    }
+    .project-grid-basic {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .project-row select,
+    .project-row input { width: 100%; }
+    .copy-note { margin: 5px 0 0; color: var(--muted); font-size: 11px; line-height: 1.5; }
+    .media-area { margin: 10px 0; border: 1px solid var(--line); border-radius: 8px; padding: 10px; background: #fbfcfd; }
+    .media-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    .media-meta { font-size: 12px; color: var(--muted); margin-top: 8px; }
+    .notice { border-left: 4px solid #9db9c3; background: #eef6f8; padding: 10px; color: var(--muted); font-size: 13px; }
+    .account-note {
+      margin-top: 6px;
+      font-size: 11px;
+      color: #4e5f68;
+      line-height: 1.45;
+    }
+    .account-note code {
+      font-size: 11px;
+      color: #0b3f8a;
+      background: #eff4fb;
+      border: 1px solid #c7dcf5;
+      border-radius: 4px;
+      padding: 1px 4px;
+    }
+    .result { min-height: 320px; white-space: pre-wrap; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; }
+    .print-doc { display: none; }
+    .toast { position: fixed; right: 18px; bottom: 18px; display: none; border-radius: 8px; background: var(--ok); color: #fff; padding: 11px 14px; font-weight: 800; box-shadow: 0 14px 35px rgba(0,0,0,.18); }
+    .toast.show { display: block; }
+    @media (max-width: 820px) { main { grid-template-columns: 1fr; } nav { position: static; } .grid, .prompt-row { grid-template-columns: 1fr; } }
+    @media print {
+      header, nav, main, .content, .btn, .toast, #markdown, #copyOutput { display: none !important; }
+      body { background: #fff; }
+      .print-doc { display: block; color: #111; font-size: 10.5pt; line-height: 1.7; }
+      .print-title { border-bottom: 2px solid #111; padding-bottom: 5mm; margin: 0 0 8mm; }
+      .print-title h1 { font-size: 20pt; margin: 0 0 2mm; }
+      .print-title p { margin: 0; color: #444; font-size: 10pt; }
+      .print-section { break-after: page; padding: 0 0 8mm; }
+      .print-section h2 { font-size: 16pt; border-bottom: 1px solid #999; padding-bottom: 2mm; margin: 0 0 5mm; }
+      .print-block { break-inside: avoid; margin: 0 0 5mm; }
+      .print-block h3 { font-size: 11.5pt; margin: 0 0 1.5mm; color: #12343b; }
+      .print-text { white-space: normal; }
+      .print-text p { color: #111; font-size: 10.5pt; margin: 0 0 2.5mm; }
+      .print-text ul { margin: 0 0 3mm 5mm; padding: 0; }
+      .print-text li { margin: 0 0 1mm; }
+      .print-text table { width: 100%; border-collapse: collapse; margin: 2mm 0 4mm; }
+      .print-text th, .print-text td { border: 1px solid #bbb; padding: 1.5mm 2mm; vertical-align: top; }
+      .print-text th { background: #f1f4f5; font-weight: 800; }
+      .print-text h3 { font-size: 12pt; margin: 4mm 0 1.5mm; color: #111; }
+      .print-text h4 { font-size: 11pt; margin: 3mm 0 1mm; color: #333; }
+      section { break-after: page; border: 0; padding: 0 0 12mm; }
+      input, textarea { border: 0; border-radius: 0; padding: 0; overflow: hidden; background: transparent; }
+      textarea { min-height: 0; resize: none; white-space: pre-wrap; scrollbar-width: none; -ms-overflow-style: none; }
+      textarea::-webkit-scrollbar { display: none; }
+      .prompt-card, .notice { border: 0; background: transparent; padding: 0; }
+      .grid { display: block; }
+      label { display: block; break-inside: avoid; margin: 0 0 8mm; }
+    }
+  </style>
+<script>window.__TRAINGO_UID__="e33d5413-e4ea-49fe-b981-54b3a716a464";</script><style data-glasp-print="rule">@media print{[data-glasp-print="hide"]{display:none !important}}</style></head>
+<body class="embedded-mode">
+  <div id="authGate" class="auth-screen hidden">
+      <div class="auth-card">
+        <h2>Traingo-consulting ログイン</h2>
+      <div class="auth-inputs">
+        <label>ログインID<input id="loginId" autocomplete="off" placeholder="ログインIDを入力"></label>
+        <label>パスワード<input id="loginPassword" type="password" autocomplete="new-password" placeholder="パスワードを入力"></label>
+        <label>会社名<input id="loginCompany" autocomplete="off" placeholder="会社名（任意）"></label>
+        <label>あなたの名前<input id="loginUserName" autocomplete="off" placeholder="氏名（任意）"></label>
+      </div>
+      <div class="actions" style="margin-top: 10px;">
+        <button class="btn primary" id="loginBtn" type="button">ログイン</button>
+        <a href="https://traingo.fp-1.info/tools/consulting/index.html?embedded=1&amp;company=Well%20Consultant%E5%90%88%E5%90%8C%E4%BC%9A%E7%A4%BE#" id="copyRegisterLinkBtn" class="btn">初回登録情報をコピー</a>
+        <input type="email" id="shareEmailInput" placeholder="例: user@example.com" class="small-input" style="max-width: 220px;">
+        <a href="https://traingo.fp-1.info/tools/consulting/index.html?embedded=1&amp;company=Well%20Consultant%E5%90%88%E5%90%8C%E4%BC%9A%E7%A4%BE#" id="shareByEmailBtn" class="btn" style="white-space: nowrap;">メールで共有</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="appShell" class="app-shell">
+    <header>
+      <div class="head">
+        <div>
+          <h1>Traingo-consulting</h1>
+          <div class="sub">素材、コピー、貼り付け、まとめ作成を1画面で進める</div>
+          <div class="funnel-link standalone-only" style="margin-top:6px;font-size:12px;"><a href="https://traingo.fp-1.info/tools/webinar-flow-tool/index.html" target="_blank" rel="noopener">▶ Traingo-webinar（ウェビナー作成）へ</a> ｜ <a href="https://traingo.fp-1.info/tools/consulting-flow-tool/admin.html" target="_blank" rel="noopener">管理画面（管理者用）</a></div>
+          <div class="funnel-link back-to-traingo embedded-only" style="margin-top:6px;font-size:13px;"><a href="https://traingo.fp-1.info/company/dashboard">← Traingoに戻る</a></div>
+        </div>
+        <div class="account-ops">
+          <div class="tool-note" id="signedUserBadge"><span class="identity-pill">Well Consultant合同会社</span></div>
+          <button class="btn" id="logoutBtn" type="button">ログアウト</button>
+          <div class="toolbar" id="mainActions">
+            <button class="btn" id="buildMdBtn" type="button">MD作成</button>
+            <button class="btn" id="copyMdBtn" type="button">MDコピー</button>
+            <button class="btn" id="downloadMdBtn" type="button">MDファイル保存</button>
+            <button class="btn" id="printBtn" type="button">印刷</button>
+            <button class="btn primary" id="saveBtn" type="button">保存</button>
+            <details class="profile-edit" id="profileEdit">
+              <summary class="btn" title="会社名・あなたの名前を編集">プロフィール</summary>
+              <div class="profile-pop">
+                <div class="profile-pop-title">あなたの情報を編集</div>
+                <label>会社名<input id="headerCompany" type="text" autocomplete="organization" placeholder="会社名"></label>
+                <label>あなたの名前<input id="headerUserName" type="text" autocomplete="name" placeholder="氏名"></label>
+                <button class="btn primary" id="headerProfileSaveBtn" type="button">この内容で保存</button>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <nav id="nav"><button type="button" data-nav="project" class="active">案件</button><button type="button" data-nav="materials">資料収集</button><button type="button" data-nav="hearing">ヒアリング</button><button type="button" data-nav="baseData">基本データ</button><button type="button" data-nav="product">商品調査</button><button type="button" data-nav="customer">顧客調査</button><button type="button" data-nav="market">市場調査</button><button type="button" data-nav="competitor">競合調査</button><button type="button" data-nav="swot">SWOT分析</button><button type="button" data-nav="trainingCreator">研修企画クリエイター</button><button type="button" data-nav="plan">事業計画書</button><button type="button" data-nav="markdown">MD形式</button></nav>
+      <div class="content">
+      <section data-view="project" id="project">
+        <h2>案件</h2>
+        <p>素材を貼り、必要な項目をコピーし、返ってきた内容をまとめ資料へ保存します。</p>
+        <div class="project-pill">案件管理</div>
+        <div class="project-management" id="projectManagementRow">
+          <div class="project-row">
+            <div class="project-row-title">① 案件を選ぶ／新しく作る</div>
+            <label class="wide">いまの案件
+              <select id="projectSelect" onchange="window.__consultingSwitchProject &amp;&amp; window.__consultingSwitchProject(this.value)"><option value="p-1782561434988">新規案件2 (2026/8/1 12:09:47)</option><option value="p-1782469903939">新規案件 (2026/6/26 21:41:41)</option></select>
+            </label>
+            <label class="wide">新しい案件を作るとき（名前を入れて下のボタンを押す）
+              <input id="newProjectName" placeholder="例: あくつ商事のコンサル案件">
+            </label>
+            <button class="btn primary" type="button" id="addProjectBtn">＋ 新しい案件を作る</button>
+            <div class="muted" style="width:100%;font-size:12px;line-height:1.6;margin-top:6px">
+              案件を選んだら、あとは各ページの入力欄に書くだけで自動で保存されます。ここで作った案件は、相手ツールの「基本データを取り込む」にも出てきます。
+            </div>
+          </div>
+          <details class="project-row" style="width:100%;">
+            <summary style="cursor:pointer;font-weight:600;">そのほかの操作（タグ絞り込み・MD保存／復元・上書き保存）</summary>
+            <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end;">
+              <div id="projectSwitchList" class="project-switch-list" aria-label="案件直接切替"><button type="button" class="btn secondary active" data-project-id="p-1782561434988" onclick="window.__consultingSwitchProject &amp;&amp; window.__consultingSwitchProject(&#39;p-1782561434988&#39;)">新規案件2</button><button type="button" class="btn secondary " data-project-id="p-1782469903939" onclick="window.__consultingSwitchProject &amp;&amp; window.__consultingSwitchProject(&#39;p-1782469903939&#39;)">新規案件</button></div>
+              <div id="projectQuickSwitch" class="project-quick-switch" aria-label="案件快速切替"><button type="button" class="btn active" data-project-id="p-1782561434988" onclick="window.__consultingSwitchProject &amp;&amp; window.__consultingSwitchProject(&#39;p-1782561434988&#39;)">新規案件2</button><button type="button" class="btn " data-project-id="p-1782469903939" onclick="window.__consultingSwitchProject &amp;&amp; window.__consultingSwitchProject(&#39;p-1782469903939&#39;)">新規案件</button></div>
+              <label>タグ・名前で絞り込み
+                <input type="text" id="mdTagFilter" placeholder="タグや案件名を入力…" autocomplete="off">
+              </label>
+              <label>保存済みMDを反映
+                <select id="mdHistorySelect"><option value="">未選択</option><option value="md-1785553787139">[案件] 保存 2026/8/1 12:09:47</option><option value="md-1785553787144">[全体] 新規案件2 / 保存 2026/8/1 12:09:47</option><option value="md-1782561477600">[全体] 新規案件2 / 保存 2026/6/27 20:57:57</option><option value="md-1782561447986">[全体] 新規案件2 / 保存 2026/6/27 20:57:27</option><option value="md-1782444343662">[全体] Spooky2 / 保存 2026/6/26 12:25:43</option><option value="md-1782388011872">[全体] Spooky2 / 保存 2026/6/25 20:46:51</option><option value="md-1782387993010">[全体] Spooky2 / 保存 2026/6/25 20:46:33</option></select>
+              </label>
+              <button class="btn" type="button" id="loadMdHistoryBtn">過去MDを反映</button>
+              <button class="btn" type="button" id="importMdBtn">MDインポート</button>
+              <label class="tag-save-label">保存時のタグ（任意）
+                <input type="text" id="mdTagInput" placeholder="例：重要,確認済" autocomplete="off">
+              </label>
+              <button class="btn" type="button" id="exportMdBtn">MD保存</button>
+              <button class="btn" type="button" id="exportAllDataBtn">案件データ保存</button>
+              <button class="btn" type="button" id="importAllDataBtn">過去データ復元</button>
+              <button class="btn" type="button" id="rebuildProjectCatalogBtn">案件一覧を再読込</button>
+              <button class="btn" type="button" id="saveProjectBtn">この内容で上書き保存</button>
+              <div class="muted" style="width:100%;font-size:11px;line-height:1.4;margin-top:4px">
+                過去データを見る: <strong>過去データ復元</strong>でJSONを読み込むと、案件一覧と全案件内容を復元できます。MDは「過去MDを反映」で選択して反映します。
+              </div>
+              <input type="file" id="mdImportInput" accept=".md,.txt,.pdf,text/markdown,text/plain,application/pdf" hidden="">
+              <input type="file" id="allDataImportInput" accept=".json,application/json" hidden="">
+            </div>
+          </details>
+        </div>
+        <div class="project-grid-basic">
+          <label>案件名<input data-key="projectName"></label>
+          <label>顧客名<input data-key="clientName"></label>
+          <label class="wide">案件メモ<textarea data-key="projectMemo"></textarea></label>
+        </div>
+        <div class="project-note">案件名/顧客名/案件メモを埋めてから、各種プロンプトをコピー→貼り付けすると「まとめ資料」に反映しやすくなります。</div>
+      </section>
+
+      <section data-view="materials" id="materials">
+        <h2>資料収集</h2>
+        <p>ホームページ、パンフレット、会話記録、調査結果などを貼ります。</p>
+        <div class="grid">
+          <label class="wide">素材<textarea data-key="materials"></textarea></label>
+          <label class="wide">まとめ資料に追加する内容<textarea data-key="materialsResult"></textarea></label>
+        </div>
+        <div class="notice">資料収集まとめ専用プロンプトは、元Excel・user-prompts.json・notion-materials.json検索では見つかっていません。未確認のプロンプトは作りません。</div>
+      </section>
+
+      <section data-view="hearing" id="hearing">
+        <h2>ヒアリング</h2>
+        <p>会話記録を貼り、Excel由来のヒアリング用項目をコピーします。</p>
+        <div class="grid">
+          <label class="wide">会話記録・文字起こし<textarea data-key="conversationRecord"></textarea></label>
+        </div>
+        <div class="prompt-list" id="hearingPrompts">
+          <div class="prompt-card">
+            <div class="prompt-head">
+              <div>
+                <h3>会話内容を整理する</h3>
+                <span>user-prompts.jsonから取得済み</span>
+              </div>
+              <button class="btn primary" type="button" data-name="会話内容を整理するプロンプト" data-group="hearing">コピー</button>
+            </div>
+            <label>貼り付け欄
+              <textarea data-prompt-output="会話内容を整理するプロンプト" placeholder="会話内容を整理するの返答をここに貼る">【スクリプト】
+
+**阿久津和宏**：お疲れ様です。少々お待ちくださいね。できました。これで「いい未来」の資料を開きます。お忙しいところありがとうございます。今日は持続化補助金についてですね。今、何かこれを優先したいというものはあったりするんですか？
+
+**猪口和代**：一番これからやろうとしていることは、今の「プライムミストウォーター」という化粧水に広告をかけているんですけれども、今後は他の商品も宣伝をかけるために、補助金で広告費やLP作成費をまかなえないかなと思っています。
+
+**小川裕美**：既存のものに限らず、これからやろうとしているものがいっぱいありますよね。
+
+**阿久津和宏**：まず、私に状況を伝えるためには、商品とやりたいことをお話しいただけると非常にありがたいですね。ちなみに、持続化補助金は新事業でなくても大丈夫です。既存のものでも問題ありません。ただ、LPやWeb広告の費用は全体の4分の1までしか計上できないということは、まず知っておいてください。とりあえず、どういうことをやりたいか、優先していることはありますか？
+
+**小川裕美**：先生、すみません。現状うちで取り組めそうな補助金や助成金には何があるのでしょうか？
+
+**阿久津和宏**：ですから、まずは今優先したいことがありますか、と質問しています。なければないで構いません。いかがですか？
+
+**小川裕美**：優先したいことというか、全商品に広告をかけた方がいいと思うので、広告はかけたいと思っています。ですので、広告費やLP制作費に下りる補助金があれば申請したいというのが1つあります。あとは、時期的に今度5月なんですけど、「ビューティーワールド」のようなイベントがあるので、そこにかかる費用なども含めて申請できればいいなと思っています。間に合うかどうかわからないのですが。
+
+**阿久津和宏**：5月は間に合わないですね。持続化補助金のガイドに日程があったと思いますが、ビューティーワールドは間に合いません。補助金は細々したものを申請すると後で大変になるので、金額が大きいものを優先します。ちなみにビューティーワールドはどこでやるイベントでしたっけ？
+
+**小川裕美・猪口和代**：東京です。
+
+**阿久津和宏**：LPや広告については、1個1個にお金をかけるのではなく、もっと効率的な方法がないかを考えた方が良いと思います。最初に仰っていた商品は、商品ごとにLPがあるわけですか？
+
+**猪口和代**：今後は商品ごとにLPと広告を出す形になります。
+
+**阿久津和宏**：でしたら、商品のリストとLPの原案を見せてもらった方がアイデアが湧きやすいです。補助金で広告費はほんの一部（50万円くらい）しか使えないので、すぐになくなってしまいます。それよりも、以前お話しした一般社団法人を作ってYouTubeやGoogle広告の助成金を使う方法もあるかなと思います。
+
+**猪口和代**：それは小規模事業者持続化補助金の枠の中でできるということですか？
+
+**阿久津和宏**：そうですね。とりあえず、大きい情報をください。今やっている商品と広告、これから取り組みたい商品とLPの一覧になっているものがあれば、それを見せてもらえると話しやすいです。確率が高く、売上に影響があるところから手をつけるべきです。広告は今どんな感じで進めているんですか？
+
+**猪口和代**：今広告をかけているのは「プライムミストウォーター」という1商品だけです。広告会社に依頼してLPを作成していただき、月額で広告費を提示して回している感じです。初回のLP制作費は1回のみですが、毎月広告費をかけています。初回購入を低価格にして定期購入に結びつけ、LTVを増やすための広告です。月額100万円の予算で回しています。
+
+**阿久津和宏**：100万円の広告に対して、初回の売上はいくらくらいになっていますか？
+
+**猪口和代**：月によって違いますが、先月の経過で言うと100万円のうち50万円を消化して、CPAが7810円、購入者数が62人です。価格が3300円なので、今のところ売上は20万4600円です。
+
+**阿久津和宏**：継続率などの数字は取っていますか？
+
+**猪口和代**：はい、取っています。
+
+**阿久津和宏**：広告は仕組みの問題なので、個人的には補助金でやらない方が良いと思っています。それよりも、代理店やパートナーを集めるようなやり方の方が広告を使いやすいです。持続化補助金で広告費だけを申請するのは事業計画書として少しやりにくいです。ただ、CPAを下げたり継続率を上げるための施策なら、広告費が有効に使われると思うので、そういった課題感はありますか？数字の推移は表で出しておいてください。ところで、ビューティーワールドはもう申し込みも支払いを終わっていますよね？
+
+**小川裕美**：はい、終わっています。
+
+**阿久津和宏**：それなら今回は無理ですね。持続化補助金は小規模事業者である必要があるので、何か製造に関わる取り組みの方が申請しやすいです。
+
+**猪口和代**：新商品を製造するというのはやりやすいですか？
+
+**阿久津和宏**：製造業として申請しないと従業員数の要件をオーバーしてしまうかもしれません。製造に関わる販路開拓として申請することになります。ただ、広告をやらない方が次に繋げやすいです。広告はきっかけに過ぎないので、仕組みを作ることの方が重要です。
+
+**小川裕美**：今「いい未来」で化粧品製造販売業の許可を取ろうとしています。これまでは工場が製造で販売元が「いい未来」でしたが、両方とも「いい未来」として出せるようになります。ただ、統括責任者を置くなどの費用がかかり、取るまでに100万円くらいかかります。こういった費用は対象になりますか？
+
+**阿久津和宏**：許可申請などの手数料は基本的には対象になりません。ただ、製造業として取り組むのであれば従業員要件が上がるので申請しやすくなります。製造業として売上を上げるための販路開拓、例えば本を出版する、プレスリリースを出す、パンフレットを作ってプレゼンするなどの取り組みであれば申請できると思います。
+
+**小川裕美**：すみません、うちが取ろうとしているのは「製造販売業」で、自社で製造はできないんです。品質管理や安全性の確保をするためのものです。「製造業」は工場などの要件を満たしていないと取れません。
+
+**阿久津和宏**：なるほど。製造業として申請できないのであれば、ちょっとやり方が変わりますね。勉強になりました。
+
+**猪口和代**：もう1つ、今やろうとしていることとして、これまでインフルエンサーやモデルさんが無償でSNSで宣伝してくれて知名度が上がった経緯があるのですが、会長から「紹介から購入に繋がった場合にパーセンテージを還元する仕組みを作りたい」と提案がありました。そのシステム作りに補助金は使えませんか？
+
+**阿久津和宏**：システムは作らない方が良いと思います。お金がかかるだけです。インフルエンサーを集めるプラットフォームと管理するプラットフォームがあるだけなので、リンクを変えていくだけで済みます。今あるインフルエンサーのマッチングプラットフォームなどの出展費用なら対象になりそうな気はしますが。
+
+**猪口和代**：あえて新しくインフルエンサーを探す必要はないんです。積極的に宣伝してくれている特定の人たちにキックバックする仕組みを作りたいという話です。
+
+**阿久津和宏**：それなら、インフルエンサーごとにリンクを与えて販売分だけ報酬を払えばいいので簡単にできます。
+
+**小川裕美**：今のECサイト（フューチャーショップ）のシステムだと、どのインフルエンサー経由で購入されたかが分からないので、それを分かるようにエンジニアにシステムを構築してもらいたいという話だと思います。
+
+**阿久津和宏**：人数が多くないなら、既存のアフィリエイトセンターを使った方がいいですよ。システム開発ほど無駄なものはありません。日本のカートは外部との連携が弱いことが多いので、今後のことを考えるとShopifyなどの海外カートを使った方が良いです。いずれにしても、インフルエンサーの管理なら既存のアフィリエイトセンターを使えば解決します。ツール系のことは私に聞いていただければ得意です。
+
+**小川裕美**：4月から新しくスタッフを2人正社員にするのですが、賃上げの枠で申請できませんか？今時給1250円で、4月から50円アップの月給にする予定です。
+
+**阿久津和宏**：業務改善助成金などを使えば可能です。ただ、持続化補助金を申請するなら前月の賃金台帳や労働条件通知書が必要になります。今、従業員は何人ですか？
+
+**小川裕美**：今はアルバイトが4人で、正社員は2月段階で2人です。3月から正社員が8人増える予定です。
+
+**阿久津和宏**：今の段階（正社員2人、アルバイト4人）なら、常時使用する従業員数が5人以下なので通常の枠で申請できますね。3月からの移行前に、前月の賃金台帳を出して賃上げを表明すれば上限が200万円になります。具体的な取り組みとしては、応援してくれる人（インフルエンサーなど）が多い強みを活かして、協力者を集めるためのイベントやサミットを開催するのが良いと思います。
+
+**猪口和代**：以前、タレントのRIKAKOさんが主催したオーガニックイベント（ワールド北青山ビルでの開催）のようなイメージですか？健康や美容にフォーカスしたサミットを行うような。
+
+**阿久津和宏**：まさにそれです！めちゃくちゃ良いですね。イベントを主催して有名人を呼び、トークセッションをやりながら周りで展示会をやる。その出展費用や開催費用、看板代、プレスリリース代、パンフレット制作費などを補助金の対象経費にするんです。
+
+**猪口和代**：新店舗がオープンするのでそこを会場にするか、別に会場を借りるかですね。
+
+**阿久津和宏**：リアルのイベントでお客さんや代理店と交流し、着実な基盤を作っていくというストーリーは審査員にも響きやすいです。目標としてはLINEリストの獲得や代理店開拓などを設定すれば良いと思います。
+
+**猪口和代**：会長もそういうイベントはやりたいと言っていましたし、私自身も以前そういうイベントを運営していたので得意です。
+
+**阿久津和宏**：それならバッチリですね！得意分野を活かして企画を立ててみてください。その企画がそのまま事業計画になります。
+
+**猪口和代**：分かりました。企画を考えてみます。
+
+**阿久津和宏**：申請はなるべく早めに行いたいので、次回は3月の第1週あたりで打ち合わせしましょう。スケジュールの枠を開けておきますね。
+
+**猪口和代**：はい、3月の2日、3日、4日あたりで調整します。よろしくお願いします。
+
+---
+
+【修正・改善箇所】
+
+1. **相槌やフィラーの削除**: 「あ」「うん」「はい」「えっと」「なんか」といった頻出する不要な相槌や言い淀みを削除し、読みやすくスムーズな会話の流れに修正しました。
+2. **細切れの対話の統合**: 回線状況や相槌によって細かく分断されていた同一話者の発言を、一つの意味のまとまりとして結合し、発言の意図が途切れないようにしました。
+3. **文脈の整理と表現の補完**: 主語が省略されている部分や、言葉足らずで意味が通りにくい箇所（例：「持続化助金ですよね」→「持続化補助金についてですね」）を、前後の文脈に合わせて自然な表現に補完しました。
+4. **冗長な反復の整理**: 意味が変わらないまま同じ内容を何度もループしている箇所（システム仕様の話題や、従業員数の数え方に関する議論など）は、話し手の意図・数字・事実関係を一切省略しない範囲で、簡潔に整えました。
+5. **トーンの統一と維持**: 敬語や丁寧語のレベルを統一しつつ、コンサルタントの提案ベースの親しみやすいトーンや、相談者の熱意や疑問を投げかけるトーンなど、実際の会話のニュアンスはそのまま維持しました。</textarea>
+            </label>
+            <p class="copy-note">ここにコピー</p>
+          </div>
+        
+          <div class="prompt-card">
+            <div class="prompt-head">
+              <div>
+                <h3>会話記録から理念を言語化する</h3>
+                <span>user-prompts.jsonから取得済み</span>
+              </div>
+              <button class="btn primary" type="button" data-name="会話記録から理念を言語化するプロンプト" data-group="hearing">コピー</button>
+            </div>
+            <label>貼り付け欄
+              <textarea data-prompt-output="会話記録から理念を言語化するプロンプト" placeholder="会話記録から理念を言語化するの返答をここに貼る">**手順1: 会話記録の分割**
+
+* **分割1**: 広告費・LP制作と製造販売業の許可取得に関する議論（00:00:00〜00:25:34）
+* **分割2**: 会長発案によるインフルエンサーへのキックバックシステム構想（00:25:34〜00:41:01）
+* **分割3**: アルバイトの正社員化、賃上げ、および従業員要件の整理（00:41:01〜01:04:16）
+* **分割4**: リアルイベント（サミット）開催に向けた企画と方向性の合意（01:04:16〜01:40:35）
+
+---
+
+**手順2: 基本分析**
+
+【分割された会話記録】
+分割1: 広告費・LP制作と製造販売業の許可取得に関する議論（00:00:00〜00:25:34）
+
+* 分割記録の要約（100字以内）：既存商品の広告費やLP制作費に補助金を活用したいと相談。また、自社のハクをつけるために化粧品製造販売業の許可取得（約100万円投資）も進めている。
+* 社長の考え（100字以内）：全商品に広告をかけて展開したい。また、品質管理と安全性の確保を自社で徹底し、企業としての信頼性やブランド価値を高めたい。
+* 社長の理念（50字以内）：安全で高品質な製品を提供し、企業としての社会的信用（ハク）を確立する。
+* 社長の経験から推測されること（50字以内）：月額100万の広告費を投じ、CPAやLTVを計測して着実にデータを追う堅実な運用経験がある。
+* その他特筆すべき点（50字以内）：目先の売上だけでなく、5年更新の責任者を雇うなど長期的な企業価値向上への投資を惜しまない。
+
+【分割された会話記録】
+分割2: 会長発案によるインフルエンサーへのキックバックシステム構想（00:25:34〜00:41:01）
+
+* 分割記録の要約（100字以内）：会長の提案により、無償で商品を宣伝し知名度向上に貢献してくれたインフルエンサーに対し、売上に応じた還元（キックバック）を行うシステムを作りたいと相談。
+* 社長の考え（100字以内）：自社を応援してくれる特定のインフルエンサーに対して、感謝の意を込めて利益を適切に還元する仕組みを構築したい。
+* 社長の理念（50字以内）：義理人情を重んじ、協力者と利益を分かち合う互恵関係を築く。
+* 社長の経験から推測されること（50字以内）：有名人やモデルが無償で自社商品をPRし、結果として知名度が向上したという成功体験がある。
+* その他特筆すべき点（50字以内）：新規のインフルエンサーを闇雲に探すのではなく、既存の熱心な支持者を大切にする姿勢が強い。
+
+【分割された会話記録】
+分割3: アルバイトの正社員化、賃上げ、および従業員要件の整理（00:41:01〜01:04:16）
+
+* 分割記録の要約（100字以内）：法人統合に伴い、アルバイトスタッフを正社員として登用し、時給をアップさせる計画を立てている。それに伴う補助金の従業員要件や賃上げ枠について確認。
+* 社長の考え（100字以内）：スタッフの待遇を改善し、正社員として雇用することで組織体制を整えたい。複数法人に分かれている雇用関係を一本化し、会社としての基盤を固めたい。
+* 社長の理念（50字以内）：従業員の雇用安定と待遇改善を図り、安心して働ける環境を提供する。
+* 社長の経験から推測されること（50字以内）：法人間の異動や組織再編を通じて、企業規模拡大に伴う労務管理の課題に直面している。
+* その他特筆すべき点（50字以内）：現場のスタッフ（アルバイト）を大切にし、ステップアップさせる意向がある。
+
+【分割された会話記録】
+分割4: リアルイベント（サミット）開催に向けた企画と方向性の合意（01:04:16〜01:40:35）
+
+* 分割記録の要約（100字以内）：インフルエンサーや有名人を招致し、健康や美容にフォーカスしたリアルイベント（サミット）を開催する計画で合意。新店舗オープンも絡めて補助金を申請する方向。
+* 社長の考え（100字以内）：人脈を活かしてリアルな場（イベント）を作り、顧客や代理店と直接交流することで、より強固で着実なビジネス基盤（コミュニティ）を作りたい。
+* 社長の理念（50字以内）：オンラインの繋がりだけでなく、リアルな場を通じた熱量の高いコミュニティ形成を重視する。
+* 社長の経験から推測されること（50字以内）：過去にタレント主催のオーガニックイベントに関わった経験や、社内にイベント運営の知見がある。
+* その他特筆すべき点（50字以内）：コンサルタントのイベント提案に対し「会長もやりたいと言っていた」と即座に一致するほど、方針が明確。
+
+---
+
+**手順3: 詳細分析**
+
+【分割された会話記録】
+分割1: 広告費・LP制作と製造販売業の許可取得に関する議論（00:00:00〜00:25:34）
+分析項目：1. 事業に対するビジョンや目標
+
+* 分析項目に対する社長の考え（150字以内、具体的な会話内容を引用すること）：現状の1商品だけでなく「全商品、ま、広告をかける方がいいと思うので、広告はかけたい」と、全社的な販売拡大を目指している。また「いい未来としての白はちょっとつくんですよ。きちんとした安全性の元で販売してるっていうところ」と述べ、単なる販売会社から品質を保証できるメーカーとしての成長を目標としている。
+* 分析項目に対する社長の理念や経験の影響（50字以内）：自社製品への誇りと、顧客に対する安全性担保という強い責任感が事業拡大の推進力となっている。
+
+【分割された会話記録】
+分割2: 会長発案によるインフルエンサーへのキックバックシステム構想（00:25:34〜00:41:01）
+分析項目：3. 社員に対する期待や価値観（※ここでは社外の協力者・インフルエンサーへの価値観として適用）
+
+* 分析項目に対する社長の考え（150字以内、具体的な会話内容を引用すること）：「会長が話を持ってきたのは…積極的にうちの商品を宣伝してくれてるからキックバックがしたいから仕組みを作れないかということで」とあるように、ビジネスライクな契約ではなく、自発的に応援してくれた人に対して恩返しをしたいという強い思いを持っている。
+* 分析項目に対する社長の理念や経験の影響（50字以内）：無償で応援してくれた人々の力で会社が成長したという経験から、利益の独占ではなく還元を是としている。
+
+【分割された会話記録】
+分割3: アルバイトの正社員化、賃上げ、および従業員要件の整理（00:41:01〜01:04:16）
+分析項目：6. 今後の事業展開に対する考え
+
+* 分析項目に対する社長の考え（150字以内、具体的な会話内容を引用すること）：「4月から正社員になる」「今1250円で4月からは大体50円アップぐらいの月給にしようと思ってる」と、現場スタッフの待遇を引き上げる具体的な計画がある。また「いい未来の社員に移動させる予定」と組織統合を進め、次の成長フェーズに向けた地盤固めを行っている。
+* 分析項目に対する社長の理念や経験の影響（50字以内）：事業の成長には人材の定着と組織の安定が不可欠であるという経営判断が表れている。
+
+【分割された会話記録】
+分割4: リアルイベント（サミット）開催に向けた企画と方向性の合意（01:04:16〜01:40:35）
+分析項目：5. 過去の成功体験や失敗体験
+
+* 分析項目に対する社長の考え（150字以内、具体的な会話内容を引用すること）：「タレントのリカ子さんっていらっしゃるじゃないですか…オーガニックイベントかなんかやった」という過去の事例を引き合いに出し、自社でも「健康とか美容とかにフォーカスするっていう目的」のサミット開催に勝機を見出している。「会長的にもそういうことやりたいよねってはおっしゃってました」とトップの意向とも合致している。
+* 分析項目に対する社長の理念や経験の影響（50字以内）：過去に招待されたイベントの熱量や人脈形成の場としての価値を実感しており、それを自社の武器にしようとしている。
+
+---
+
+**手順4: テーマ別分析**
+
+【テーマ】顧客・協力者との関係構築（コミュニティ形成）
+【分割された会話記録】
+分割2および分割4
+
+* 【テーマ】に対する社長の考え（150字以内、具体的な会話内容を引用すること）：広告に依存するのではなく、インフルエンサーへの「キックバック」構想や「健康や美容にフォーカスする目的のもとに何かサミット的なこと」を主催することで、自社を応援してくれる代理店、インフルエンサー、顧客が直接繋がる場を作りたいと考えている。
+* 【テーマ】に関する社長の理念（50字以内）：自社のビジョン（美容・健康）に共感する人々と共に歩み、強固なパートナーシップを構築する。
+* 【テーマ】に関する社長の経験（50字以内）：タレントやインフルエンサーの無償PRによって企業知名度が向上したという、人の影響力に関する強い原体験がある。
+* その他特筆すべき点（50字以内）：ツール（システム）よりも「人との繋がり」を事業のコアバリューとして設定しようとしている。
+
+---
+
+**手順5: ニュアンス分析**
+
+【分割された会話記録】
+分割2および分割4
+分析項目：1. 社長が重要視していること
+
+* 分析項目について、社長の発言内容とニュアンスから読み取れること（150字以内、具体的な会話内容を引用すること）：インフルエンサーを探すのではなく「あえてうちは探す必要がない」「積極的に宣伝してくれてる人に対して（還元する）」というスタンスや、イベント提案への「会長的にもやりたいとおっしゃっていた」という反応から、トップは「身内や既存の支援者を大切にし、その熱量を周囲に波及させること」を最重要視している。
+* 必要に応じて、会話の背景や状況を考慮した考察（50字以内）：コンサルタントの「仕組みを作る方が大事」という提案と、経営層の人情味ある理念が綺麗に合致している。
+
+---
+
+**手順6: 結果の統合**
+
+分析の結果、対象企業の社長（会長）および経営陣は、以下の考え、理念、経験を持っていることが抽出された。
+
+1. **理念（Philosophy）**
+自社製品の安全性と品質への強い責任感を持ち、企業としての「ハク（信頼）」を重んじる。同時に、損得勘定だけでなく「無償で応援してくれた協力者には利益を還元する」「現場スタッフの待遇を改善し正社員化する」といった義理人情と互恵関係をビジネスの根幹に置いている。
+2. **経験（Experience）**
+過去にインフルエンサーや著名人からの自発的なPRによって知名度が向上した成功体験を持つ。また、他社が主催した大規模なオーガニックイベント等への関与経験があり、「人の持つ影響力」と「リアルな場での熱量」の価値を実体験として深く理解している。
+3. **今後の考え・ビジョン（Thoughts &amp; Vision）**
+単なるWeb広告依存からの脱却を図っている。今後は、自社が中心となって美容・健康にフォーカスしたリアルイベント（サミット）を主催し、既存のインフルエンサー、新規の代理店、顧客を巻き込んだ強固な「コミュニティ・基盤」を構築することで、ブランド価値のさらなる向上と持続的な事業拡大を目指している。</textarea>
+            </label>
+            <p class="copy-note">ここにコピー</p>
+          </div>
+        </div>
+        <div class="grid">
+          <label class="wide">まとめ資料に追加する内容<textarea data-key="hearingResult"></textarea></label>
+        </div>
+      </section>
+
+      <section data-view="baseData" id="baseData">
+        <h2>基本データ 現時点版</h2>
+        <p>最初に完成させません。資料収集・ヒアリング時点の現時点版を作り、調査結果を後から足します。</p>
+        <div class="prompt-list" id="baseDataPrompts">
+          <div class="prompt-card">
+            <div class="prompt-head">
+              <div>
+                <h3>会社概要を作る</h3>
+                <span>user-prompts.jsonから取得済み</span>
+              </div>
+              <button class="btn primary" type="button" data-name="会社概要を作る" data-group="baseData">コピー</button>
+            </div>
+            <label>貼り付け欄
+              <textarea data-prompt-output="会社概要を作る" placeholder="会社概要を作るの返答をここに貼る">【自社の概要】 当社は、横浜市中区にて、エステサロンの経営・健康食品、化粧品の製造販売等を営んでいる
+。当社の概要は以下の通りである。
+項目
+内容
+会社名
+株式会社E.MIRAI（イー・ミライ）
+創業年月
+平成22年7月27日
+業務内容
+エステサロンの経営・健康食品、化粧品の製造販売等
+代表者名
+代表取締役 渡部 裕美
+本店所在地（市町村まで）
+横浜市中区
+当社の持ち味・得意ジャンル
+東京大学大学院薬学系研究科との共同研究によるエビデンス（科学的根拠）に基づいた製品開発
+、独自技術（「三室型電解水」や「nano PDS技術」など）を用いた高機能化粧品・健康食品開発
+、エステサロン「Esprit Beauty」による外面（施術）と内面（自社開発製品・生活習慣）の両面からアプローチする本質的なケア
+。
+主要客層
+美容や健康の維持・改善を目指す一般顧客
+、および製品を導入するエステサロン・美容関連施設・医療クリニック等の事業者や販売パートナー
+。
+経営理念
+「良い未来」を創造することを使命とし、お客さま一人ひとりにとって素晴らしい未来の提供をサポートする
+。
+【経営数値】:単位千円 ※提供されたソースには、売上、売上総利益、営業利益、経常利益などの財務情報に関する記述が一切存在しないため
+、数値はすべて「記載なし」となります。
+区分
+3期前
+2期前
+1期前
+売上
+記載なし
+記載なし
+記載なし
+売上総利益
+記載なし
+記載なし
+記載なし
+営業利益
+記載なし
+記載なし
+記載なし
+経常利益
+記載なし
+記載なし
+記載なし
+STEP4: 提供されたソース内に具体的な売上や利益などの財務数値が一切開示されていないため
+、現在の経営状況がうまく行っている点や問題点の具体的な分析・評価を行うことはできません。
+</textarea>
+            </label>
+            <p class="copy-note">ここにコピー</p>
+          </div>
+        
+          <div class="prompt-card">
+            <div class="prompt-head">
+              <div>
+                <h3>決算書概要分析パーツ</h3>
+                <span>user-prompts.jsonから取得済み</span>
+              </div>
+              <button class="btn primary" type="button" data-name="決算書概要分析プロンプトパーツ" data-group="baseData">コピー</button>
+            </div>
+            <label>貼り付け欄
+              <textarea data-prompt-output="決算書概要分析プロンプトパーツ" placeholder="決算書概要分析パーツの返答をここに貼る"></textarea>
+            </label>
+            <p class="copy-note">ここにコピー</p>
+          </div>
+        
+          <div class="prompt-card">
+            <div class="prompt-head">
+              <div>
+                <h3>経営課題発見【多視点リスト型】</h3>
+                <span>ユーザー提供本文から取得済み</span>
+              </div>
+              <button class="btn primary" type="button" data-name="経営課題発見プロンプト【多視点リスト型】" data-group="baseData">コピー</button>
+            </div>
+            <label>貼り付け欄
+              <textarea data-prompt-output="経営課題発見プロンプト【多視点リスト型】" placeholder="経営課題発見【多視点リスト型】の返答をここに貼る">視点,問題点,課題（対応すべきこと）
+経営数値,広告費月額100万円に対し初回売上が約20万円（CPA 7810円/単価3300円）と赤字が先行している,定期購入への引き上げ率（LTV）の厳密な計測と、費用対効果の高い集客チャネルへの予算再配分
+財務体質,インフルエンサー管理のための自社システム開発など、不要な初期投資（固定費）を抱えようとしている,既存のアフィリエイトセンターやSaaSツールを活用し、システム開発費などのムダなキャッシュアウトを防ぐ
+現場オペレーション,現行のECカート（フューチャーショップ）ではインフルエンサー経由の売上トラッキングが困難,外部連携に強い海外製カート（Shopifyなど）への移行検討、または既存ツールでの効果測定オペレーションの構築
+人材・組織,複数法人（EMIとE.MIRAI）で雇用が分散し、労務状況（アルバイトと正社員の比率等）の把握や補助金申請が煩雑になっている,E.MIRAIへの雇用統合の完遂と、賃金台帳・労働条件通知書など正確な労務書類の迅速な整備
+顧客・市場,Web広告経由の新規獲得に依存しており、無償で応援してくれる既存ファンやインフルエンサーを組織化できていない,熱量の高い協力者と直接繋がるコミュニティ形成と、紹介による売上（代理店開拓）を促進する導線作り
+商品・サービス,「製造販売業許可」の取得（約100万円＋責任者費用）を進めているが、自社製造を行わないため費用対効果が見えにくい,許可取得による「安全性・品質の担保（ブランドのハク付け）」を最大限に活かすPR戦略や付加価値の創出
+業界・競合,化粧品のWeb広告は競合激化で資金力勝負になりやすく、自社の強みが活きていない,競合が手を出さない「リアルイベント（美容サミット等）」を主催し、独自の人脈を活用して明確な差別化を図る
+経営者の意志・方針,「応援者にキックバックしたい」という会長の理念は素晴らしいが、手段（自社システム開発）がオーバースペックで非現実的,経営陣の理念や意向を尊重しつつ、現場負担とコストに見合う現実的な解決策（既存ツール利用）へ軌道修正する
+社会・制度環境,持続化補助金の要件（常時使用する従業員数の数え方、製造業の定義、賃上げ枠など）に対する社内の理解が不足している,制度要件に適合させるための社内ルールの整理（時給アップ・正社員化）と、適切な事業計画（販路開拓）の策定
+経営資源の活用状況,芸能人やモデルが無償でPRしてくれる強力な「人脈・信用」という無形資産を、売上基盤として体系化できていない,オフラインイベントを開催して協力者を一堂に集め、LINEリストの獲得やパートナー（代理店）網の構築へ変換する</textarea>
+            </label>
+            <p class="copy-note">ここにコピー</p>
+          </div>
+        
+          <div class="prompt-card">
+            <div class="prompt-head">
+              <div>
+                <h3>経営方針作成</h3>
+                <span>user-prompts.jsonから取得済み</span>
+              </div>
+              <button class="btn primary" type="button" data-name="経営方針作成プロンプト" data-group="baseData">コピー</button>
+            </div>
+            <label>貼り付け欄
+              <textarea data-prompt-output="経営方針作成プロンプト" placeholder="経営方針作成の返答をここに貼る">株式会社E.MIRAI 事業概要および戦略ブリーフィング
+エグゼクティブ・サマリー
+株式会社E.MIRAIは、「“いい未来”を、共に創る。」というミッションを掲げ、美容と健康の総合的なソリューションを提供する企業である。同社の事業は、科学的根拠（エビデンス）に基づいた「化粧品・健康食品事業」と、顧客のコンディションを本質から整える「エステサロン事業」の二本柱で構成されている。
+最大の強みは、東京大学大学院薬学系研究科との共同研究に裏打ちされた高度な技術力と、エステサロンの現場から得られるリアルな顧客ニーズを製品開発に直結させるシナジー体制にある。特に「三室型電解水」や「nano PDS技術」といった独自技術を活用し、外側からのケアと内側からのケアを統合した「本質的な美」の実現を目指している。2025年には資本金を5,000万円に増資し、東京ガールズコレクション（TGC）とのコラボレーション店舗を展開するなど、事業規模の拡大とブランド力の強化を加速させている。
+1. 企業理念とビジョン
+株式会社E.MIRAIの根幹をなす理念は、単なる外見の美しさを超えた「本質的な美と健康」の追求である。
+「いい未来」の創造: 社名に込められた通り、顧客一人ひとりの素晴らしい未来をサポートすることを最大の使命としている。
+統合的アプローチ: 美しさは外側だけでは完成しないという考えに基づき、外側からのケア（化粧品・施術）と内側からのケア（健康食品・生活習慣）の両面からアプローチする。
+現場主義: エステサロンや医療現場でのリアルな声を起点に製品・サービスを設計し、信頼されるパートナーであることを目指す。
+2. 化粧品・健康食品事業：サイエンスとイノベーション
+科学的根拠に基づいた製品開発が同事業の中核である。東京大学大学院薬学系研究科との共同研究を通じて、有効性と安全性の両立を追求している。
+2.1 核心技術とアプローチ
+製品の可能性を極限まで高めるため、以下の4つの主要技術を導入している。
+技術名
+特徴と用途
+三室型電解水
+「高酸化水（清潔保持・クリニック導入実績）」と「高還元水（乳化・成分抽出・化粧品原料）」を特性に応じて使い分ける。
+nano PDS技術
+三室型電解水の特性を活かし、成分の「高浸透・高吸収」を実現する。
+国産サンゴ水素
+特殊吸着技術により、体内で長時間水素を発生させ続ける持続型テクノロジー。
+次世代スキンケア成分
+老化細胞のメカニズムに着目し、エイジングの根本原因にアプローチする最先端成分を採用。
+2.2 主要ブランド：&amp;themecell®（アンドザミセル）
+「細胞（cell）」と「魅せる（mecell）」を掛け合わせた名称の新ブランド。
+コンセプト: 肌が細胞レベルで健やかになることで、自信を持ち、心から輝く自分を魅せる。
+ターゲット: 性別や世代を問わず、最新技術と自然原料を融合させたケアを求める層。
+展開: 自社オンラインショップを通じて、三室型電解水の特性を活かした製品を提供。
+3. エステサロン事業：Esprit Beauty
+「本質から整える」をコンセプトに、表面的なケアに留まらない総合的なコンディションの最適化を提供する。
+事業モデル: カウンセリングを起点に、肌・身体・生活習慣を統合的に分析。自社開発製品と連動した施術を行い、日常的なケアまで含めた継続的な変化を支援する。
+主要店舗:
+六本木店: 東京都港区六本木（eisu bldg.）
+横浜店: 神奈川県横浜市中区（ル・ヴァンブルービル）
+Esprit Beauty by TGC 南青山店: 東京都港区南青山。株式会社WTOKYO等との連携による戦略的店舗。
+4. 会社概要と沿革
+株式会社E.MIRAIは、2010年の設立以来、着実な成長を遂げている。
+4.1 基本情報
+会社名: 株式会社E.MIRAI（イー・ミライ）
+所在地: 横浜市中区羽衣町3丁目55番地1 VORT横濱関内BLD. 7F
+代表者: 代表取締役 渡部 裕美 ／ 取締役会長 磯上 恵美子
+従業員数: 15名（令和7年現在）
+主な取引先: 一般社団法人 国際水素規格協会、株式会社WTOKYO、株式会社光文社、ラオックス・ロジスティクス株式会社等
+4.2 沿革のハイライト
+2010年7月: 株式会社E.MIRAI 設立
+2025年5月: 資本金を5,000万円に増資
+2025年10月: TGC by Esprit Beauty店をオープン
+5. ガバナンスと個人情報保護
+同社は、2024年10月1日に個人情報保護方針を制定し、情報の正確性と安全性の確保に努めている。
+利用目的の限定: 商品紹介、注文手続き、問い合わせ対応、統計資料作成、嗜好に合わせた情報発信等、明示した目的以外での利用を禁止している。
+安全管理: アクセス管理の徹底、持ち出し制限、不正アクセス対策等の合理的な安全対策を講じている。
+第三者開示の制限: 本人の同意がある場合や法令に基づく場合を除き、原則として第三者への公開は行わない。
+クッキー（Cookie）の利用: カート機能やユーザビリティ向上、入力手間の省略のために利用されるが、個人特定情報にはリンクされない。
+6. 重要引用句
+「美しさは、外側だけでは完成しない。私たちは、外側からのケアと内側からのケアを通じて、本質的な美と向き合います。」
+「現場のリアルな声から生まれる製品とサービスを軸に、美容と健康の総合的なソリューションを提供し、信頼されるパートナーであり続けることを目指しています。」
+「サイエンスに裏付けられた『確かな手応え』にこだわっています。」
+</textarea>
+            </label>
+            <p class="copy-note">ここにコピー</p>
+          </div>
+        </div>
+        <div class="actions">
+          <button class="btn primary" type="button" id="mergeBaseDataBtn">基本データを統合</button>
+        </div>
+        <div class="consult-import" style="margin:10px 0;padding:12px;border:1px solid var(--line);border-radius:8px;background:#fbfcfd;">
+          <label class="wide" style="margin:0;">ウェビナーツールで作った案件の基本データを取り込む
+            <select id="webinarImportSelect"><option value="">案件を選択</option><option value="p-1784445530982">テスト</option><option value="p-1783125139489">Webinar_補助金支援実践プログラム習得ウェビナー</option><option value="p-1782430475495">新規案件2</option><option value="p-1782379868249">新規案件</option></select>
+          </label>
+          <button class="btn primary" type="button" id="webinarImportBtn" style="margin-top:8px;">この案件の基本データを取り込む</button>
+        </div>
+        <label class="wide">基本データ<textarea data-key="baseData"></textarea></label>
+      </section>
+
+      <section data-view="product" id="product">
+        <h2>商品調査</h2>
+        <p>商品内容を書き、各プロンプトごとに返答を貼ります。最後に統合してまとめ資料へ入れます。</p>
+        <div class="grid">
+          <label class="wide">商品内容<textarea data-key="productContent"></textarea></label>
+        </div>
+        <div class="prompt-list" id="productPrompts">
+          <div class="prompt-card">
+            <div class="prompt-head">
+              <div>
+                <h3>特徴</h3>
+                <span>user-prompts.jsonから取得済み</span>
+              </div>
+              <button class="btn primary" type="button" data-name="商品特徴分析" data-group="product">コピー</button>
+            </div>
+            <label>記入欄<textarea data-key="productFeatures">商品・サービス名：[Esprit Beauty（エスプリビューティ）]
+1. 物理的・空間的特徴
+店舗数: 全国3店舗（都内2店舗、神奈川県内1店舗）
+展開エリア:
+六本木店: 東京都港区六本木7-20-5 eisu bldg. 401号室
+横浜店: 神奈川県横浜市中区曙町1-1 ル・ヴァンブルービル3階
+by TGC 南青山店: 東京都港区南青山5丁目4-44 南青山シティハウス103号室
+営業時間・定休日:
+六本木店: 12:00 ～ 21:00（最終受付18:30～19:00）／定休日：日曜日、年末年始
+横浜店: 10:00 ～ 21:00（最終受付19:00）／定休日：日曜日、年末年始
+by TGC 南青山店: 12:00 ～ 20:00／定休日：日曜日、年末年始、GW、お盆
+空間体験（隠れた特徴）: 完全予約制に近い個室またはプライベート感のあるマンション・ビル内の一室を拠点としており、周囲の目を気にせずリラックスできるパーソナルな空間を提供している
+。
+2. サービス提供・運営情報
+アプローチ形態: 「外面のケア（施術）」と「内面のケア（自社開発の化粧品・サプリメント等による日常ケアおよび生活習慣サポート）」を融合させた独自のトータルアプローチ
+。
+カウンセリング: 表面的な悩みだけでなく、肌・身体・日々の生活習慣を含めた総合的な視点からアプローチするための「丁寧なカウンセリング」を起点に置く
+。
+施術プラン: 一人ひとりの状態に合わせたオーダーメイドのオーダーメイド施術設計
+。
+販売モデルとの連動: サロン施術の場にとどまらず、自社開発製品（＆themecell®シリーズや水素サプリメント等）による日常的なホームケアを組み合わせる継続前提のサイクルを設計している
+。
+3. 技術的・施術の特徴
+サイエンスに基づいたバックボーン: 東京大学大学院薬学系研究科との共同研究から生まれた科学的根拠（エビデンス）を有するスキンケア・サプリメント技術を、施術やホームケア提案の基盤に導入している
+。
+コア技術成分の活用: 「三室型電解水」や高浸透を叶える「nano PDS技術」を用いた自社開発製品をそのままサロンケアやホームケアに直結させている
+。
+ケアの目的: 一時的なリラクゼーションや対処療法ではなく、「継続的な変化」と「コンディションの最適化・維持・改善」を主目的とする
+。
+4. パートナーシップ・歴史的背景
+コラボレーション展開: 若年層やトレンドに敏感な層に絶大な影響力を持つ「株式会社WTOKYO」との強固なパートナーシップを構築
+。
+共同店舗ブランド: 2025年10月に「Esprit Beauty by TGC 南青山店（TGC by Esprit Beauty店）」をオープン
+。日本のファッション・ビューティ文化を牽引する東京ガールズコレクション（TGC）の世界観と連携した最先端エステサロンという、独自のブランド価値を獲得している
+。
+5. その他の特徴
+価格帯: (具体的なサロンメニュー単価はソース内に記載なし。ただし、ホームケア製品としては、定期購入サブスクリプションで初回購入を低価格に設定した「プライムミストウォーター」等の連携商品を展開)
+主な導入実績・信頼性: エステサロン現場だけでなく、医療現場（皮膚科・小児科等の医療クリニック）からも問い合わせや導入実績があり、極めて客観的・学術的な信頼度が高い
+。
+6. 価値と意味
+顧客視点: サロンでの特別な施術という「非日常」に、エビデンスに基づいた自社開発コスメ・サプリによる「日常のインナーケア」を組み合わせることで、リバウンドしにくい本質的かつ持続的な美と健康を手に入れられる
+。また、TGCとのパートナーシップ店というブランド力や、医療機関でも選ばれる安全性が高い信頼と安心に繋がる
+。
+開発者視点: エステサロンという「リアルな顧客の現場の声（リアルな悩み、使用感のフィードバック）」を直接吸い上げ、それを東京大学大学院との共同研究チームにフィードバックして新商品開発に直結させるという、理想的な「現場起点R&amp;D循環サイクル」が機能している
+。
+7. 今後の調査・分析ポイント
+各店舗におけるオーダーメイド施術の具体的な施術工程・主要メニュー名: ソースからはトータルアプローチであることは判明しているが、具体的なトリートメント（例：フェイシャル、ボディ、使用マシンの有無など）の詳細スペックのデータ抽出。
+顧客の継続期間とLTVに関する数値: サロン顧客の平均来店頻度や、ホームケア製品（定期購入モデル）の具体的な継続率。
+TGC南青山店と他2店舗の客層デモグラフィック比較: WTOKYOとの連携による「by TGC」店と、六本木店・横浜店における顧客属性（年齢、来店の動機、美容支出への許容額）の違い。
+8. 修正・改善内容の説明
+修正内容: オリジナルテキストの「外面のケア（施術）」「内面のケア（自社開発製品・生活習慣）」「3店舗の展開地域およびWTOKYOとのパートナーシップ」という中核情報を一切欠損させることなく、ソース全体から抽出した具体的な住所、営業時間、歴史的背景（2025年10月オープンなど）、および技術的背景（東京大学大学院との共同研究、三室型電解水、nano PDS技術）を多角的にマージして各カテゴリーを詳細化しました
+。
+理由: 「パッと見てわからない宝の山を探求する」という目的を達成するため、単なる店舗運営事業としてではなく「サイエンスに裏打ちされた開発直結型サロン」および「エンタメ・トレンド発信地（TGC）と融合した唯一無二のポジショニング」という隠れた本質的特徴を体系的に明文化するためです
+。
+東京ガールズコレクション（TGC）との提携の背景について教えて
+独自技術「三室型電解水」がもたらす美容への具体的な効果は？
+サロンのオーダーメイド施術はどのように設計されるのですか？
+</textarea></label>
+          </div>
+        
+          <div class="prompt-card">
+            <div class="prompt-head">
+              <div>
+                <h3>ベネフィット</h3>
+                <span>user-prompts.jsonから取得済み</span>
+              </div>
+              <button class="btn primary" type="button" data-name="ベネフィット転換プロンプト" data-group="product">コピー</button>
+            </div>
+            <label>記入欄<textarea data-key="productBenefits">## ステップ1: 特徴の分析
+
+### 1. 特徴
+**商品・サービス名：[Esprit Beauty（エスプリビューティ）]**
+
+**1. 物理的・空間的特徴**
+- **店舗数**: 全国3店舗（都内2店舗、神奈川県内1店舗）
+- **展開エリア**:
+  - **六本木店**: 東京都港区六本木7-20-5 eisu bldg. 401号室
+  - **横浜店**: 神奈川県横浜市中区曙町1-1 ル・ヴァンブルービル3階
+  - **by TGC 南青山店**: 東京都港区南青山5丁目4-44 南青山シティハウス103号室
+- **営業時間・定休日**:
+  - **六本木店**: 12:00 ～ 21:00（最終受付18:30～19:00）／定休日：日曜日、年末年始
+  - **横浜店**: 10:00 ～ 21:00（最終受付19:00）／定休日：日曜日、年末年始
+  - **by TGC 南青山店**: 12:00 ～ 20:00／定休日：日曜日、年末年始、GW、お盆
+- **空間体験（隠れた特徴）**: 完全予約制に近い個室またはプライベート感のあるマンション・ビル内の一室を拠点としており、周囲の目を気にせずリラックスできるパーソナルな空間を提供している。
+
+**2. サービス提供・運営情報**
+- **アプローチ形態**: 「外面のケア（施術）」と「内面のケア（自社開発の化粧品・サプリメント等による日常ケアおよび生活習慣サポート）」を融合させた独自のトータルアプローチ。
+- **カウンセリング**: 表面的な悩みだけでなく、肌・身体・日々の生活習慣を含めた総合的な視点からアプローチするための「丁寧なカウンセリング」を起点に置く。
+- **施術プラン**: 一人ひとりの状態に合わせたオーダーメイドの施術設計。
+- **販売モデルとの連動**: サロン施術の場にとどまらず、自社開発製品（＆themecell®シリーズや水素サプリメント等）による日常的なホームケアを組み合わせる継続前提のサイクルを設計している。
+
+**3. 技術的・施術の特徴**
+- **サイエンスに基づいたバックボーン**: 東京大学大学院薬学系研究科との共同研究から生まれた科学的根拠（エビデンス）を有するスキンケア・サプリメント技術を、施術やホームケア提案の基盤に導入している。
+- **コア技術成分の活用**: 「三室型電解水」や高浸透を叶える「nano PDS技術」を用いた自社開発製品をそのままサロンケアやホームケアに直結させている。
+- **ケアの目的**: 一時的なリラクゼーションや対処療法ではなく、「継続的な変化」と「コンディションの最適化・維持・改善」を主目的とする。
+
+**4. パートナーシップ・歴史的背景**
+- **コラボレーション展開**: 若年層やトレンドに敏感な層に絶大な影響力を持つ「株式会社WTOKYO」との強固なパートナーシップを構築。
+- **共同店舗ブランド**: 2025年10月に「Esprit Beauty by TGC 南青山店（TGC by Esprit Beauty店）」をオープン。日本のファッション・ビューティ文化を牽引する東京ガールズコレクション（TGC）の世界観と連携した最先端エステサロンという、独自のブランド価値を獲得している。
+
+**5. その他の特徴**
+- **価格帯**: サロンメニューの具体的な単価はソース内に記載なし。ただし、ホームケア製品としては、定期購入サブスクリプションで初回購入を低価格に設定した「プライムミストウォーター」等の連携商品を展開。
+- **主な導入実績・信頼性**: エステサロン現場だけでなく、医療現場（皮膚科・小児科等の医療クリニック）からも問い合わせや導入実績があり、極めて客観的・学術的な信頼度が高い。
+
+---
+
+### 2. 特徴を基にしたベネフィットの整理
+- **機能的ベネフィット**: 最高峰のアカデミア（東京大学大学院）との共同研究による科学的エビデンスに基づき、外面の施術と内面のインナーケア（三室型電解水、nano PDS技術、持続型水素）を掛け合わせることで、一時的なごまかしではなく、肌や身体を細胞レベルから根本的かつ持続的に整えることができる。
+- **感情的ベネフィット**: 都会のプライベート空間（個室）で、自分のライフスタイル全体に親身に寄り添ってくれる丁寧なカウンセリングを受けることで、日々の多忙なストレスから解放され、心身ともに深い安心感と、自分の美を自分でコントロールできているという絶対的な自信に満たされる。
+- **社会的ベネフィット**: 日本最高峰のファッショントレンドである「TGC（東京ガールズコレクション）」と連動した最先端サロン、かつ医療機関も認める本物の技術で磨き上げた完璧なコンディションを周囲に示すことで、「常に時代をリードし、知的かつ洗練されて輝いている憧れの存在」として認知される。
+- **経済的ベネフィット**: 効果が持続しない対処療法的な美容消費を繰り返す無駄がなくなり、自宅での継続的なホームケア製品（サブスクリプション等）との連携により、ライフサイクル全体での美容時間・コストパフォーマンスが最大化され、最小限の負担で最高のコンディションを長期維持できる。
+
+---
+
+## ステップ2: ベネフィットの深掘り
+
+### 1. 各ベネフィットの「だから何？」の深掘り（10回）
+
+#### **機能的ベネフィット:** 東京大学大学院との共同研究などの科学的エビデンス（三室型電解水、nano PDS等）に基づいた外面施術と、ホームケア製品（＆themecell®、国産サンゴ水素サプリ等）の内面ケアを融合し、肌と身体を根本から整えることができる。
+- **(1回目) だから何？:** 一時的な「しっとり感」などの気休めではなく、肌本来のコンディション維持機能やバリア機能が安定する。
+- **(2回目) だから何？:** 日常の天候やホルモンバランスの変化、ストレスに左右されない、トラブルの起きにくい強固で健やかな肌質が手に入る。
+- **(3回目) だから何？:** 肌荒れやむくみ、身体の不調をケアするための無駄な労力や、毎朝鏡を見て悩む時間が劇的に減少する。
+- **(4回目) だから何？:** 毎朝のメイクが抜群にスムーズになり、余計なファンデーションやコンシーラーで隠す必要がなくなる。
+- **(5回目) だから何？:** 素肌そのものへの圧倒的な満足感が生まれ、自分の肌と身体に対して大きな誇りを持てるようになる。
+- **(6回目) だから何？:** メイクやスキンケアの時間が、ストレスの場から「自分を慈しみ、心地よくなる楽しい時間」へと変化する。
+- **(7回目) だから何？:** 毎日を常に前向きなメンタリティと、エネルギッシュな姿勢で始められるようになる。
+- **(8回目) だから何？:** 仕事のプレゼンテーションや、重要な人との面会、社交の場にいつでも最高のコンディションで臨める。
+- **(9回目) だから何？:** 自信に満ちた表情と立ち振る舞いが周囲を惹きつけ、仕事でもプライベートでもより高いチャンスや良好な人間関係を掴み取れる。
+- **(10回目) だから何？:** **「最先端サイエンスを味方につけ、自分の美と健康を自らの力で完璧にコントロールし、人生を最大限のパフォーマンスで生き抜く基盤」**を構築できる。
+
+#### **感情的ベネフィット:** 都心（六本木・南青山）のプライベート個室空間にて、ライフスタイル全体を紐解く丁寧なカウンセリングとオーダーメイド施術を受け、自分のためだけに用意された本質的なトータルアプローチを体験できる。
+- **(1回目) だから何？:** 周囲の雑音や視線を一切気にすることなく、最高にリラックスした状態で自分の身体と心に向き合える。
+- **(2回目) だから何？:** セラピストに自分の身体のクセやライフスタイルの課題、本当の理想を深く理解してもらえる。
+- **(3回目) だから何？:** 誰とも比較されない「自分だけの特別な美のロードマップ」が提示され、進むべき方向が明確になる。
+- **(4回目) だから何？:** 施術を受けるたびに、心身が深い静寂に包まれてリセットされ、日常で蓄積された精神的ストレスが完全に消失する。
+- **(5回目) だから何？:** 自分の身体が本来持っている心地よさと美しさを取り戻し、生きていることへの活力（生命力）が湧き上がる。
+- **(6回目) だから何？:** 自分自身を誰よりも大切にケアできているという「自己愛」と「深い安心感」が得られる。
+- **(7回目) だから何？:** 日常生活で過剰に頑張りすぎていた自分の緊張がほどけ、他者に対しても寛容で優しく接する心の余裕が生まれる。
+- **(8回目) だから何？:** 家庭や職場でストレスを周囲に撒き散らすことがなくなり、周囲との調和や平穏な心のコンディションを常に維持できる。
+- **(9回目) だから何？:** 心が常に凪のように落ち着き、困難なビジネスや私生活の意思決定にも冷静かつ最善の判断を下せるようになる。
+- **(10回目) だから何？:** **「物質的な美しさを超え、どんなに激動の環境下でも『常に内面から満たされ、自分らしく美しく輝き続けられる、揺るぎない精神の自由と自己肯定』」**を確立できる。
+
+#### **社会的ベネフィット:** 東京ガールズコレクション（TGC）という最先端トレンドのアイコン的サロンに通い、皮膚科などの医療現場でも採用される本物のサイエンス製品で美を磨いている姿や結果を周囲に示すことができる。
+- **(1回目) だから何？:** 単なるリラクゼーションサロンの顧客にとどまらず、トレンドとエビデンスを両立させた「本当に効果のある最先端の選択肢」を選び抜く知的な人物であると見なされる。
+- **(2回目) だから何？:** 周囲から「どうしてそんなに肌が綺麗で、いつも生き生きしているの？」と注目されるようになる。
+- **(3回目) だから何？:** 自分の体験しているサイエンス技術やTGCの世界観について、他者に説得力を持って語れるようになる。
+- **(4回目) だから何？:** 美や健康に対する「基準が高い本物の目利き」として、知人や同僚から一目置かれ、アドバイスを求められるようになる。
+- **(5回目) だから何？:** 周囲の美意識や健康志向の高い感度の高い人々（インフルエンサーやエグゼクティブなど）との会話が弾み、深い信頼関係を築ける。
+- **(6回目) だから何？:** 所属するコミュニティにおいて、常に洗練された存在、あるいは「憧れの存在（ロールモデル）」としてのポジションを確立する。
+- **(7回目) だから何？:** 自分が放つ上質なオーラと知的な説得力によって、ビジネスシーンや社会活動においての発言力・影響力が高まる。
+- **(8回目) だから何？:** 同じように高い価値観や優れたステータスを持つ、質の高いネットワークやコミュニティに自然と迎え入れられる。
+- **(9回目) だから何？:** 社会的な信用や人脈が強固になり、仕事での大きなキャリアアップや新しいステージのビジネスを展開するチャンスが広がる。
+- **(10回目) だから何？:** **「『先端トレンドの華やかさ』と『医療・アカデミアの圧倒的信頼性』をまとい、社会の第一線で時代をリードする唯一無二のブランド人（リーダー）としての確固たるステータス」**を手に入れられる。
+
+#### **経済的ベネフィット:** 自社開発製品（＆themecell®シリーズや国産サンゴ水素サプリ等）を連動させ、定額購入プラン（サブスクリプション）等も活用した一貫性のあるデイリーホームケアシステムを導入できる。
+- **(1回目) だから何？:** サロンで一時的に得たコンディションを無駄にすることなく、自宅で毎日「サロン品質」の効果を維持・継続し続けられる。
+- **(2回目) だから何？:** 「効果があるかわからない、とりあえず試してみる」といった数々の化粧品やサプリメントへの余計な出費（無駄買い）が完全にゼロになる。
+- **(3回目) だから何？:** 最短距離かつ最少アイテムで、最大限の効果を約束されたスキンケア・インナーケア習慣が定着する。
+- **(4回目) だから何？:** 定期購入モデルや最適化されたケアシステムにより、次に何を買うべきか悩んだり発注したりする意思決定コストと時間が大幅に節約される。
+- **(5回目) だから何？:** 余った時間と経済的資金を、さらなる自己投資（勉強、新しいビジネス、体験、余暇）に回すことができる。
+- **(6回目) だから何？:** 自己投資による知的・経験的資産が増え、自分自身の市場価値や収入をさらに高めることができる。
+- **(7回目) だから何？:** 美容と健康の維持にかける時間対効果（タイムパフォーマンス）と費用対効果（コストパフォーマンス）が究極のレベルに達する。
+- **(8回目) だから何？:** 年齢を重ねることによって増大しがちな、将来的な医療費や高額な美容医療クリニックへの駆け込み費用を未然に防げる（予防美容の実現）。
+- **(9回目) だから何？:** 生涯にわたって健康で美しい現役の心身を維持できるため、長期間にわたり高い収入能力を維持し続けられる。
+- **(10回目) だから何？:** **「美容と健康における『無駄な時間と費用の浪費スパイラル』から完全に解脱し、極めて賢明かつ効率的に『生涯にわたる人的資産価値の最大化と経済的防衛』」**を成し遂げられる。
+
+---
+
+### 2. 競合優位性の深掘り（10回）
+**競合優位性:** 
+「東京大学大学院との共同研究（アカデミア連携）という最高峰の学術的エビデンスと、TGC（東京ガールズコレクション）という最先端トレンド発信力、さらにエステサロン現場の顧客の声をリアルに吸い上げるR&amp;D体制（現場起点開発）をすべて併せ持った、他社に絶対真似できない『サイエンス×トレンド×現場循環』の唯一無二のハイブリッド・トータルビューティモデルであること」
+
+- **(1回目) だから何？:** 世に溢れる「イメージだけが良いブランド」や「効果の薄い流行りの成分」を使った他サロン・化粧品と、圧倒的な信頼の差（科学的根拠）を最初から提示できる。
+- **(2回目) だから何？:** 顧客は他のサロンでありがちな「本当に効いているのだろうか」という不安や猜疑心を一切持たずに、絶対の安心感を持って通うことができる。
+- **(3回目) だから何？:** 顧客の納得感と効果実感が高いため、途中で脱落することなく驚異的な継続率でサロンケアとホームケアを両立し続けられる。
+- **(4回目) だから何？:** 実際に肌と身体の驚くべき若々しさやコンディション改善という「確固たる事実」を誰もが手に入れる。
+- **(5回目) だから何？:** サロンを運営する側としても、顧客の劇的な変化や喜びの声（現場の一次情報）を常にストレートに開発に還元し、さらに製品を研ぎ澄ませる理想的な循環が加速する。
+- **(6回目) だから何？:** 顧客の声と最先端サイエンスが結合した「誰も勝てない究極の製品群（＆themecell®シリーズ等）」が市場に次々と投入される。
+- **(7回目) だから何？:** 他の競合エステサロンや美容クリニック、代理店までもが「その本物の技術と製品を使いたい」と導入を求め、BtoB市場でも圧倒的な強みを構築する。
+- **(8回目) だから何？:** エステ業界・美容業界全体において、イメージ先行の美容から「エビデンス（科学的根拠）に基づく美容」へとパラダイムシフトを主導するゲームチェンジャー（業界の覇者）となる。
+- **(9回目) だから何？:** 顧客は「この絶対的なシステムを開発しているブランドのサロンに通い、その一員である」ということに、他では絶対に得られない無上の特権階級の誇りと知的満足感を得られる。
+- **(10回目) だから何？:** **「一過性のトレンドで終わる美容競合を遥か後方に置き去りにし、『知性（科学）』『感性（トレンド）』『信頼（医療・現場）』のすべてにおいて美容業界の頂点に君臨する揺るぎない先駆者として、顧客に究極の安心と生涯のパートナーシップ」**を提供し続けられる。
+
+---
+
+## ステップ3: 顧客ペルソナの適用
+
+### 1. 顧客ペルソナ
+- **氏名（仮）**: 神崎 麗子 (38歳)
+- **職業**: 外資系コンサルティングファーム・シニアマネージャー（年収 1,200万円）
+- **ライフスタイル**: 都心のマンションに一人暮らし。平日は早朝から深夜まで分刻みのスケジュールでクライアント対応とチーム管理に追われる超多忙な生活。休日はピラティスや読書で心身を整えるが、疲れが抜けないことが悩み。
+- **美容・健康への意識**: 美意識は非常に高い。これまでに国内外の高級百貨店コスメや有名エステサロン、最先端美容医療を試してきた。しかし、一時的な「施術直後だけの変化」や「剥離などのダウンタイムがある過激なケア」に疑問を感じている。「科学的根拠（エビデンス）」があるか、なぜそのケアが必要なのかを論理的に納得した上で選択したい。また、人前に立つ仕事であるため、清潔感と圧倒的なエネルギーに満ちた「常に120%のコンディション」をスマートに維持したいと切望している。
+
+---
+
+### 2. ペルソナ視点でのベネフィット再評価と最も重要な価値
+神崎麗子のような「超多忙で知的なエグゼクティブ女性」の視点で本特徴を見直すと、以下のように再定義されます。
+- 単なる「エステで癒される」という価値は求めていない。
+- 「外面の施術と内面のインナーケア」をシームレスに設計したトータルアプローチこそが、彼女の「美容にかける時間と意思決定のコストを劇的に最適化するソリューション」として機能する。
+- 東京大学大学院との共同研究という確かなエビデンスは、彼女の論理的思考を100%満足させ、怪しい美容情報に惑わされる精神的ノイズをシャットアウトする。
+- TGCの南青山店といった華やかで洗練された空間に通うことは、ビジネスのストレスを瞬時に忘れさせ、美の最先端にいる高揚感（ステータス）を彼女に与える。
+
+**★ 抽出された最も重要な価値:**
+**「不確実な美容情報や一時的なケアへの無駄なエネルギー投下（時間・金銭・思考）を完全に終わらせ、最高峰のサイエンスに裏打ちされた『外面×内面ケア』で、多忙な日常を戦うための『生涯最高レベルのコンディションと自信』を自動的かつ永続的に手に入れ続けられる確信」**
+
+---
+
+## ステップ4: 優先順位付け
+
+### 1. 各ベネフィットの優先順位付けと「だから何？」の深掘り（10回）
+
+#### **最重要ベネフィット: 【サイエンス（東大共同研究）とサロン×ホームケアの完全連動がもたらす、根本的かつ持続的なコンディションの最適化】**
+- **(1回目) だから何？:** 効果が曖昧な美容を排除し、身体の内と外の両方から確実に変化を実感できる、エビデンスのあるケアだけを集中して受け取れる。
+- **(2回目) だから何？:** 施術後の良好な状態が日常でも「＆themecell®」や「水素サプリ」等のケアでしっかりと維持・向上される。
+- **(3回目) だから何？:** 日によって肌や体調が崩れるといった不規則なコンディション変動の波が完全に消失する。
+- **(4回目) だから何？:** 朝目覚めた瞬間に、鏡を見るのが待ち遠しくなるほどのハリと輝きに満ちたコンディションが毎日当たり前になる。
+- **(5回目) だから何？:** 自分のコンディションに完璧な自信を持てるため、他者との比較や老化に対する恐怖心・焦りが心から消え去る。
+- **(6回目) だから何？:** 容姿のコンディション維持に余計な思考エネルギーを使わなくなり、完全にマインドが解放される。
+- **(7回目) だから何？:** 仕事や自己実現、人とのコミュニケーションなど、自分が人生において最もエネルギーを注ぎたい活動に100%集中できる。
+- **(8回目) だから何？:** どの瞬間を切り取っても「常に最高の自分（ベストパフォーマンス）」を高い再現性で社会に示し続けられる。
+- **(9回目) だから何？:** 知性、美しさ、活力すべてにおいて隙のない説得力が生まれ、自分の仕事のブランドや周囲への影響力が極限まで高まる。
+- **(10回目) だから何？:** **「最先端のアカデミア・テクノロジーを個人のライフスタイルにシステムとして組み込むことで、年齢という概念を克服し、生涯にわたって社会の最前線で最高の自分を更新し続ける『究極の自己管理能力とエンパワーメント』」**を獲得できる。
+
+#### **次点ベネフィット: 【都会の喧騒から隔絶された完全個室と丁寧なカウンセリングによる、深い精神的調和と深い自己信頼感の回復】**
+- **(1回目) だから何？:** 日常の過度なプレッシャーやタスクから一時的に完全にシャットアウトされた、安全な避難所を確保できる。
+- **(2回目) だから何？:** 自分の身体と生活習慣のすべてを肯定的に受け止めてもらい、プロのサポートのもとで安心して自分を開放できる。
+- **(3回目) だから何？:** 自分自身の身体の悲鳴や、本当に求めている休息、ライフスタイルの乱れに冷静に気づくことができる。
+- **(4回目) だから何？:** 心と身体のバランスが整い、内側から穏やかで深い多幸感（ウェルビーイング）が身体中を満たしていく。
+- **(5回目) だから何？:** イライラや不安といった感情の乱れが劇的に抑えられ、自己コントロール能力が大きく高まる。
+- **(6回目) だから何？:** 日常のストレスに対して極めて高い回復力（レジリエンス）を持つ、しなやかで強い心が手に入る。
+- **(7回目) だから何？:** 周囲の人々や環境の変化に対しても、常に寛容で、知的かつ余裕に満ちた大人の対応ができるようになる。
+- **(8回目) だから何？:** 良好な人間関係が築かれ、あなたを中心に周囲に温かく洗練されたコミュニティが広がっていく。
+- **(9回目) だから何？:** 私生活も仕事のキャリアも、何ひとつ犠牲にすることなく完璧に両立させているという、深い人生の満足感に包まれる。
+- **(10回目) だから何？:** **「誰にも脅かされないパーソナルな美の聖域を持つことで、慌ただしい現代社会においても、ブレない『自分自身の絶対的な精神的軸（アイデンティティ）』」**を維持し続けられる。
+
+#### **その他のベネフィット: 【TGC（東京ガールズコレクション）提携による洗練された最先端トレンド体験とステータスの獲得】**
+- **(1回目) だから何？:** 日本最大級のファッション・ビューティ文化の中心地に直接コネクトしているという特別感を得られる。
+- **(2回目) だから何？:** 南青山などのトレンド発信地の洗練されたサロンに通うこと自体が、日々のモチベーションを大いに刺激する。
+- **(3回目) だから何？:** 世間一般に流通するより一歩早く、最先端の美容トレンドや独自の製品価値を体感・共有できる。
+- **(4回目) だから何？:** 洗練された審美眼と感性がさらに磨かれ、ライフスタイル全般におけるセンスが向上する。
+- **(5回目) だから何？:** 周囲の感度が高い人々から「常に最先端の美しさを体現している、情報の早い人」として羨望を集める。
+- **(6回目) だから何？:** 自らの洗練された感性と輝くコンディションによって、あらゆるソーシャルな場面で自信を持って周囲と関われる。
+- **(7回目) だから何？:** 自身の放つトレンド感と知的オーラにより、自分を高く評価してくれる格上の人脈やハイクラスな層とのコネクションが生まれる。
+- **(8回目) だから何？:** 自分自身の社会的な発言力や影響力が、想像以上に大きなものへと拡大していく。
+- **(9回目) だから何？:** これまでアクセスできなかった、より高いレベルのステージや知的コミュニティでの活躍が可能になる。
+- **(10回目) だから何？:** **「『TGCの華やかなトレンド』と『自らの知的な選択』を完璧に融合させ、社会において憧れと発言力を欲しいままにする『時代のインフルエンシャルな主役（リーダー）』」**としてのライフスタイルを楽しめる。
+
+---
+
+### 2. 顧客にとっての真の価値
+**【顧客にとっての真の価値】**
+**「一時的に美しさを繕うだけの対症療法から完全に卒業し、東京大学大学院との共同研究に裏付けられた最高峰のサイエンスとオーダーメイドの調和システムによって、外面と内面の両側から『生涯最高の健康美とみなぎる活力』を自らの意志で永続的にコントロール・更新し続けられる、絶対的な自信と時間の自由の獲得」**
+
+---
+📊 本日の多角的なベネフィット深掘りをベースに、あなたのサロン「Esprit Beauty」の新規事業・サービス展開における具体的な「独自の提供価値（USP）」を明確化した、エグゼクティブ向けの戦略提案レポートをまとめ上げましょうか？</textarea></label>
+          </div>
+        
+          <div class="prompt-card">
+            <div class="prompt-head">
+              <div>
+                <h3>USP</h3>
+                <span>user-prompts.jsonから取得済み</span>
+              </div>
+              <button class="btn primary" type="button" data-name="USP制作プロンプト" data-group="product">コピー</button>
+            </div>
+            <label>記入欄<textarea data-key="productUsp">**1. 差別化要因のリスト作成**
+
+* **最高峰のアカデミア連携**: 東京大学大学院との共同研究による「三室型電解水」「nano PDS技術」など、医療現場でも採用される圧倒的な科学的エビデンス。
+* **「外面×内面」の完全連動システム**: サロンでのオーダーメイド施術（外面ケア）と、自社開発製品（＆themecell®や水素サプリ等）による日常ケア（内面ケア）を組み合わせたトータルアプローチ。
+* **トレンド発信力とステータス**: 株式会社WTOKYO（TGC）との提携による「by TGC 南青山店」をはじめとする、最先端の美意識とブランド力。
+* **現場起点のR&amp;Dサイクル**: サロン現場のリアルな悩みやフィードバックを即座に研究開発に直結させる独自の製品開発体制。
+* **究極のパーソナル空間**: 六本木、横浜、南青山の都心エリアにおいて、完全予約制・プライベート空間でライフスタイル全体を紐解く丁寧なカウンセリング。
+
+**2. 競合の調査**
+
+* **一般的なエステサロン**: 「その場限りの癒し」や「一時的なしっとり感」などの対処療法に留まり、日常に戻ると効果がリバウンドしてしまう。
+* **高級ブランド化粧品**: イメージ先行でエビデンスが乏しく、顧客は「本当に効いているか」確信が持てないまま無駄な消費（ジプシー）を繰り返す。
+* **美容医療クリニック**: 効果は高いが、ダウンタイムの負担や痛みが伴い、多忙なエグゼクティブ層にはスケジュール調整のハードルが高い。
+* **Esprit Beautyの優位性**: エステのリラクゼーション効果、医療レベルのエビデンス、ダウンタイムのない安全性、そしてホームケアによる「効果の永続化」をすべて兼ね備えたハイブリッドモデルであること。
+
+**3. 顧客ニーズの把握**
+
+* **ターゲット層**: 常に最高のパフォーマンスを求められる、多忙で知的なエグゼクティブ女性や、美意識・情報感度の高いトレンドリーダー。
+* **潜在的な悩み（インサイト）**: 「気休めや不確実な美容に、これ以上無駄な時間と労力を使いたくない」「ストレスや加齢に振り回されず、常に120%のコンディションでビジネスやプライベートの表舞台に立ちたい」。
+* **満たされていないニーズ**: 一過性の美しさではなく、自分のライフスタイルに無理なく組み込め、論理的に納得できる「美と活力の持続・自動化システム」への渇望。
+
+**4. USPを1つに絞る（感情的な魅力を高めた1行）**
+**「気休めの美容」は、もう終わらせる。東京大学共同研究のサイエンスと毎日のホームケア連動で、多忙なあなたの『生涯最高のコンディション』を永続的に全自動化するパーソナル・サンクチュアリ。**
+
+**5. ビジネス全体に適用（マーケティングメッセージ展開）**
+
+**【キャッチコピー】**
+**その美しさは、もう揺るがない。知性とサイエンスが導く、あなただけの「絶対領域」。**
+
+**【リードコピー（ウェブサイト・広告用）】**
+毎朝、鏡の前でコンディションに一喜一憂する時間は、もう必要ありません。
+「Esprit Beauty（エスプリビューティ）」が提供するのは、一時的な癒しや表面的な対症療法ではなく、あなたの美と活力を根本から底上げする「確信」です。
+
+東京大学大学院との共同研究から生まれた医療レベルのエビデンス（三室型電解水・nano PDS技術）と、TGC（東京ガールズコレクション）が認める最先端の感性。
+完全プライベート空間での「あなただけのオーダーメイド施術」に、自宅での「自社開発コスメ・サプリによるインナーケア」をシームレスに連動させることで、サロンの感動を日常の当たり前へと変えていきます。
+
+不確実な美容情報への迷いや、無駄な時間・コストの浪費から完全に自由になる。
+常に時代をリードし、最高のパフォーマンスを発揮し続けるあなたへ。
+Esprit Beautyで、生涯最高のコンディションを自らの手でコントロールする「揺るぎない自信」を手に入れてください。</textarea></label>
+          </div>
+        </div>
+        <button class="btn primary" type="button" id="mergeProductBtn">商品調査を統合</button>
+        <div class="grid">
+          <label class="wide">まとめ資料に追加する内容<textarea data-key="productResult"></textarea></label>
+        </div>
+      </section>
+
+      <section data-view="customer" id="customer">
+        <h2>顧客調査</h2>
+        <p>Excel由来の7項目をコピーし、返ってきた内容を各欄へ貼ります。</p>
+        <div class="prompt-list" id="customerPrompts">
+          <div class="prompt-card">
+            <div class="prompt-head">
+              <div>
+                <h3>ナンバーワンの見込み客を発見する</h3>
+                <span>user-prompts.jsonから取得済み</span>
+              </div>
+              <button class="btn primary" type="button" data-name="ナンバーワンの見込み客を発見するプロンプト" data-group="customer">コピー</button>
+            </div>
+            <label>貼り付け欄
+              <textarea data-prompt-output="ナンバーワンの見込み客を発見するプロンプト" placeholder="ナンバーワンの見込み客を発見するの返答をここに貼る">1位：都内開業医（美容・皮膚科以外の院長）
+
+理由：
+日々多くの患者と向き合いながらクリニック経営も担う開業医は、極めて多忙で高いストレス環境に置かれています。医療従事者である彼らは、一般的なエステの「イメージ先行の美容」や「気休めの対症療法」には懐疑的ですが、Esprit Beautyが持つ「東京大学大学院との共同研究」「三室型電解水」「nano PDS技術」といった明確な科学的エビデンスに対しては、専門家として論理的な納得感と高い信頼を寄せます。
+
+自身の専門外（美容・皮膚科以外）の領域だからこそ、自身のコンディション管理を完全に委ねられる「本物の外部パートナー」を求めています。一度その効果と、ホームケア連動によるタイムパフォーマンスの良さを実感すれば、高単価コースや定期購入のロイヤルカスタマー（高LTV）になることが確実です。さらに、同業の医師ネットワークへの強力な口コミの波及や、彼ら自身のクリニックへのB2B製品導入の起点にもなり得るため、売上の80%を牽引する中核として最も影響力と購買可能性が高い層です。</textarea>
+            </label>
+            <p class="copy-note">ここにコピー</p>
+          </div>
+        
+          <div class="prompt-card">
+            <div class="prompt-head">
+              <div>
+                <h3>ナンバーワンの見込み客の期待</h3>
+                <span>user-prompts.jsonから取得済み</span>
+              </div>
+              <button class="btn primary" type="button" data-name="ナンバーワンの見込み客の期待" data-group="customer">コピー</button>
+            </div>
+            <label>貼り付け欄
+              <textarea data-prompt-output="ナンバーワンの見込み客の期待" placeholder="ナンバーワンの見込み客の期待の返答をここに貼る">**STEP1**
+都内開業医（美容・皮膚科以外の院長）が、今期待していること：
+
+1. 激務に耐えうる「最高のコンディション」を、手間と意思決定のコストをかけずに維持したい。
+2. 曖昧な美容や健康法ではなく、専門家として論理的に納得できる「明確な科学的エビデンスに基づいたケア」を受けたい。
+3. 自身の身体や健康管理を完全に委ねることができる、信頼に足る「本物の外部パートナー」を持ちたい。
+4. いつまでも若々しく活力ある姿を保ち、患者やスタッフからの信頼（自身のブランド力）を高め続けたい。
+5. 貴重なオフの時間を、その場しのぎの癒しではなく、確実に自身をアップデートする価値ある投資にしたい。
+
+最も可能性の高いもの：
+**「激務に耐えうる『最高のコンディション』を、手間と意思決定のコストをかけずに維持したい（自己管理の完全アウトソース化）」**
+
+---
+
+**STEP2**
+ターゲットが、上記の期待を実現するために今やっていること：
+
+* VIP向けの人間ドックや予防医療クリニックでの定期的なチェック
+* 高額なパーソナルトレーニングジムの契約（しかし多忙で通いきれず、効果が持続していない）
+* 自身のリテラシーを頼りにした、高単価なサプリメントや健康食品の自己判断での購入
+* スケジュールの合間を縫った、高級ホテルのスパや短時間のマッサージによる一時的な疲労回復
+
+---
+
+**STEP3**
+提供できる「新しい機会」：
+
+一時的なリラクゼーションや、本人の努力・時間を必要とするジムのような「改善策」ではなく、
+「東京大学大学院との共同研究によるエビデンス（三室型電解水・nano PDS技術）をベースに、サロンでのケアと日常のホームケアを完全に連動させ、自身の努力を一切必要とせずにコンディションを最適化し続ける『自己管理の全自動化システム』」への移行。
+
+---
+
+**STEP4**
+表明文：
+
+「もし僕が人々に[最先端サイエンスを組み込んだ『自己管理の全自動化システム』に身を委ねること]**が**[激務に耐えうる最高のコンディションを手間なく保つこと]**への鍵であり、**[Esprit Beautyの提供する『外面施術×ホームケア連動のトータルアプローチ』]によってのみ達成できると信じさせることができたら、他の反論や不安は全てどうでもいいこととなり、彼らは僕にお金を払わずにはいられなくなる」</textarea>
+            </label>
+            <p class="copy-note">ここにコピー</p>
+          </div>
+        
+          <div class="prompt-card">
+            <div class="prompt-head">
+              <div>
+                <h3>見込み客のBeliefを特定する</h3>
+                <span>user-prompts.jsonから取得済み</span>
+              </div>
+              <button class="btn primary" type="button" data-name="見込み客のBeliefを特定するプロンプト" data-group="customer">コピー</button>
+            </div>
+            <label>貼り付け欄
+              <textarea data-prompt-output="見込み客のBeliefを特定するプロンプト" placeholder="見込み客のBeliefを特定するの返答をここに貼る">**STEP1**
+都内開業医（美容・皮膚科以外の院長）が現在の行動をとっている背景には、以下のような「思い込み（間違った信念）」が存在し、その結果うまくいっていません。
+
+1. 「エステサロンは『一時的な癒し』や『表面的な美容』を提供する場所であり、医療従事者である自分が根本的なコンディション管理のために通う場所ではない（科学的根拠に乏しい）」という思い込み。
+2. 「コンディションを最適化・維持するためには、高額なパーソナルジムでのハードなトレーニングなど、自分自身の『努力』と『まとまった時間の投資』が不可欠である」という思い込み。
+3. 「自分は医師であり医療知識があるため、専門外（美容やコンディション管理）であっても、自分自身の判断で選んだ高額サプリメントや健康法が一番正しいはずだ」という思い込み。
+
+**STEP2**
+上記の思い込みにより、ターゲットは以下のような弊害を被っています。
+
+1. 「エステサロン＝非科学的・気休め」という偏見により、Esprit Beautyが提供する「東京大学大学院との共同研究に基づくエビデンス」という、まさに自分が求めている**最新かつ本質的なソリューションという選択肢を最初から排除**してしまっている。
+2. 「自分の努力と時間が必要」と信じているため、ただでさえ過酷なスケジュールの合間を縫ってジムなどに通おうとし、結果的に通いきれず挫折を繰り返し、**「コンディションを保てないことへの焦り」や自己嫌悪、無駄なコスト・時間の浪費**を生み出している。
+3. 専門外の領域において「自分の知識が最適」と思い込むことで、最先端の外部リソース（三室型電解水やnano PDS技術など）を活用した「自己管理の全自動化・アウトソース化」に気づけず、結果として**加齢や激務によるコンディションの低下を根本的に食い止めることができていない**。</textarea>
+            </label>
+            <p class="copy-note">ここにコピー</p>
+          </div>
+        
+          <div class="prompt-card">
+            <div class="prompt-head">
+              <div>
+                <h3>Beliefの根源</h3>
+                <span>user-prompts.jsonから取得済み</span>
+              </div>
+              <button class="btn primary" type="button" data-name="Beliefの根源" data-group="customer">コピー</button>
+            </div>
+            <label>貼り付け欄
+              <textarea data-prompt-output="Beliefの根源" placeholder="Beliefの根源の返答をここに貼る">STEP1
+都内開業医（美容・皮膚科以外の院長）の3つの思い込みは、過去の以下のような具体的な体験から生み出されたと推測されます。
+
+エステは非科学的だという思い込みの源泉（体験）
+過去にパートナーの話を聞いたり、あるいはリラクゼーション目的で高級スパや一般的なエステを体験した際、「その場では気持ち良かったが、翌日からの激務ですぐに元の疲労状態に戻ってしまった」という体験。また、医学部時代からの教育や同業者間の会話で「エビデンスのない美容法や代替医療は信用に足らない」という強い価値観を刷り込まれてきた経験。
+
+コンディション管理には自らの努力と時間が必要という思い込みの源泉（体験）
+過去に高額なパーソナルトレーニングジムを契約し、最初は成果が出たものの、クリニックの経営や急な患者対応などでスケジュールが狂い、結局通いきれずに挫折・リバウンドしてしまった「自己管理の敗北体験」。
+
+自分の判断が一番正しいという思い込みの源泉（体験）
+日々患者の健康問題を解決しているという「医師としての強力な成功体験」とプライド。また、過去に自分で成分を調べて選んだ高単価なサプリメントを飲み、ある程度の効果を感じたことで「やはり自分の医療知識をベースにした自己判断が最も確実で安全だ」と自己正当化された体験。</textarea>
+            </label>
+            <p class="copy-note">ここにコピー</p>
+          </div>
+        
+          <div class="prompt-card">
+            <div class="prompt-head">
+              <div>
+                <h3>見込み客の反論</h3>
+                <span>user-prompts.jsonから取得済み</span>
+              </div>
+              <button class="btn primary" type="button" data-name="見込み客の反論" data-group="customer">コピー</button>
+            </div>
+            <label>貼り付け欄
+              <textarea data-prompt-output="見込み客の反論" placeholder="見込み客の反論の返答をここに貼る">**サービス（新しい機会）に対する疑念（本当に効果があるの？と思う信念）**
+「エステサロンの施術やホームケアシステムなんて、所詮は一時的なリラクゼーションや気休めの域を出ず、いくら東京大学との共同研究と言われても、医師である私の根深い疲労や加齢によるコンディションの低下を根本的・医学的に解決するほどの効果は本当にないのではないか？」という信念。
+
+**自分自身に対する疑念（自分にはこれを実行する能力がないと感じる信念）**
+「これまで高額なパーソナルジムでさえ多忙を理由に継続できずに挫折した自分が、いかに『努力不要の全自動化システム』と言われても、結局は定期的にサロンへ足を運ぶスケジュール管理や、毎日のホームケアをサボらずに続ける自己規律を持てないのではないか？」という信念。
+
+**外部要因に対する疑念（外部要因が私の成功を妨げると感じる信念）**
+「クリニックの経営、急な患者対応、スタッフのマネジメントなど、自分の日常はあまりにも予測不可能で過酷すぎるため、コンディション管理のためにサロンに通う時間を定期的に捻出すること自体が物理的に不可能であり、この多忙すぎる環境こそが私の健康維持を決定的に妨げている」という信念。</textarea>
+            </label>
+            <p class="copy-note">ここにコピー</p>
+          </div>
+        
+          <div class="prompt-card">
+            <div class="prompt-head">
+              <div>
+                <h3>新しいBelief</h3>
+                <span>user-prompts.jsonから取得済み</span>
+              </div>
+              <button class="btn primary" type="button" data-name="新しいBelief" data-group="customer">コピー</button>
+            </div>
+            <label>貼り付け欄
+              <textarea data-prompt-output="新しいBelief" placeholder="新しいBeliefの返答をここに貼る">特定された3つの「古い信念」を打破し、新しい機会（Esprit Beautyのシステム）を受け入れるための「新しい信念」への切り替え案を作成しました。
+
+**1. サービス（新しい機会）に対する疑念の切り替え**
+
+* **古い信念**：「エステサロンの施術やホームケアシステムなんて、所詮は一時的なリラクゼーションや気休めの域を出ず、いくら東京大学との共同研究と言われても、医師である私の根深い疲労や加齢によるコンディションの低下を根本的・医学的に解決するほどの効果は本当にないのではないか？」
+* **切り替え後の新しい信念**：「Esprit Beautyのアプローチは単なる癒しではなく、東大共同研究の最先端サイエンス（三室型電解水・nano PDS）を実装した『細胞レベルからのコンディション再構築システム』であり、医療知識を持つ私だからこそ、その圧倒的なエビデンスと論理的な効果を理解し、自身のパフォーマンス最大化の武器として活用できる」
+
+**2. 自分自身に対する疑念の切り替え**
+
+* **古い信念**：「これまで高額なパーソナルジムでさえ多忙を理由に継続できずに挫折した自分が、いかに『努力不要の全自動化システム』と言われても、結局は定期的にサロンへ足を運ぶスケジュール管理や、毎日のホームケアをサボらずに続ける自己規律を持てないのではないか？」
+* **切り替え後の新しい信念**：「努力や強い意志で継続するジムとは異なり、Esprit Beautyのシステムは、日常使っているスキンケアやサプリを『置き換えるだけ』で完了する。自己規律に一切頼らずとも、自動的にコンディションが維持・向上していく仕組みだから、私でも絶対に失敗しない」
+
+**3. 外部要因に対する疑念の切り替え**
+
+* **古い信念**：「クリニックの経営、急な患者対応、スタッフのマネジメントなど、自分の日常はあまりにも予測不可能で過酷すぎるため、コンディション管理のためにサロンに通う時間を定期的に捻出すること自体が物理的に不可能であり、この多忙すぎる環境こそが私の健康維持を決定的に妨げている」
+* **切り替え後の新しい信念**：「予測不可能で過酷なスケジュールだからこそ、自分のコンディション管理というタスクを信頼できるプロに『完全アウトソース』すべきだ。それにより、限られた貴重な時間を、クリニック経営や患者対応といった『自分にしかできない最重要業務』に100%集中させることができる」
+
+---
+
+これらの「新しい信念への切り替え」は、ターゲットである多忙な開業医の心理的ブロックを外すのに適しているでしょうか？
+修正を加えたい箇所や、特に注力して洗練させたい信念があれば教えてください。</textarea>
+            </label>
+            <p class="copy-note">ここにコピー</p>
+          </div>
+        
+          <div class="prompt-card">
+            <div class="prompt-head">
+              <div>
+                <h3>顧客ニーズをまとめる</h3>
+                <span>user-prompts.jsonから取得済み</span>
+              </div>
+              <button class="btn primary" type="button" data-name="顧客ニーズをまとめるプロンプト" data-group="customer">コピー</button>
+            </div>
+            <label>貼り付け欄
+              <textarea data-prompt-output="顧客ニーズをまとめるプロンプト" placeholder="顧客ニーズをまとめるの返答をここに貼る">## 顧客ニーズ・悩み抽出レポート
+
+**対象顧客:** E.MIRAI 株式会社（エステサロン・化粧品販売運営）
+
+### 1. 顧客が今やっている行動
+
+* **Web広告への依存と予算投下:** 1つの主力商品（プライムミストウォーター）に対して月額100万円の広告費をかけ、新規獲得（初回低価格からの定期購入引き上げ）を図っている。また、今後全商品に対して個別にLPを作成し、広告をかけようと計画している。
+* **独自のシステム開発の検討:** 現在利用しているECカート（フューチャーショップ）ではインフルエンサーごとの売上トラッキングができないため、エンジニアをアサインして独自のキックバックシステム（アフィリエイト連携）をゼロから構築しようとしている。
+* **権威付けのための高額投資:** 自社で製造ラインを持たないにも関わらず、ブランドとしての「ハク（信用）」をつける目的で、約100万円の初期費用と継続的な責任者人件費をかけて「化粧品製造販売業」の許可取得を進めている。
+* **組織体制の再編と助成金模索:** 複数法人（EMIとE.MIRAI）に分散しているスタッフを統合し、アルバイトの正社員化や時給アップを進めつつ、それに適合する補助金・助成金の枠組みを手探りで探している。
+
+### 2. その行動を引き起こす信念（思い込み）
+
+* 「売上を拡大するには、商品ごとにLPを作り、広告費をかけ続けるしかない」という信念。広告費がすぐに消化される性質のものであることや、代替となる集客基盤（コミュニティ形成など）の構築に目が向いていない。
+* 「インフルエンサーに報酬を還元するには、自社専用のシステムを開発しなければならない」という信念。既存のアフィリエイトセンターや海外製SaaS（Shopifyなど）といった、低コストで即効性のある外部ツールの活用という選択肢が抜け落ちている。
+* 「自社のブランド力や信頼性を高めるには、公的な許可（製造販売業）の取得といったハード面を整えることが最も効果的である」という信念。
+
+### 3. 顧客の悩みとストレス
+
+* **IT・システム連携への不満と技術的障壁:** 現在のECシステムがやりたい施策（インフルエンサー別の成果計測）に追いついておらず、システム開発という未知で高額なハードルに直面しているストレス。
+* **広告投資対効果への不安:** 予算（月100万円）をかけているものの、CPA（7810円）や継続率などの数字管理が点在しており、本当にこのまま広告費を増やし続けるべきか確信が持てていない。
+* **補助金制度の複雑さによるモヤモヤ:** 持続化補助金のルール（常時使用する従業員数の定義、対象となる経費の割合、法人移行期の申請タイミングなど）が自社の変則的な状況にどう当てはまるか分からず、手続きへの混乱と焦りを感じている。
+
+### 4. 顧客が期待していること（真のニーズ）
+
+* **強みを活かした強固な集客基盤（コミュニティ）の構築:** 単発で消えるWeb広告ではなく、自社が持つ「芸能人やインフルエンサーが無償で応援してくれる人脈」と「イベント運営の得意さ」を活かし、代理店開拓やLINEリスト獲得に直結する「美容サミット（リアルイベント）」のような仕組みを作りたい。
+* **無駄なコストを省く最適なツール提案:** 高額な自社システム開発を回避し、既存のアフィリエイトセンターなどを用いて、応援してくれるインフルエンサーにスムーズに利益還元できる低コストな環境を構築したい。
+* **複雑な社内状況を整理し、伴走してくれるプロの存在:** 複数法人にまたがる労務状況や新店舗オープンのタイミングを綺麗に整理し、最も採択率が高く、実事業の成長ストーリーに合致した補助金の申請計画を代わりに導き出してほしい。</textarea>
+            </label>
+            <p class="copy-note">ここにコピー</p>
+          </div>
+        </div>
+        <div class="grid">
+          <label class="wide">まとめ資料に追加する内容<textarea data-key="customerResult"></textarea></label>
+        </div>
+      </section>
+
+      <section data-view="market" id="market">
+        <h2>市場調査</h2>
+        <p>市場動向をコピーし、返ってきた内容を貼ります。</p>
+        <div class="prompt-list" id="marketPrompts">
+          <div class="prompt-card">
+            <div class="prompt-head">
+              <div>
+                <h3>市場動向</h3>
+                <span>user-prompts.jsonから取得済み</span>
+              </div>
+              <button class="btn primary" type="button" data-name="市場動向プロンプト" data-group="market">コピー</button>
+            </div>
+            <label>貼り付け欄
+              <textarea data-prompt-output="市場動向プロンプト" placeholder="市場動向の返答をここに貼る"></textarea>
+            </label>
+            <p class="copy-note">ここにコピー</p>
+          </div>
+        </div>
+        <div class="grid">
+          <label>採用する市場動向<textarea data-key="marketAdoptTrend"></textarea></label>
+          <label>採用する機会・脅威<textarea data-key="marketAdoptOpportunityThreat"></textarea></label>
+          <label class="wide">採用する根拠・出典<textarea data-key="marketAdoptSources"></textarea></label>
+        </div>
+        <div class="actions">
+          <button class="btn primary" type="button" id="mergeMarketBtn">市場調査を統合</button>
+        </div>
+        <div class="grid">
+          <label class="wide">まとめ資料に追加する内容<textarea data-key="marketResult"></textarea></label>
+        </div>
+      </section>
+
+      <section data-view="competitor" id="competitor">
+        <h2>競合調査</h2>
+        <p>競合分析をコピーし、返ってきた内容を貼ります。</p>
+        <div class="prompt-list" id="competitorPrompts">
+          <div class="prompt-card">
+            <div class="prompt-head">
+              <div>
+                <h3>競合分析</h3>
+                <span>user-prompts.jsonから取得済み</span>
+              </div>
+              <button class="btn primary" type="button" data-name="競合分析" data-group="competitor">コピー</button>
+            </div>
+            <label>貼り付け欄
+              <textarea data-prompt-output="競合分析" placeholder="競合分析の返答をここに貼る"></textarea>
+            </label>
+            <p class="copy-note">ここにコピー</p>
+          </div>
+        </div>
+        <div class="grid">
+          <label>採用する競合情報<textarea data-key="competitorAdoptInfo"></textarea></label>
+          <label>採用する競合の強み・弱み<textarea data-key="competitorAdoptStrengthWeakness"></textarea></label>
+          <label class="wide">採用する自社が勝てる隙間<textarea data-key="competitorAdoptGap"></textarea></label>
+        </div>
+        <div class="actions">
+          <button class="btn primary" type="button" id="mergeCompetitorBtn">競合調査を統合</button>
+        </div>
+        <div class="grid">
+          <label class="wide">まとめ資料に追加する内容<textarea data-key="competitorResult"></textarea></label>
+        </div>
+      </section>
+
+      <section data-view="swot" id="swot">
+        <h2>SWOT分析</h2>
+        <p>強み・弱み・機会・脅威を分け、最後にクロスSWOTへ統合します。</p>
+        <div class="prompt-list" id="swotPrompts">
+          <div class="prompt-card">
+            <div class="prompt-head">
+              <div>
+                <h3>強み</h3>
+                <span>user-prompts.jsonから取得済み</span>
+              </div>
+              <button class="btn primary" type="button" data-name="強み" data-group="swot">コピー</button>
+            </div>
+            <label>貼り付け欄
+              <textarea data-prompt-output="強み" placeholder="強みの返答をここに貼る"></textarea>
+            </label>
+            <p class="copy-note">ここにコピー</p>
+          </div>
+        
+          <div class="prompt-card">
+            <div class="prompt-head">
+              <div>
+                <h3>弱み</h3>
+                <span>user-prompts.jsonから取得済み</span>
+              </div>
+              <button class="btn primary" type="button" data-name="弱み" data-group="swot">コピー</button>
+            </div>
+            <label>貼り付け欄
+              <textarea data-prompt-output="弱み" placeholder="弱みの返答をここに貼る"></textarea>
+            </label>
+            <p class="copy-note">ここにコピー</p>
+          </div>
+        
+          <div class="prompt-card">
+            <div class="prompt-head">
+              <div>
+                <h3>機会</h3>
+                <span>user-prompts.jsonから取得済み</span>
+              </div>
+              <button class="btn primary" type="button" data-name="機会" data-group="swot">コピー</button>
+            </div>
+            <label>貼り付け欄
+              <textarea data-prompt-output="機会" placeholder="機会の返答をここに貼る"></textarea>
+            </label>
+            <p class="copy-note">ここにコピー</p>
+          </div>
+        
+          <div class="prompt-card">
+            <div class="prompt-head">
+              <div>
+                <h3>脅威</h3>
+                <span>user-prompts.jsonから取得済み</span>
+              </div>
+              <button class="btn primary" type="button" data-name="脅威" data-group="swot">コピー</button>
+            </div>
+            <label>貼り付け欄
+              <textarea data-prompt-output="脅威" placeholder="脅威の返答をここに貼る"></textarea>
+            </label>
+            <p class="copy-note">ここにコピー</p>
+          </div>
+        
+          <div class="prompt-card">
+            <div class="prompt-head">
+              <div>
+                <h3>クロスSWOT分析</h3>
+                <span>user-prompts.jsonから取得済み</span>
+              </div>
+              <button class="btn primary" type="button" data-name="クロスSWOT分析" data-group="swot">コピー</button>
+            </div>
+            <label>貼り付け欄
+              <textarea data-prompt-output="クロスSWOT分析" placeholder="クロスSWOT分析の返答をここに貼る"></textarea>
+            </label>
+            <p class="copy-note">ここにコピー</p>
+          </div>
+        </div>
+        <div class="grid">
+          <label>採用する強み<textarea data-key="swotStrength"></textarea></label>
+          <label>採用する弱み<textarea data-key="swotWeakness"></textarea></label>
+          <label>採用する機会<textarea data-key="swotOpportunity"></textarea></label>
+          <label>採用する脅威<textarea data-key="swotThreat"></textarea></label>
+          <label class="wide">採用するクロスSWOT<textarea data-key="crossSwot"></textarea></label>
+        </div>
+        <div class="actions">
+          <button class="btn primary" type="button" id="mergeSwotBtn">SWOTを統合</button>
+        </div>
+        <div class="grid">
+          <label class="wide">まとめ資料に追加する内容<textarea data-key="swotResult"></textarea></label>
+        </div>
+      </section>
+
+      <section data-view="trainingCreator" id="trainingCreator">
+        <h2>研修企画クリエイター</h2>
+        <p>研修企画をコピーし、返ってきた内容を見て採用するものを残します。</p>
+        <div class="prompt-list" id="trainingPrompts">
+          <div class="prompt-card">
+            <div class="prompt-head">
+              <div>
+                <h3>研修企画書生成テンプレート（Traingo標準）</h3>
+                <span>Traingo内確認済み</span>
+              </div>
+              <button class="btn primary" type="button" data-name="研修企画書生成テンプレート（Traingo標準）" data-group="trainingCreator">コピー</button>
+            </div>
+            <label>貼り付け欄
+              <textarea data-prompt-output="研修企画書生成テンプレート（Traingo標準）" placeholder="研修企画書生成テンプレート（Traingo標準）の返答をここに貼る"></textarea>
+            </label>
+            <p class="copy-note">ここにコピー</p>
+          </div>
+        </div>
+        <div class="grid">
+          <label class="wide">採用する既存コンテンツ・教材素材<textarea data-key="trainingExistingContent"></textarea></label>
+          <label>採用する研修化テーマ<textarea data-key="trainingThemes"></textarea></label>
+          <label>採用する最優先テーマ<textarea data-key="trainingPriorityTheme"></textarea></label>
+          <label>採用する研修タイトル<textarea data-key="trainingTitle"></textarea></label>
+          <label>採用する対象者<textarea data-key="trainingAudience"></textarea></label>
+          <label>採用する研修の目的<textarea data-key="trainingPurpose"></textarea></label>
+          <label>採用する到達目標<textarea data-key="trainingGoals"></textarea></label>
+          <label class="wide">採用するカリキュラム案<textarea data-key="trainingCurriculum"></textarea></label>
+          <label>採用する教材化・オンラインコース化の方針<textarea data-key="trainingMaterialsPlan"></textarea></label>
+          <label>採用する提供方法<textarea data-key="trainingDelivery"></textarea></label>
+          <label>採用する販売・提案への導線<textarea data-key="trainingSalesPath"></textarea></label>
+          <label>採用する成果測定・次に作る成果物<textarea data-key="trainingMetrics"></textarea></label>
+        </div>
+        <div class="actions">
+          <button class="btn primary" type="button" id="mergeTrainingBtn">研修企画クリエイターを統合</button>
+        </div>
+        <div class="grid">
+          <label class="wide">まとめ資料に追加する内容<textarea data-key="trainingCreatorResult"></textarea></label>
+        </div>
+      </section>
+
+      <section data-view="plan" id="plan">
+        <h2>事業計画書</h2>
+        <p>3つの欄を埋めると、下の「自動生成プロンプト」が自動で組み上がります。そのままコピーしてAIに貼り付けてください。</p>
+        <label class="wide">① 参考フォーマット<textarea data-key="planFormat" placeholder="例：日本政策金融公庫の創業計画書の様式"></textarea></label>
+        <label class="wide">② 基本データ<textarea data-key="planBaseData" placeholder="例：事業内容・売上計画・経歴・資金計画などの調査結果"></textarea></label>
+        <label class="wide">③ 指示内容<textarea data-key="planInstruction" placeholder="例：事業計画書の作成"></textarea></label>
+        <div class="prompt-card">
+          <div class="prompt-head">
+            <div>
+              <h3>自動生成プロンプト</h3>
+              <span>上の①②③から自動で組み上がります</span>
+            </div>
+            <button class="btn primary" type="button" id="planGenCopyBtn">コピー</button>
+          </div>
+          <textarea class="result" id="planGeneratedPrompt" readonly=""></textarea>
+        </div>
+        <div class="prompt-list" id="planPrompts" hidden=""></div>
+        <label class="wide">事業計画書ドラフト<textarea data-key="businessPlan"></textarea></label>
+      </section>
+
+      <section data-view="markdown" id="markdown">
+        <h2>MD形式まとめ</h2>
+        <p>印刷とは別に、案件全体をMarkdown形式で置きます。上の内容から作成し、必要ならこの欄で直接直せます。</p>
+        <label class="wide">MD形式<textarea class="result" data-key="markdownOutput" id="markdownOutput"></textarea></label>
+      </section>
+
+      <textarea class="result" id="copyOutput" readonly="" hidden=""></textarea>
+      </div>
+    </main>
+  </div>
+
+  <div class="print-doc" id="printDoc"></div>
+
+  <div class="toast" id="toast" style="background: var(--ok);">user-prompts.jsonを読み込めませんでした：Failed to fetch</div>
+
+  <script>
+    const promptGroups = {
+      hearing: ['会話内容を整理するプロンプト', '会話記録から理念を言語化するプロンプト'],
+      product: ['商品特徴分析', 'ベネフィット転換プロンプト', 'USP制作プロンプト'],
+      customer: [
+        'ナンバーワンの見込み客を発見するプロンプト',
+        'ナンバーワンの見込み客の期待',
+        '見込み客のBeliefを特定するプロンプト',
+        'Beliefの根源',
+        '見込み客の反論',
+        '新しいBelief',
+        '顧客ニーズをまとめるプロンプト'
+      ],
+      market: ['市場動向プロンプト'],
+      competitor: ['競合分析'],
+      swot: ['強み', '弱み', '機会', '脅威', 'クロスSWOT分析'],
+      baseData: ['会社概要を作る', '決算書概要分析プロンプトパーツ', '経営課題発見プロンプト【多視点リスト型】', '経営方針作成プロンプト'],
+      trainingCreator: ['研修企画書生成テンプレート（Traingo標準）'],
+      plan: []
+    };
+    const views = [
+      ['project', '案件'],
+      ['materials', '資料収集'],
+      ['hearing', 'ヒアリング'],
+      ['baseData', '基本データ'],
+      ['product', '商品調査'],
+      ['customer', '顧客調査'],
+      ['market', '市場調査'],
+      ['competitor', '競合調査'],
+      ['swot', 'SWOT分析'],
+      ['trainingCreator', '研修企画クリエイター'],
+      ['plan', '事業計画書'],
+      ['markdown', 'MD形式']
+    ];
+    // 案件データはアカウント別スコープに分離する（他アカウントへの漏洩防止・2026-06-25）。
+    // basePrefix は固定。ログイン確定後に applyAccountDataScope() で storePrefix を
+    // `${basePrefix}-acct-${accountId}` へ切り替える。未ログイン時は従来どおり basePrefix。
+    const basePrefix = 'consulting-flow-tool';
+    let storePrefix = basePrefix;
+    let storeKey = `${storePrefix}-minimal-v1`;
+    let projectCatalogKey = `${storePrefix}-projects-v1`;
+    let legacyStoreKey = `${storePrefix}-legacy`;
+    let globalMdHistoryKey = `${storePrefix}-md-history-v1`;
+    const loginIdStorageKey = `${basePrefix}-login-id`;
+    const legacyMigratedFlagKey = `${basePrefix}-legacy-migrated-v1`;
+    let currentProjectId = '';
+    let projectCatalog = [];
+    let state = {};
+    let prompts = [];
+    let promptsLoaded = false;
+    const authGate = document.getElementById('authGate');
+    const appShell = document.getElementById('appShell');
+    const loginIdInput = document.getElementById('loginId');
+    const loginPasswordInput = document.getElementById('loginPassword');
+    const loginCompanyInput = document.getElementById('loginCompany');
+    const loginUserNameInput = document.getElementById('loginUserName');
+    const registerInfo = document.getElementById('registerInfo');
+    const loginBtn = document.getElementById('loginBtn');
+    const profileEdit = document.getElementById('profileEdit');
+    const headerCompanyInput = document.getElementById('headerCompany');
+    const headerUserNameInput = document.getElementById('headerUserName');
+    const headerProfileSaveBtn = document.getElementById('headerProfileSaveBtn');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const copyRegisterLinkBtn = document.getElementById('copyRegisterLinkBtn');
+    const shareEmailInput = document.getElementById('shareEmailInput');
+    const shareByEmailBtn = document.getElementById('shareByEmailBtn');
+    const authKey = `${storePrefix}-auth-v1`;
+    const authSessionKey = `${storePrefix}-auth-session-v1`;
+    const profileKey = `${storePrefix}-profile-v1`;
+    const userRegistryKey = `${storePrefix}-users-v1`;
+    const signedUserBadge = document.getElementById('signedUserBadge');
+    const defaultUsers = [
+      {
+        id: 'login-user',
+        password: 'consulting@2026',
+        role: 'user',
+        companyName: '',
+        userName: ''
+      },
+      {
+        id: 'admin',
+        password: 'admin@2026',
+        role: 'admin',
+        companyName: 'Traingo',
+        userName: 'admin'
+      }
+    ];
+    const nav = document.getElementById('nav');
+    const projectSwitchList = document.getElementById('projectSwitchList');
+    const projectQuickSwitch = document.getElementById('projectQuickSwitch');
+    const toast = document.getElementById('toast');
+    const copyOutput = document.getElementById('copyOutput');
+    const mainContainer = document.querySelector('main');
+    const projectSelect = document.getElementById('projectSelect');
+    const mdHistorySelect = document.getElementById('mdHistorySelect');
+    const mdTagFilterInput = document.getElementById('mdTagFilter');
+    const mdTagInput = document.getElementById('mdTagInput');
+    const loadMdHistoryBtn = document.getElementById('loadMdHistoryBtn');
+    const importMdBtn = document.getElementById('importMdBtn');
+    const exportMdBtn = document.getElementById('exportMdBtn');
+    const exportAllDataBtn = document.getElementById('exportAllDataBtn');
+    const importAllDataBtn = document.getElementById('importAllDataBtn');
+    const rebuildProjectCatalogBtn = document.getElementById('rebuildProjectCatalogBtn');
+    const mdImportInput = document.getElementById('mdImportInput');
+    const allDataImportInput = document.getElementById('allDataImportInput');
+    const addProjectBtn = document.getElementById('addProjectBtn');
+    const saveProjectBtn = document.getElementById('saveProjectBtn');
+    const newProjectName = document.getElementById('newProjectName');
+
+    function loadUserRegistry() {
+      try {
+        const parsed = JSON.parse(localStorage.getItem(userRegistryKey) || '[]');
+        if (Array.isArray(parsed) && parsed.length) {
+          return parsed.map((item) => ({
+            id: String(item?.id || '').trim(),
+            password: String(item?.password || ''),
+            role: String(item?.role || 'user').trim(),
+            companyName: String(item?.companyName || '').trim(),
+            userName: String(item?.userName || '').trim()
+          })).filter((item) => item.id && item.password);
+        }
+      } catch {}
+      return defaultUsers.map((item) => ({ ...item }));
+    }
+
+    function ensureUserRegistry() {
+      const users = loadUserRegistry();
+      if (!users.length) {
+        localStorage.setItem(userRegistryKey, JSON.stringify(defaultUsers));
+        return defaultUsers.map((item) => ({ ...item }));
+      }
+      const loginUserExists = users.some((user) => user.id === defaultUsers[0].id);
+      const adminExists = users.some((user) => user.role === 'admin');
+      const merged = users;
+      if (!loginUserExists) {
+        merged.push({ ...defaultUsers[0] });
+      }
+      if (!adminExists) {
+        merged.push({ ...defaultUsers[1] });
+      }
+      localStorage.setItem(userRegistryKey, JSON.stringify(merged));
+      return merged;
+    }
+
+    function isAuthenticated() {
+      const value = localStorage.getItem(authKey);
+      if (value === '1') return true;
+      try {
+        const session = JSON.parse(localStorage.getItem(authSessionKey) || '{}');
+        if (session && typeof session.accountId === 'string' && session.accountId.trim()) {
+          localStorage.setItem(authKey, '1');
+          return true;
+        }
+      } catch {
+      }
+      return false;
+    }
+
+    function setSignedUserBadge() {
+      let profile = { accountId: '', companyName: '', userName: '' };
+      try {
+        profile = JSON.parse(localStorage.getItem(profileKey) || '{}');
+      } catch {
+        profile = { accountId: '', companyName: '', userName: '' };
+      }
+      const accountId = String((localStorage.getItem('consulting-flow-tool-login-id') || profile.accountId || '')).trim() || '未設定';
+      const companyName = String(profile.companyName || '').trim();
+      const userName = String(profile.userName || '').trim();
+      if (signedUserBadge) {
+        // Traingo本体に埋め込み(?embedded=1)した時は、内部値「ログイン中: login-user」は出さず、会社管理者の会社名だけを出す
+        if (document.body.classList.contains('embedded-mode')) {
+          signedUserBadge.innerHTML = companyName ? `<span class="identity-pill">${escapeHtml(companyName)}</span>` : '';
+        } else {
+          signedUserBadge.innerHTML = `<span class="identity-pill">ログイン中: ${escapeHtml(accountId)}</span>`
+            + (companyName ? `<span class="identity-pill">会社: ${escapeHtml(companyName)}</span>` : '')
+            + (userName ? `<span class="identity-pill">担当: ${escapeHtml(userName)}</span>` : '');
+        }
+      }
+    }
+
+    function saveSignedSession(id, companyName, userName) {
+      const accountId = String(id || '').trim();
+      localStorage.setItem('consulting-flow-tool-login-id', accountId);
+      localStorage.setItem(authSessionKey, JSON.stringify({ accountId, at: Date.now() }));
+      localStorage.setItem(profileKey, JSON.stringify({
+        accountId,
+        companyName: String(companyName || '').trim(),
+        userName: String(userName || '').trim()
+      }));
+    }
+
+    // ログイン中アカウントのデータスコープを適用する。
+    // 案件データ系キー(storePrefix/storeKey/projectCatalogKey/legacyStoreKey/globalMdHistoryKey)を
+    // `${basePrefix}-acct-${accountId}` 配下へ切り替え、他アカウントの案件が見えないようにする。
+    // 認証・ユーザー登録(authKey/userRegistryKey/profileKey/login-id)は basePrefix のまま共通。
+    function applyAccountDataScope() {
+      const accountId = String(localStorage.getItem(loginIdStorageKey) || '').trim();
+      if (!accountId) {
+        // 未ログイン時は従来スコープ(basePrefix)に戻す
+        storePrefix = basePrefix;
+      } else {
+        // 旧(アカウントID無し)データは消さず、最初にログインしたアカウントへ1回だけ引き継ぐ。
+        // 2人目以降は引き継がない＝他人のブラウザ共有時に漏れない。
+        // 🔴本体埋め込み(embedded=1)時は legacy 引き継ぎを一切行わない。本体は各受講者を正規ログイン
+        //   させており、ツール内の旧共有データ(素のbasePrefix直下)を新アカウントへ移すと、他人の案件が
+        //   アカウントを超えて見える漏洩になる（2026-06-25 阿久津さん「基本データがアカウントを超えている」大失態の根治）。
+        const isEmbedded = new URLSearchParams(location.search).get('embedded') === '1';
+        if (!isEmbedded && !localStorage.getItem(legacyMigratedFlagKey)) {
+          migrateLegacyDataTo(`${basePrefix}-acct-${accountId}`);
+          localStorage.setItem(legacyMigratedFlagKey, accountId);
+        }
+        storePrefix = `${basePrefix}-acct-${accountId}`;
+      }
+      storeKey = `${storePrefix}-minimal-v1`;
+      projectCatalogKey = `${storePrefix}-projects-v1`;
+      legacyStoreKey = `${storePrefix}-legacy`;
+      globalMdHistoryKey = `${storePrefix}-md-history-v1`;
+    }
+
+    // ===== サーバー保存（Supabase）連携レイヤ ここから ======================================
+    // 2026-06-26 阿久津さん指示：案件データの正本をブラウザlocalStorageから会社アカウント
+    //   ごとのサーバー保存へ移す。これで「シークレットと通常モードで表示が違う」「案件が
+    //   アカウントを跨ぐ」を根本解決する。localStorageは“ネット不通時のキャッシュ”として残し、
+    //   表示は必ずサーバーGETの結果を優先する。auth系キー(-auth-v1等)には一切手を付けない。
+    const CONSULTING_API = '/api/company/consulting-projects';
+    // サーバー保存が一度でも成功したか（true中はlocalStorageを正本とみなさず、表示はサーバー優先）
+    let serverStoreReady = false;
+    // 案件IDごとの保存デバウンスタイマー
+    const serverSaveTimers = {};
+
+    // 旧localStorageデータ→サーバーへ1回だけ移行したかのフラグ（scoped別）
+    function serverMigratedFlagKey() { return `${storePrefix}-server-migrated-v1`; }
+
+    // 案件1件をサーバーへ保存（デバウンス1000ms）。入力のたびの連打を1回にまとめる。
+    function scheduleServerSave(projectId) {
+      if (!projectId) return;
+      if (serverSaveTimers[projectId]) clearTimeout(serverSaveTimers[projectId]);
+      serverSaveTimers[projectId] = setTimeout(() => {
+        serverSaveTimers[projectId] = null;
+        serverSaveProject(projectId);
+      }, 1000);
+    }
+
+    // 案件1件を即時サーバー保存（payloadは project-state とカタログ名を丸ごと送る）
+    async function serverSaveProject(projectId) {
+      if (!projectId) return;
+      let payload = {};
+      try { payload = JSON.parse(localStorage.getItem(getProjectStateKey(projectId)) || '{}') || {}; } catch { payload = {}; }
+      const catItem = projectCatalog.find((p) => p.id === projectId);
+      const name = (catItem && catItem.name) || payload.projectName || `案件${projectId}`;
+      // カタログのメタ（作成日時など）も payload 内に残し、再構築できるようにする
+      payload.__meta = {
+        createdAt: (catItem && catItem.createdAt) || payload.createdAt || Date.now(),
+        updatedAt: (catItem && catItem.updatedAt) || Date.now(),
+        name
+      };
+      try {
+        const res = await fetch(CONSULTING_API, {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ project_key: projectId, name, payload })
+        });
+        if (res.ok) serverStoreReady = true;
+      } catch (e) {
+        // ネット不通：localStorageキャッシュは既に書き込まれているので次回起動時に再送される
+      }
+    }
+
+    // 案件1件をサーバーから削除
+    async function serverDeleteProject(projectId) {
+      if (!projectId) return;
+      try {
+        await fetch(`${CONSULTING_API}?project_key=${encodeURIComponent(projectId)}`, {
+          method: 'DELETE',
+          credentials: 'include'
+        });
+      } catch (e) { /* ネット不通時は無視 */ }
+    }
+
+    // サーバーから自社の案件一覧を取得し、localStorageの scoped キャッシュを上書きする。
+    // 戻り値: { ok:boolean, count:number }。okがtrueなら以後サーバーが正本。
+    async function syncProjectsFromServer() {
+      let json = null;
+      try {
+        const res = await fetch(CONSULTING_API, { method: 'GET', credentials: 'include' });
+        if (!res.ok) return { ok: false, count: 0 };
+        json = await res.json();
+      } catch (e) {
+        return { ok: false, count: 0 };
+      }
+      if (!json || !Array.isArray(json.items)) return { ok: false, count: 0 };
+      serverStoreReady = true;
+      const items = json.items;
+
+      if (items.length === 0) {
+        // サーバーが空。ローカルに既存案件があれば「1回だけ」サーバーへ移行して案件を消さない。
+        if (!localStorage.getItem(serverMigratedFlagKey())) {
+          const localCatalog = loadProjectCatalog();
+          if (localCatalog.length) {
+            for (const p of localCatalog) {
+              await serverSaveProject(p.id);
+            }
+            localStorage.setItem(serverMigratedFlagKey(), '1');
+            // 移行直後はローカルカタログをそのまま表示に使う（サーバーへも上がっている）
+            return { ok: true, count: localCatalog.length };
+          }
+          localStorage.setItem(serverMigratedFlagKey(), '1');
+        }
+        return { ok: true, count: 0 };
+      }
+
+      // サーバーに案件あり＝これが正本。localStorageの scoped キャッシュをサーバー内容で作り直す。
+      const rebuiltCatalog = items.map((it) => {
+        const payload = it.payload || {};
+        const meta = payload.__meta || {};
+        const createdAt = Number(meta.createdAt) || (it.created_at ? Date.parse(it.created_at) : Date.now());
+        const updatedAt = Number(meta.updatedAt) || (it.updated_at ? Date.parse(it.updated_at) : Date.now());
+        // 案件本体キャッシュを上書き
+        try { localStorage.setItem(getProjectStateKey(it.project_key), JSON.stringify(payload)); } catch (e) {}
+        return {
+          id: it.project_key,
+          name: it.name || payload.projectName || '案件',
+          createdAt,
+          updatedAt
+        };
+      });
+      projectCatalog = rebuiltCatalog.sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0));
+      try { localStorage.setItem(projectCatalogKey, JSON.stringify(projectCatalog)); } catch (e) {}
+      localStorage.setItem(serverMigratedFlagKey(), '1');
+      return { ok: true, count: items.length };
+    }
+    // ===== サーバー保存（Supabase）連携レイヤ ここまで ======================================
+
+    // basePrefix直下(アカウントID無し)の案件データを scoped 配下へコピーする。旧キーは削除しない。
+    function migrateLegacyDataTo(scoped) {
+      Object.keys(localStorage).forEach((key) => {
+        if (!key.startsWith(`${basePrefix}-`)) return;
+        if (key.startsWith(`${basePrefix}-acct-`)) return; // 既にアカウント別のものは対象外
+        const isData = key.includes('-project-state-')
+          || key.endsWith('-projects-v1')
+          || key.endsWith('-minimal-v1')
+          || key.endsWith('-legacy')
+          || key.endsWith('-md-history-v1');
+        if (!isData) return;
+        const newKey = key.replace(`${basePrefix}-`, `${scoped}-`);
+        if (localStorage.getItem(newKey) === null) {
+          const val = localStorage.getItem(key);
+          if (val !== null) localStorage.setItem(newKey, val);
+        }
+      });
+    }
+
+    function showAppShell() {
+      authGate.classList.add('hidden');
+      appShell.classList.remove('hidden');
+      applyAccountDataScope();
+      setSignedUserBadge();
+    }
+
+    function showAuthGate() {
+      if (new URLSearchParams(location.search).get('embedded') === '1') {
+        document.body.classList.add('embedded-mode');
+        const embCompany = new URLSearchParams(location.search).get('company') || '';
+        // 🔴アカウント分離：本体から渡る受講者固有ID(?uid=)をaccountIdに使い、受講者ごとに
+        // localStorageのscoped領域を分ける。uid未指定時のみ後方互換で'login-user'。
+        const embUid = new URLSearchParams(location.search).get('uid') || '';
+        try { saveSignedSession(embUid || 'login-user', embCompany, ''); } catch (e) {}
+        showAppShell();
+        return;
+      }
+      // Traingo本体ログイン済みの単体アクセス：route handler が注入した本体ユーザーIDで
+      // 自動認証し、独自パスワード画面は出さない（ログイン済みなのに再パスワードは無意味なため）。
+      const serverUid = (typeof window !== 'undefined' && window.__TRAINGO_UID__) ? String(window.__TRAINGO_UID__).trim() : '';
+      if (serverUid) {
+        try { saveSignedSession(serverUid, '', ''); } catch (e) {}
+        showAppShell();
+        return;
+      }
+      authGate.classList.remove('hidden');
+      appShell.classList.add('hidden');
+      if (signedUserBadge) {
+        signedUserBadge.textContent = '未ログイン';
+      }
+      try {
+        const profile = JSON.parse(localStorage.getItem(profileKey) || '{}');
+        if (loginCompanyInput) loginCompanyInput.value = profile.companyName || '';
+        if (loginUserNameInput) loginUserNameInput.value = profile.userName || '';
+      } catch {
+        if (loginCompanyInput) loginCompanyInput.value = '';
+        if (loginUserNameInput) loginUserNameInput.value = '';
+      }
+    }
+
+    function getProjectStateKey(id) {
+      return `${storePrefix}-project-state-${id}`;
+    }
+
+    function loadLegacyState() {
+      try {
+        return JSON.parse(localStorage.getItem(legacyStoreKey) || localStorage.getItem(storeKey) || '{}');
+      } catch {
+        return {};
+      }
+    }
+
+    function loadProjectCatalog() {
+      try {
+        const parsed = JSON.parse(localStorage.getItem(projectCatalogKey) || '[]');
+        if (!Array.isArray(parsed)) return [];
+        return parsed
+          .map((item) => {
+            if (!item || typeof item !== 'object') return null;
+            const id = String(item.id || '').trim();
+            if (!id) return null;
+            return {
+              id,
+              name: String(item.name || '案件').trim() || '案件',
+              updatedAt: Number(item.updatedAt) || Date.now(),
+              createdAt: Number(item.createdAt) || Date.now()
+            };
+          })
+          .filter(Boolean);
+      } catch {
+        return [];
+      }
+    }
+
+    function normalizeProjectIdFromStorageKey(key) {
+      const match = /(?:^|-)project-state-(.+)$/.exec(key) || /(?:^|-)project[-_ ]?state[-_ ]?(.+)$/i.exec(key);
+      return match ? match[1] : '';
+    }
+
+    function getProjectStateCandidateKeys() {
+      const skipKeys = new Set([
+        storeKey,
+        legacyStoreKey,
+        projectCatalogKey,
+        globalMdHistoryKey
+      ]);
+      return Object.keys(localStorage).filter((key) => {
+        if (skipKeys.has(key)) return false;
+        // 🔴アカウント分離：ログイン中アカウントの scoped キー以外は一切拾わない（他アカウントの案件漏洩防止）
+        if (!key.startsWith(`${storePrefix}-`)) return false;
+        if (/-project-state-/.test(key)) return true;
+        if (/-project_data-/.test(key)) return true;
+        if (/-project[-_]state-/.test(key)) return true;
+        return false;
+      });
+    }
+
+    function extractProjectIdFromKeyFallback(key) {
+      return key
+        .replace(/^.*(?:project-state|project_data|project-state|projectstate|project)[-_]?/i, '')
+        .replace(/^[^a-zA-Z0-9_-]+/, '')
+        .trim();
+    }
+
+    function hasProjectStateLikeShape(text) {
+      if (!text) return false;
+      if (typeof text !== 'object') return false;
+      const keys = Object.keys(text);
+      if (!keys.length) return false;
+      return ['projectName', 'clientName', 'projectMemo', 'materials', 'conversationRecord', 'markdownOutput', 'projectId', 'baseData', 'hearingResult', 'productResult']
+        .some((candidate) => keys.includes(candidate));
+    }
+
+    function buildProjectStateFallbackKeys() {
+      const fallback = [];
+      Object.keys(localStorage).forEach((key) => {
+        // 🔴アカウント分離：ログイン中アカウントの scoped キー以外は形状一致でも拾わない（他アカウントの案件漏洩防止）
+        if (!key.startsWith(`${storePrefix}-`)) return;
+        if (key.includes('projects-v1') || key.includes('legacy') || key.includes('auth') || key.includes('md-history') || key.includes('users-v1')) return;
+        try {
+          const parsed = JSON.parse(localStorage.getItem(key) || '{}');
+          if (hasProjectStateLikeShape(parsed)) {
+            fallback.push(key);
+          }
+        } catch {
+          return;
+        }
+      });
+      return fallback;
+    }
+
+      function buildCatalogFromStorageStates() {
+      const keys = [...new Set([...getProjectStateCandidateKeys(), ...buildProjectStateFallbackKeys()])];
+      const catalogById = new Map();
+      keys.forEach((key) => {
+        const id = normalizeProjectIdFromStorageKey(key);
+        const fallbackId = id || extractProjectIdFromKeyFallback(key);
+        const candidateId = fallbackId || id;
+        if (!candidateId) return;
+        try {
+          const projectState = JSON.parse(localStorage.getItem(key) || '{}');
+          const projectName = (projectState && typeof projectState === 'object' && typeof projectState.projectName === 'string' && projectState.projectName.trim())
+            ? projectState.projectName.trim()
+            : `案件${candidateId.slice(-4)}`;
+          const updatedAt = Number(projectState?.updatedAt) || Date.now();
+          const createdAt = Number(projectState?.createdAt) || updatedAt;
+          const sourceIsCurrent = key.startsWith(`${storePrefix}-project-state-`);
+          const existing = catalogById.get(candidateId);
+          const next = {
+            id: candidateId,
+            name: projectName,
+            updatedAt,
+            createdAt,
+            sourceKey: key,
+            sourceIsCurrent
+          };
+          if (!existing || (next.updatedAt > existing.updatedAt) || (!existing.sourceIsCurrent && sourceIsCurrent)) {
+            catalogById.set(candidateId, next);
+          }
+        } catch {
+          const existing = catalogById.get(candidateId);
+          if (!existing) {
+            catalogById.set(candidateId, { id: candidateId, name: `案件${candidateId.slice(-4)}`, updatedAt: Date.now(), createdAt: Date.now(), sourceKey: key, sourceIsCurrent: key.startsWith(`${storePrefix}-project-state-`) });
+          }
+        }
+      });
+
+      const catalog = Array.from(catalogById.values())
+        .map(({ sourceKey, ...item }) => item)
+        .filter(Boolean);
+      return catalog.sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0));
+    }
+
+    function saveProjectCatalog() {
+      localStorage.setItem(projectCatalogKey, JSON.stringify(projectCatalog));
+    }
+
+    function loadProjectData(projectId) {
+      if (!projectId) return {};
+      const targetId = String(projectId || '').trim();
+      if (!targetId) return {};
+      const directKey = getProjectStateKey(targetId);
+      const fallbackIdKeys = [...new Set([...getProjectStateCandidateKeys(), ...buildProjectStateFallbackKeys()])];
+      let sourceKey = directKey;
+
+      if (!localStorage.getItem(directKey)) {
+        const candidates = fallbackIdKeys
+          .filter((key) => {
+            const normalized = normalizeProjectIdFromStorageKey(key);
+            const fallback = extractProjectIdFromKeyFallback(key);
+            const candidateId = normalized || fallback;
+            if (candidateId !== targetId) return false;
+            if (!key.startsWith(storePrefix)) return false;
+            return true;
+          })
+          .sort((a, b) => {
+            if (a === directKey) return -1;
+            if (b === directKey) return 1;
+            if (a.startsWith(`${storePrefix}-project-state-`) && !b.startsWith(`${storePrefix}-project-state-`)) return -1;
+            if (!a.startsWith(`${storePrefix}-project-state-`) && b.startsWith(`${storePrefix}-project-state-`)) return 1;
+            return a.localeCompare(b);
+          });
+        sourceKey = candidates[0] || directKey;
+      }
+
+      if (!localStorage.getItem(sourceKey)) {
+        const shapeMatched = fallbackIdKeys.find((key) => {
+          if (!key.startsWith(storePrefix) || key === sourceKey) return false;
+          try {
+            const parsed = JSON.parse(localStorage.getItem(key) || '{}');
+            return parsed && typeof parsed === 'object' && String(parsed.projectId || parsed.id || '') === targetId;
+          } catch {
+            return false;
+          }
+        });
+        if (shapeMatched) {
+          sourceKey = shapeMatched;
+        }
+      }
+
+      if (!localStorage.getItem(sourceKey) && sourceKey !== directKey && localStorage.getItem(directKey)) {
+        sourceKey = directKey;
+      }
+
+      try {
+        const loaded = JSON.parse(localStorage.getItem(sourceKey) || '{}');
+        if (sourceKey !== directKey && Object.keys(loaded || {}).length) {
+          localStorage.setItem(directKey, JSON.stringify(loaded));
+        }
+        return loaded;
+      } catch {
+        return {};
+      }
+    }
+
+    function persistProjectData(recordMarkdown = false) {
+      const now = Date.now();
+      state.updatedAt = now;
+      state.mdHistory = Array.isArray(state.mdHistory) ? state.mdHistory : [];
+      state.mdHistory = state.mdHistory.filter((item) => typeof item.text === 'string' && item.id && item.createdAt);
+      if (recordMarkdown && typeof state.markdownOutput === 'string' && state.markdownOutput.trim()) {
+        const tags = parseMdTags(mdTagInput ? mdTagInput.value : '');
+        state.mdHistory = upsertMdHistory(state.mdHistory, state.markdownOutput, tags);
+        upsertGlobalMdHistory(state.markdownOutput, tags);
+        if (mdTagInput) mdTagInput.value = '';
+      }
+      if (currentProjectId) {
+        const typedName = String(state.projectName || '').trim();
+        const catalogIndex = projectCatalog.findIndex((item) => item.id === currentProjectId);
+        const existingName = catalogIndex >= 0 ? String(projectCatalog[catalogIndex].name || '').trim() : '';
+        // ユーザーが入力した案件名を最優先。空のときは既存名を保持し、名前を潰さない（名前喪失防止）。
+        const projectName = typedName || existingName || `案件${currentProjectId}`;
+        if (catalogIndex >= 0) {
+          if (typedName || !existingName) {
+            projectCatalog[catalogIndex].name = projectName;
+          }
+          projectCatalog[catalogIndex].updatedAt = now;
+        } else {
+          projectCatalog.push({ id: currentProjectId, name: projectName, updatedAt: now, createdAt: now });
+        }
+        saveProjectCatalog();
+        localStorage.setItem(getProjectStateKey(currentProjectId), JSON.stringify(state));
+      }
+      if (!currentProjectId) {
+        localStorage.setItem(legacyStoreKey, JSON.stringify(state));
+      }
+      // ローカルキャッシュ書込み済み。正本のサーバーへもデバウンス保存（入力連打は1回にまとめる）。
+      if (currentProjectId) scheduleServerSave(currentProjectId);
+      refreshProjectSelect();
+      refreshMdHistorySelect();
+    }
+
+    function parseMdTags(raw) {
+      if (!raw) return [];
+      return String(raw).split(/[,、，\s]+/).map((t) => t.trim()).filter(Boolean);
+    }
+
+    function upsertMdHistory(history, text, tags) {
+      const list = Array.isArray(history) ? history : [];
+      const now = Date.now();
+      if (!text.trim()) return list;
+      const tagArr = parseMdTags(tags);
+      list.unshift({
+        id: `md-${now}`,
+        label: `保存 ${new Date(now).toLocaleString('ja-JP')}`,
+        text,
+        createdAt: now,
+        tags: tagArr
+      });
+      return list.slice(0, 20);
+    }
+
+    function getGlobalMdHistory() {
+      try {
+        return JSON.parse(localStorage.getItem(globalMdHistoryKey) || '[]');
+      } catch {
+        return [];
+      }
+    }
+
+    function upsertGlobalMdHistory(text, tags) {
+      const list = getGlobalMdHistory();
+      const now = Date.now();
+      if (!text.trim()) return;
+      const tagArr = Array.isArray(tags) ? tags : parseMdTags(tags);
+      list.unshift({
+        id: `md-${now}`,
+        label: `${state.projectName ? `${state.projectName} / ` : ''}保存 ${new Date(now).toLocaleString('ja-JP')}`,
+        text,
+        createdAt: now,
+        projectId: currentProjectId || '',
+        tags: tagArr
+      });
+      localStorage.setItem(globalMdHistoryKey, JSON.stringify(list.slice(0, 50)));
+    }
+
+    function readFieldValues() {
+      document.querySelectorAll('[data-key]').forEach((field) => {
+        state[field.dataset.key] = field.value;
+      });
+      document.querySelectorAll('[data-prompt-output]').forEach((field) => {
+        state[promptOutputKey(field.dataset.promptOutput)] = field.value;
+      });
+    }
+
+    function fillFieldsFromState() {
+      document.querySelectorAll('[data-key]').forEach((field) => {
+        field.value = state[field.dataset.key] || '';
+      });
+      document.querySelectorAll('[data-prompt-output]').forEach((field) => {
+        field.value = state[promptOutputKey(field.dataset.promptOutput)] || '';
+      });
+      refreshMdHistorySelect();
+      updatePlanGeneratedPrompt();
+      populateWebinarImport();
+      if (projectSelect.value !== currentProjectId && projectSelect.value) {
+        projectSelect.value = currentProjectId;
+      }
+    }
+
+    function refreshProjectSelect() {
+      const sortedCatalog = projectCatalog
+        .slice()
+        .sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0));
+      projectSelect.disabled = false;
+      projectSelect.innerHTML = sortedCatalog
+        .map((project) => `<option value="${project.id}">${escapeHtml(project.name)} (${new Date(project.updatedAt || project.createdAt || Date.now()).toLocaleString('ja-JP')})</option>`)
+        .join('') || '<option value="">未作成</option>';
+      if (currentProjectId) {
+        projectSelect.value = currentProjectId;
+      }
+      if (!projectSelect.value && projectCatalog[0]) {
+        projectSelect.value = projectCatalog[0].id;
+      }
+      currentProjectId = projectSelect.value || currentProjectId;
+      if (projectSwitchList) {
+        const quickCatalog = sortedCatalog.length ? sortedCatalog : (currentProjectId ? projectCatalog : []);
+        projectSwitchList.innerHTML = quickCatalog
+          .map((project) => `<button type="button" class="btn secondary ${project.id === currentProjectId ? 'active' : ''}" data-project-id="${escapeAttr(project.id)}" onclick="window.__consultingSwitchProject && window.__consultingSwitchProject('${escapeAttr(project.id)}')">${escapeHtml(project.name)}</button>`)
+          .join('');
+        if (!projectSwitchList.children.length) {
+          projectSwitchList.innerHTML = '<span class="muted">案件がありません。新規作成してください。</span>';
+        }
+        projectSwitchList.querySelectorAll('[data-project-id]').forEach((button) => {
+          const next = button.getAttribute('data-project-id');
+          if (!next || next === currentProjectId) return;
+          button.addEventListener('click', () => window.__consultingSwitchProject && window.__consultingSwitchProject(next), { once: true });
+        });
+      }
+      if (projectQuickSwitch) {
+        const quickCatalog = sortedCatalog.length ? sortedCatalog : (currentProjectId ? projectCatalog : []);
+        projectQuickSwitch.innerHTML = quickCatalog
+          .map((project) => `<button type="button" class="btn ${project.id === currentProjectId ? 'active' : ''}" data-project-id="${escapeAttr(project.id)}" onclick="window.__consultingSwitchProject && window.__consultingSwitchProject('${escapeAttr(project.id)}')">${escapeHtml(project.name)}</button>`)
+          .join('');
+        if (!projectQuickSwitch.children.length) {
+          projectQuickSwitch.innerHTML = '<span class="muted">案件がありません。新規作成してください。</span>';
+        }
+        projectQuickSwitch.querySelectorAll('[data-project-id]').forEach((button) => {
+          const next = button.getAttribute('data-project-id');
+          if (!next || next === currentProjectId) return;
+          button.addEventListener('click', () => window.__consultingSwitchProject && window.__consultingSwitchProject(next), { once: true });
+        });
+      }
+    }
+
+    function refreshMdHistorySelect() {
+      const localList = Array.isArray(state.mdHistory) ? state.mdHistory : [];
+      const allList = [
+        ...localList.map((item) => ({ ...item, scope: '案件' })),
+        ...getGlobalMdHistory().map((item) => ({ ...item, scope: '全体' }))
+      ];
+      let list = allList.filter((item, index, self) => index === self.findIndex((x) => x.id === item.id));
+      const mdNameById = new Map((Array.isArray(projectCatalog) ? projectCatalog : []).map((p) => [p.id, p.name]));
+      const looksAnonName = (t) => /^案件[-_]?\d{3,}$/.test(t) || /^p-\d+$/.test(t) || /^legacy-\d+$/.test(t);
+      const filterRaw = mdTagFilterInput ? String(mdTagFilterInput.value || '').trim().toLowerCase() : '';
+      if (filterRaw) {
+        const filterTokens = filterRaw.split(/[,、，\s]+/).filter(Boolean);
+        list = list.filter((item) => {
+          const rawName = item.projectId ? (mdNameById.get(item.projectId) || '') : '';
+          const projName = (rawName && !looksAnonName(String(rawName).trim())) ? String(rawName).trim().toLowerCase() : '';
+          const label = String(item.label || '').toLowerCase();
+          const tags = Array.isArray(item.tags) ? item.tags.map((t) => String(t).toLowerCase()) : [];
+          return filterTokens.every((token) =>
+            projName.includes(token) || label.includes(token) || tags.some((t) => t.includes(token))
+          );
+        });
+      }
+      mdHistorySelect.innerHTML = '<option value="">未選択</option>' +
+        list.map((item) => {
+          const rawName = item.projectId ? (mdNameById.get(item.projectId) || '') : '';
+          const projName = (rawName && !looksAnonName(String(rawName).trim())) ? String(rawName).trim() : '';
+          const head = (projName && !String(item.label || '').includes(projName)) ? `${projName} / ` : '';
+          const tagStr = Array.isArray(item.tags) && item.tags.length ? ` [${item.tags.join(', ')}]` : '';
+          return `<option value="${item.id}">${escapeHtml(`[${item.scope}] ${head}${item.label}${tagStr}`)}</option>`;
+        }).join('');
+    }
+
+    function rebuildProjectCatalogFromStorage() {
+      const fallbackCatalog = buildCatalogFromStorageStates();
+      if (fallbackCatalog.length) {
+        projectCatalog = fallbackCatalog;
+        saveProjectCatalog();
+      }
+
+      if (!projectCatalog.length) {
+        projectCatalog = loadProjectCatalog();
+      }
+
+      if (!projectCatalog.length) {
+        const legacy = loadLegacyState();
+        if (Object.keys(legacy).length) {
+          const initialId = `legacy-${Date.now()}`;
+          projectCatalog = [{
+            id: initialId,
+            name: legacy.projectName || 'インポート済み案件',
+            createdAt: Date.now(),
+            updatedAt: Date.now()
+          }];
+          localStorage.setItem(getProjectStateKey(initialId), JSON.stringify(legacy));
+          localStorage.removeItem(storeKey);
+          localStorage.removeItem(legacyStoreKey);
+          saveProjectCatalog();
+        }
+      }
+
+      if (!projectCatalog.length) {
+        const initialId = `p-${Date.now()}`;
+        projectCatalog = [{
+          id: initialId,
+          name: '新規案件',
+          createdAt: Date.now(),
+          updatedAt: Date.now()
+        }];
+        localStorage.setItem(getProjectStateKey(initialId), '{}');
+        saveProjectCatalog();
+      }
+
+      refreshProjectSelect();
+      if (currentProjectId && projectCatalog.some((project) => project.id === currentProjectId)) {
+        selectProject(currentProjectId);
+      } else if (projectCatalog[0]) {
+        selectProject(projectCatalog[0].id);
+      }
+    }
+
+    function findMdHistoryById(historyId) {
+      return (Array.isArray(state.mdHistory) ? state.mdHistory : []).find((item) => item.id === historyId)
+        || getGlobalMdHistory().find((item) => item.id === historyId) || null;
+    }
+
+    function selectProject(projectId) {
+      const next = projectId || projectCatalog[0]?.id;
+      if (!next) return;
+      readFieldValues();
+      currentProjectId = next;
+      state = loadProjectData(currentProjectId) || {};
+      fillFieldsFromState();
+      showToast(`案件を読み込みました`);
+      if (promptsLoaded) {
+        renderPromptGroup('hearingPrompts', promptGroups.hearing, 'hearing');
+        renderProductPromptCards();
+        renderPromptGroup('customerPrompts', promptGroups.customer, 'customer');
+        renderPromptGroup('marketPrompts', promptGroups.market, 'market');
+        renderPromptGroup('competitorPrompts', promptGroups.competitor, 'competitor');
+        renderPromptGroup('swotPrompts', promptGroups.swot, 'swot');
+        renderPromptGroup('baseDataPrompts', promptGroups.baseData, 'baseData');
+        renderPromptGroup('trainingPrompts', promptGroups.trainingCreator, 'trainingCreator');
+        renderPromptGroup('planPrompts', promptGroups.plan, 'plan');
+      }
+    }
+
+    function init() {
+      // Traingo本体に埋め込み(?embedded=1)の時は、ログイン済み/未ログインどちらの経路でもembedded-modeを必ず付ける
+      // （showAuthGate内だけだとログイン済み時に通らず、管理画面ボタン・login-userバッジが残る不具合になる）
+      if (new URLSearchParams(location.search).get('embedded') === '1') {
+        document.body.classList.add('embedded-mode');
+        // Traingo本体から渡された会社名(?company=)をログインプロフィールに入れ、ヘッダに会社名を出す
+        const embCompany = new URLSearchParams(location.search).get('company') || '';
+        // 🔴アカウント分離：受講者固有ID(?uid=)があればaccountIdに使い、scoped領域を受講者別に分ける
+        const embUid = new URLSearchParams(location.search).get('uid') || '';
+        if (embUid || embCompany) { try { saveSignedSession(embUid || 'login-user', embCompany, ''); } catch (e) {} }
+      }
+      ensureUserRegistry();
+      if (!isAuthenticated()) {
+        showAuthGate();
+        return;
+      }
+      showAppShell();
+
+      projectCatalog = loadProjectCatalog();
+      if (!projectCatalog.length) {
+        const fallbackCatalog = buildCatalogFromStorageStates();
+        if (fallbackCatalog.length) {
+          projectCatalog = fallbackCatalog;
+          saveProjectCatalog();
+        }
+      }
+      if (!projectCatalog.length) {
+        const legacy = loadLegacyState();
+        const initialId = `legacy-${Date.now()}`;
+        if (Object.keys(legacy).length) {
+          currentProjectId = initialId;
+          state = legacy;
+          localStorage.setItem(getProjectStateKey(currentProjectId), JSON.stringify(state));
+          projectCatalog = [{
+            id: initialId,
+            name: state.projectName || 'インポート済み案件',
+            createdAt: Date.now(),
+            updatedAt: Date.now()
+          }];
+          saveProjectCatalog();
+          localStorage.removeItem(storeKey);
+          localStorage.removeItem(legacyStoreKey);
+        }
+      }
+
+      if (!projectCatalog.length) {
+        const initialId = `p-${Date.now()}`;
+        projectCatalog = [{
+          id: initialId,
+          name: '新規案件',
+          createdAt: Date.now(),
+          updatedAt: Date.now()
+        }];
+        localStorage.setItem(getProjectStateKey(initialId), '{}');
+        saveProjectCatalog();
+      }
+
+      const initialProjectId = projectCatalog[0]?.id || '';
+      state = loadProjectData(initialProjectId) || {};
+      currentProjectId = initialProjectId;
+      refreshProjectSelect();
+      fillFieldsFromState();
+
+      mainContainer.classList.remove('hidden');
+      nav.innerHTML = views.map(([id, label]) => `<button type="button" data-nav="${id}">${label}</button>`).join('');
+      nav.querySelectorAll('button').forEach((button) => button.onclick = () => scrollToSection(button.dataset.nav));
+      refreshProjectSelect();
+      fillFieldsFromState();
+      window.__consultingSwitchProject = selectProject;
+
+      // 正本はサーバー。まずローカルキャッシュで即描画した上で、サーバーから最新を取り直して
+      // 表示を上書きする（シークレット/別ブラウザでも同じ案件が出る・アカウント跨ぎを根絶）。
+      syncProjectsFromServer().then((result) => {
+        if (!result.ok) return; // ネット不通時はローカルキャッシュ表示のまま
+        refreshProjectSelect();
+        const stillExists = currentProjectId && projectCatalog.some((p) => p.id === currentProjectId);
+        const target = stillExists ? currentProjectId : (projectCatalog[0] && projectCatalog[0].id);
+        if (target) {
+          currentProjectId = target;
+          state = loadProjectData(currentProjectId) || {};
+          fillFieldsFromState();
+          refreshProjectSelect();
+        }
+      });
+
+      document.querySelectorAll('[data-key]').forEach((field) => {
+        field.addEventListener('input', () => {
+          state[field.dataset.key] = field.value;
+          persistProjectData();
+          if (field.dataset.key === 'planFormat' || field.dataset.key === 'planBaseData' || field.dataset.key === 'planInstruction') {
+            updatePlanGeneratedPrompt();
+          }
+        });
+      });
+      const planGenCopyBtn = document.getElementById('planGenCopyBtn');
+      if (planGenCopyBtn) {
+        planGenCopyBtn.onclick = async () => {
+          const text = buildPlanPrompt();
+          if (!text) {
+            showToast('①②③のいずれかを入力してください');
+            return;
+          }
+          try {
+            await navigator.clipboard.writeText(text);
+            showToast('自動生成プロンプトをコピーしました');
+          } catch (e) {
+            const out = document.getElementById('planGeneratedPrompt');
+            out.removeAttribute('readonly');
+            out.select();
+            document.execCommand('copy');
+            out.setAttribute('readonly', '');
+            showToast('自動生成プロンプトをコピーしました');
+          }
+        };
+      }
+      const webinarImportBtn = document.getElementById('webinarImportBtn');
+      if (webinarImportBtn) webinarImportBtn.onclick = importWebinarBaseData;
+      populateWebinarImport();
+      document.getElementById('saveBtn').onclick = () => {
+        persistProjectData(typeof state.markdownOutput === 'string' && state.markdownOutput.trim());
+        if (typeof state.markdownOutput === 'string' && state.markdownOutput.trim()) {
+          showToast('保存しました（MD履歴を更新）');
+        } else {
+          showToast('保存しました');
+        }
+      };
+      document.getElementById('printBtn').onclick = () => {
+        window.preparePrintDocument();
+        window.print();
+      };
+      document.getElementById('buildMdBtn').onclick = buildMarkdownOutput;
+      document.getElementById('copyMdBtn').onclick = copyMarkdownOutput;
+      document.getElementById('mergeProductBtn').onclick = mergeProductResearch;
+      document.getElementById('mergeMarketBtn').onclick = mergeMarketResearch;
+      document.getElementById('mergeCompetitorBtn').onclick = mergeCompetitorResearch;
+      document.getElementById('mergeSwotBtn').onclick = mergeSwotResearch;
+      document.getElementById('mergeBaseDataBtn').onclick = mergeBaseData;
+      document.getElementById('mergeTrainingBtn').onclick = mergeTrainingCreator;
+      projectSelect.onchange = () => selectProject(projectSelect.value);
+      if (rebuildProjectCatalogBtn) {
+        rebuildProjectCatalogBtn.onclick = rebuildProjectCatalogFromStorage;
+      }
+      addProjectBtn.onclick = addNewProject;
+      saveProjectBtn.onclick = () => {
+        syncStateFromFields();
+        if (!currentProjectId) return;
+        persistProjectData();
+        showToast('現在の案件を上書き保存しました');
+      };
+      loadMdHistoryBtn.onclick = loadSelectedMdHistory;
+      importMdBtn.onclick = () => mdImportInput?.click();
+      exportMdBtn.onclick = exportMarkdownToFile;
+      document.getElementById('downloadMdBtn')?.addEventListener('click', exportMarkdownToFile);
+      mdImportInput.onchange = handleMdImport;
+      exportAllDataBtn.onclick = exportAllConsultingData;
+      importAllDataBtn.onclick = () => allDataImportInput?.click();
+      allDataImportInput.onchange = handleAllDataImport;
+      window.addEventListener('beforeprint', window.preparePrintDocument);
+      window.addEventListener('afterprint', window.restoreFieldsAfterPrint);
+      markActiveNav('project');
+      loadPrompts();
+    }
+
+    function addNewProject() {
+      const name = (newProjectName.value || '').trim() || `新規案件${projectCatalog.length + 1}`;
+      const projectId = `p-${Date.now()}`;
+      const now = Date.now();
+      projectCatalog.unshift({ id: projectId, name, createdAt: now, updatedAt: now });
+      localStorage.setItem(getProjectStateKey(projectId), JSON.stringify({ projectName: name, projectMemo: '' }));
+      saveProjectCatalog();
+      selectProject(projectId);
+      state = { projectName: name, projectMemo: '' };
+      fillFieldsFromState();
+      newProjectName.value = '';
+      persistProjectData();
+      showToast('新規案件を追加しました');
+    }
+
+    function loadSelectedMdHistory() {
+      const selected = mdHistorySelect.value;
+      if (!selected) {
+        showToast('反映する保存MDを選択してください', true);
+        return;
+      }
+      const hit = findMdHistoryById(selected);
+      if (!hit) {
+        showToast('保存MDが見つかりません', true);
+        return;
+      }
+      const output = document.getElementById('markdownOutput');
+      output.value = hit.text;
+      state.markdownOutput = hit.text;
+      persistProjectData();
+      scrollToSection('markdown');
+      showToast('保存MDを反映しました');
+    }
+
+    function exportMarkdownToFile() {
+      const output = document.getElementById('markdownOutput');
+      if (!output) return;
+      const current = output.value || buildMarkdown();
+      const blob = new Blob([current], { type: 'text/markdown;charset=utf-8' });
+      const anchor = document.createElement('a');
+      anchor.href = URL.createObjectURL(blob);
+      anchor.download = `${(state.projectName || 'consulting-project').replaceAll(/[\\/:*?"<>|]/g, '_')}.md`;
+      anchor.style.display = 'none';
+      document.body.appendChild(anchor);
+      anchor.click();
+      document.body.removeChild(anchor);
+      URL.revokeObjectURL(anchor.href);
+      state.markdownOutput = current;
+      output.value = current;
+      persistProjectData(true);
+      showToast('MDをファイル保存しました');
+    }
+
+    function loadPdfJsLibrary() {
+      if (window.pdfjsLib) {
+        return Promise.resolve(window.pdfjsLib);
+      }
+      return new Promise((resolve, reject) => {
+        const existing = document.querySelector('script[data-pdfjs]');
+        const onLoad = () => {
+          if (window.pdfjsLib && window.pdfjsLib.getDocument) {
+            window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.worker.min.js';
+            resolve(window.pdfjsLib);
+          } else {
+            reject(new Error('pdfjs未読込'));
+          }
+        };
+        if (window.pdfjsLib && window.pdfjsLib.getDocument) {
+          onLoad();
+          return;
+        }
+        if (existing) {
+          existing.addEventListener('load', onLoad, { once: true });
+          existing.addEventListener('error', () => reject(new Error('pdfjs読込エラー')), { once: true });
+          return;
+        }
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.min.js';
+        script.async = true;
+        script.setAttribute('data-pdfjs', '1');
+        script.onload = onLoad;
+        script.onerror = () => reject(new Error('pdfjs読込エラー'));
+        document.head.appendChild(script);
+      });
+    }
+
+    async function extractTextFromPdf(file) {
+      const buffer = await file.arrayBuffer();
+      await loadPdfJsLibrary();
+      const pdf = await window.pdfjsLib.getDocument({ data: buffer }).promise;
+      const texts = [];
+      for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+        const page = await pdf.getPage(pageNum);
+        const textContent = await page.getTextContent();
+        const pageText = textContent.items
+          .map((item) => item.str)
+          .filter((s) => typeof s === 'string' && s.trim())
+          .join('\n');
+        texts.push(`\n\n--- ${pageNum}ページ目 ---\n${pageText}`);
+      }
+      await pdf.cleanup();
+      return texts.join('\n').trim();
+    }
+
+    async function handleMdImport() {
+      const file = mdImportInput?.files?.[0];
+      if (!file) return;
+      const output = document.getElementById('markdownOutput');
+      if (!output) return;
+
+      try {
+        if (file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf')) {
+          const text = await extractTextFromPdf(file);
+          output.value = text || '（PDFからテキストを抽出できませんでした）';
+          state.markdownOutput = output.value;
+          persistProjectData(true);
+          scrollToSection('markdown');
+          showToast(text ? 'PDFを読み込みました' : 'PDFは読み取り対象テキストがありませんでした');
+        } else {
+          const reader = new FileReader();
+          reader.onload = () => {
+            const text = String(reader.result || '');
+            output.value = text;
+            state.markdownOutput = text;
+            persistProjectData(true);
+            scrollToSection('markdown');
+            showToast('MDをインポートしました');
+          };
+          reader.onerror = () => showToast('MDの読み込みに失敗しました', true);
+          reader.readAsText(file, 'utf-8');
+        }
+      } catch (error) {
+        const message = error && String(error.message || '');
+        if (message.includes('pdfjs')) {
+          showToast('PDF自動反映はこの環境で未対応です。PDFを開いて本文をコピーして貼り付けてください。', true);
+        } else {
+          showToast('MDの読み込みに失敗しました', true);
+        }
+      }
+      mdImportInput.value = '';
+    }
+
+    function exportAllConsultingData() {
+      syncStateFromFields();
+      const projectData = {};
+      (projectCatalog || []).forEach((project) => {
+        const projectId = String(project.id || '').trim();
+        if (!projectId) return;
+        try {
+          const data = loadProjectData(projectId);
+          if (data && Object.keys(data).length) {
+            projectData[projectId] = data;
+          }
+        } catch {
+          projectData[projectId] = {};
+        }
+      });
+      if (!projectData[currentProjectId] && currentProjectId) {
+        projectData[currentProjectId] = state;
+      }
+
+      const payload = {
+        schema: 'consulting-flow-tool-all-data-v1',
+        exportedAt: new Date().toISOString(),
+        currentProjectId,
+        projectCatalog,
+        projectData,
+        globalMdHistory: getGlobalMdHistory(),
+        note: 'Traingo-consultingで過去に入力した案件データのバックアップ'
+      };
+
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json;charset=utf-8' });
+      const anchor = document.createElement('a');
+      anchor.href = URL.createObjectURL(blob);
+      const stamp = new Date().toISOString().slice(0, 16).replace(/[:T]/g, '-');
+      anchor.download = `consulting-project-backup-${stamp}.json`;
+      anchor.style.display = 'none';
+      document.body.appendChild(anchor);
+      anchor.click();
+      document.body.removeChild(anchor);
+      URL.revokeObjectURL(anchor.href);
+      showToast('案件データを保存しました');
+    }
+
+    function handleAllDataImport() {
+      const file = allDataImportInput?.files?.[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        let parsed;
+        try {
+          parsed = JSON.parse(String(reader.result || ''));
+        } catch {
+          showToast('JSONの形式が不正です', true);
+          return;
+        }
+        if (!parsed || typeof parsed !== 'object' || !Array.isArray(parsed.projectCatalog) || !parsed.projectData) {
+          showToast('インポート形式が対応外です', true);
+          return;
+        }
+
+        const incomingCatalog = parsed.projectCatalog
+          .map((item, index) => {
+            if (!item || typeof item !== 'object' || !item.id) return null;
+            return {
+              id: String(item.id),
+              name: typeof item.name === 'string' && item.name.trim() ? item.name.trim() : `案件${index + 1}`,
+              createdAt: Number(item.createdAt) || Date.now(),
+              updatedAt: Number(item.updatedAt) || Number(item.createdAt) || Date.now()
+            };
+          })
+          .filter(Boolean);
+
+        const incomingProjectData = parsed.projectData && typeof parsed.projectData === 'object' ? parsed.projectData : {};
+        if (!incomingCatalog.length) {
+          showToast('インポート対象の案件がありません', true);
+          return;
+        }
+
+        Object.keys(localStorage).forEach((key) => {
+          if (
+            key === storeKey ||
+            key === legacyStoreKey ||
+            key === projectCatalogKey ||
+            key.startsWith(`${storePrefix}-project-state-`) ||
+            key === globalMdHistoryKey
+          ) {
+            localStorage.removeItem(key);
+          }
+        });
+
+        projectCatalog = incomingCatalog;
+        saveProjectCatalog();
+
+        incomingCatalog.forEach((project) => {
+          const key = getProjectStateKey(project.id);
+          const source = incomingProjectData[project.id];
+          const nextState = (source && typeof source === 'object') ? source : {};
+          localStorage.setItem(key, JSON.stringify(nextState));
+        });
+
+        try {
+          const importedMdHistory = Array.isArray(parsed.globalMdHistory) ? parsed.globalMdHistory : [];
+          localStorage.setItem(globalMdHistoryKey, JSON.stringify(importedMdHistory.slice(0, 200)));
+        } catch {
+          localStorage.removeItem(globalMdHistoryKey);
+        }
+
+        const requestedId = typeof parsed.currentProjectId === 'string' && incomingProjectData[parsed.currentProjectId]
+          ? parsed.currentProjectId
+          : incomingCatalog[0]?.id;
+        currentProjectId = requestedId || '';
+        state = loadProjectData(currentProjectId) || {};
+        fillFieldsFromState();
+        refreshProjectSelect();
+        refreshMdHistorySelect();
+        showToast(`過去データを復元しました（${incomingCatalog.length}件）`);
+      };
+      reader.onerror = () => showToast('データの読み込みに失敗しました', true);
+      reader.readAsText(file, 'utf-8');
+      allDataImportInput.value = '';
+    }
+
+    window.expandFieldsForPrint = function expandFieldsForPrint() {
+      document.querySelectorAll('textarea').forEach((field) => {
+        field.dataset.printHeight = field.style.height || '';
+        field.style.height = `${Math.max(field.scrollHeight, 24)}px`;
+      });
+    };
+
+    window.restoreFieldsAfterPrint = function restoreFieldsAfterPrint() {
+      document.querySelectorAll('textarea').forEach((field) => {
+        field.style.height = field.dataset.printHeight || '';
+        delete field.dataset.printHeight;
+      });
+    };
+
+    window.preparePrintDocument = function preparePrintDocument() {
+      syncStateFromFields();
+      window.expandFieldsForPrint();
+      const printDoc = document.getElementById('printDoc');
+      printDoc.innerHTML = [
+        `<div class="print-title"><h1>コンサル案件まとめ</h1><p>${escapeHtml(state.projectName || '案件名未入力')} / ${escapeHtml(state.clientName || '顧客名未入力')}</p></div>`,
+        printSection('案件', [
+          ['案件名', state.projectName],
+          ['顧客名', state.clientName],
+          ['案件メモ', state.projectMemo]
+        ]),
+        printSection('資料収集', [
+          ['素材', state.materials],
+          ['まとめ資料に追加する内容', state.materialsResult]
+        ]),
+        printSection('ヒアリング', [
+          ['会話記録・文字起こし', state.conversationRecord],
+          ['まとめ資料に追加する内容', state.hearingResult],
+          ...promptPrintBlocks(promptGroups.hearing)
+        ]),
+        printSection('商品調査', [
+          ['商品内容', state.productContent],
+          ['特徴', state.productFeatures],
+          ['ベネフィット', state.productBenefits],
+          ['USP', state.productUsp],
+          ['まとめ資料に追加する内容', state.productResult]
+        ]),
+        printSection('顧客調査', [
+          ['まとめ資料に追加する内容', state.customerResult],
+          ...promptPrintBlocks(promptGroups.customer)
+        ]),
+        printSection('市場調査', [
+          ['採用する市場動向', state.marketAdoptTrend],
+          ['採用する機会・脅威', state.marketAdoptOpportunityThreat],
+          ['採用する根拠・出典', state.marketAdoptSources],
+          ['まとめ資料に追加する内容', state.marketResult],
+          ...promptPrintBlocks(promptGroups.market)
+        ]),
+        printSection('競合調査', [
+          ['採用する競合情報', state.competitorAdoptInfo],
+          ['採用する競合の強み・弱み', state.competitorAdoptStrengthWeakness],
+          ['採用する自社が勝てる隙間', state.competitorAdoptGap],
+          ['まとめ資料に追加する内容', state.competitorResult],
+          ...promptPrintBlocks(promptGroups.competitor)
+        ]),
+        printSection('SWOT分析', [
+          ['採用する強み', state.swotStrength],
+          ['採用する弱み', state.swotWeakness],
+          ['採用する機会', state.swotOpportunity],
+          ['採用する脅威', state.swotThreat],
+          ['採用するクロスSWOT', state.crossSwot],
+          ['まとめ資料に追加する内容', state.swotResult],
+          ...promptPrintBlocks(promptGroups.swot)
+        ]),
+        printSection('基本データ 現時点版', [
+          ['基本データ', state.baseData],
+          ...promptPrintBlocks(promptGroups.baseData)
+        ]),
+        printSection('研修企画クリエイター', [
+          ['採用する既存コンテンツ・教材素材', state.trainingExistingContent],
+          ['採用する研修化テーマ', state.trainingThemes],
+          ['採用する最優先テーマ', state.trainingPriorityTheme],
+          ['採用する研修タイトル', state.trainingTitle],
+          ['採用する対象者', state.trainingAudience],
+          ['採用する研修の目的', state.trainingPurpose],
+          ['採用する到達目標', state.trainingGoals],
+          ['採用するカリキュラム案', state.trainingCurriculum],
+          ['採用する教材化・オンラインコース化の方針', state.trainingMaterialsPlan],
+          ['採用する提供方法', state.trainingDelivery],
+          ['採用する販売・提案への導線', state.trainingSalesPath],
+          ['採用する成果測定・次に作る成果物', state.trainingMetrics],
+          ['まとめ資料に追加する内容', state.trainingCreatorResult],
+          ...promptPrintBlocks(promptGroups.trainingCreator)
+        ]),
+        printSection('事業計画書', [
+          ['参考フォーマット', state.planFormat],
+          ['基本データ', state.planBaseData],
+          ['指示内容', state.planInstruction],
+          ['自動生成プロンプト', buildPlanPrompt()],
+          ['事業計画書ドラフト', state.businessPlan]
+        ])
+      ].join('');
+    };
+
+    function printSection(title, blocks) {
+      const body = blocks
+        .filter(([, text]) => String(text || '').trim())
+        .map(([label, text]) => `<div class="print-block"><h3>${escapeHtml(label)}</h3><div class="print-text">${formatTextForPrint(text)}</div></div>`)
+        .join('') || '<div class="print-block"><div class="print-text"><p>未入力</p></div></div>';
+      return `<section class="print-section"><h2>${escapeHtml(title)}</h2>${body}</section>`;
+    }
+
+    function promptPrintBlocks(names) {
+      return names.map((name) => [displayPromptName(name), state[promptOutputKey(name)]]);
+    }
+
+    function formatTextForPrint(text) {
+      const lines = String(text || '未入力').split(/\r?\n/);
+      let html = '';
+      let listOpen = false;
+      let orderedListOpen = false;
+      let tableRows = [];
+      const closeList = () => {
+        if (listOpen) {
+          html += '</ul>';
+          listOpen = false;
+        }
+        if (orderedListOpen) {
+          html += '</ol>';
+          orderedListOpen = false;
+        }
+      };
+      const flushTable = () => {
+        if (!tableRows.length) return;
+        closeList();
+        const rows = tableRows.filter((row) => !row.every((cell) => /^:?-{2,}:?$/.test(cell.trim())));
+        if (rows.length) {
+          html += '<table>';
+          rows.forEach((row, index) => {
+            const tag = index === 0 ? 'th' : 'td';
+            html += '<tr>' + row.map((cell) => `<${tag}>${formatInlineForPrint(cell.trim())}</${tag}>`).join('') + '</tr>';
+          });
+          html += '</table>';
+        }
+        tableRows = [];
+      };
+      lines.forEach((line) => {
+        const trimmed = line.trim();
+        if (!trimmed) {
+          flushTable();
+          closeList();
+          return;
+        }
+        if (/^\|.+\|$/.test(trimmed)) {
+          tableRows.push(trimmed.replace(/^\||\|$/g, '').split('|'));
+          return;
+        }
+        flushTable();
+        if (/^#{1,6}\s+/.test(trimmed)) {
+          closeList();
+          const level = Math.min((trimmed.match(/^#+/) || [''])[0].length + 2, 4);
+          html += `<h${level}>${formatInlineForPrint(trimmed.replace(/^#{1,6}\s+/, ''))}</h${level}>`;
+          return;
+        }
+        if (/^[-*]\s+/.test(trimmed)) {
+          if (orderedListOpen) {
+            html += '</ol>';
+            orderedListOpen = false;
+          }
+          if (!listOpen) {
+            html += '<ul>';
+            listOpen = true;
+          }
+          html += `<li>${formatInlineForPrint(trimmed.replace(/^[-*]\s+/, ''))}</li>`;
+          return;
+        }
+        if (/^\d+[.)]\s+/.test(trimmed)) {
+          if (listOpen) {
+            html += '</ul>';
+            listOpen = false;
+          }
+          if (!orderedListOpen) {
+            html += '<ol>';
+            orderedListOpen = true;
+          }
+          html += `<li>${formatInlineForPrint(trimmed.replace(/^\d+[.)]\s+/, ''))}</li>`;
+          return;
+        }
+        closeList();
+        html += `<p>${formatInlineForPrint(stripMarkdownMarks(trimmed))}</p>`;
+      });
+      flushTable();
+      closeList();
+      return html || '<p>未入力</p>';
+    }
+
+    function stripMarkdownMarks(text) {
+      return String(text || '')
+        .replace(/^#{1,6}\s*/, '')
+        .replace(/^[-*]\s+/, '')
+        .replace(/^\d+[.)]\s+/, '')
+        .replace(/`{3,}/g, '')
+        .replace(/^\|(.+)\|$/g, '$1');
+    }
+
+    function formatInlineForPrint(text) {
+      return escapeHtml(stripMarkdownMarks(text))
+        .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+        .replace(/__([^_]+)__/g, '<strong>$1</strong>')
+        .replace(/`([^`]+)`/g, '<span>$1</span>');
+    }
+
+    function scrollToSection(id) {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      markActiveNav(id);
+    }
+
+    function markActiveNav(id) {
+      nav.querySelectorAll('button').forEach((button) => button.classList.toggle('active', button.dataset.nav === id));
+    }
+
+    async function loadPrompts() {
+      try {
+        const response = await fetch('user-prompts.json', { cache: 'no-store' });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        prompts = await response.json();
+        await loadTrainingPrompt();
+        await loadManagementIssuesPrompt();
+        await loadPlanPrompt();
+        promptsLoaded = true;
+        renderPromptGroup('hearingPrompts', promptGroups.hearing, 'hearing');
+        renderProductPromptCards();
+        renderPromptGroup('customerPrompts', promptGroups.customer, 'customer');
+        renderPromptGroup('marketPrompts', promptGroups.market, 'market');
+        renderPromptGroup('competitorPrompts', promptGroups.competitor, 'competitor');
+        renderPromptGroup('swotPrompts', promptGroups.swot, 'swot');
+        renderPromptGroup('baseDataPrompts', promptGroups.baseData, 'baseData');
+        renderPromptGroup('trainingPrompts', promptGroups.trainingCreator, 'trainingCreator');
+        renderPromptGroup('planPrompts', promptGroups.plan, 'plan');
+      } catch (error) {
+        const isFileScheme = location.protocol === 'file:';
+        if (isFileScheme) {
+          showToast('ファイル直接読み込みのため、初期起動後に一部プロンプトが読み込めない場合があります。', false);
+        } else {
+          showToast(`user-prompts.jsonを読み込めませんでした：${error?.message || '原因不明'}`, false);
+        }
+        // file://運用でも画面側を止めないため、既存プロンプトの最小セットを確保
+        prompts = prompts.length ? prompts : [];
+        renderPromptGroup('hearingPrompts', promptGroups.hearing, 'hearing');
+        renderProductPromptCards();
+        renderPromptGroup('customerPrompts', promptGroups.customer, 'customer');
+        renderPromptGroup('marketPrompts', promptGroups.market, 'market');
+        renderPromptGroup('competitorPrompts', promptGroups.competitor, 'competitor');
+        renderPromptGroup('swotPrompts', promptGroups.swot, 'swot');
+        renderPromptGroup('baseDataPrompts', promptGroups.baseData, 'baseData');
+        renderPromptGroup('trainingPrompts', promptGroups.trainingCreator, 'trainingCreator');
+        renderPromptGroup('planPrompts', promptGroups.plan, 'plan');
+      }
+    }
+
+    async function loadTrainingPrompt() {
+      const response = await fetch('prompts/training-plan.txt', { cache: 'no-store' });
+      if (!response.ok) throw new Error(`training-plan HTTP ${response.status}`);
+      const body = await response.text();
+      prompts = prompts.filter((prompt) => prompt.name !== '研修企画書生成テンプレート（Traingo標準）');
+      prompts.push({
+        name: '研修企画書生成テンプレート（Traingo標準）',
+        body,
+        source: 'prompts/training-plan.txt',
+        status: 'Traingo内確認済み'
+      });
+    }
+
+    async function loadManagementIssuesPrompt() {
+      const response = await fetch('prompts/jizokuka-management-issues.txt', { cache: 'no-store' });
+      if (!response.ok) throw new Error(`management-issues HTTP ${response.status}`);
+      const body = await response.text();
+      prompts = prompts.filter((prompt) => prompt.name !== '経営課題発見プロンプト【多視点リスト型】');
+      prompts.push({
+        name: '経営課題発見プロンプト【多視点リスト型】',
+        body,
+        source: 'prompts/jizokuka-management-issues.txt',
+        status: 'ユーザー提供本文から取得済み'
+      });
+    }
+
+    async function loadPlanPrompt() {
+      const response = await fetch('prompts/business-plan-any.txt', { cache: 'no-store' });
+      if (!response.ok) throw new Error(`business-plan-any HTTP ${response.status}`);
+      const body = await response.text();
+      prompts = prompts.filter((prompt) => prompt.name !== '事業計画書作成プロンプト');
+      prompts.push({
+        name: '事業計画書作成プロンプト',
+        body,
+        source: 'prompts/business-plan-any.txt',
+        status: 'ユーザー提供本文から取得済み'
+      });
+    }
+
+    function renderPromptGroup(elementId, names, group) {
+      const element = document.getElementById(elementId);
+      element.innerHTML = names.map((name) => {
+        const found = findPrompt(name);
+        const label = displayPromptName(name);
+      return `
+          <div class="prompt-card">
+            <div class="prompt-head">
+              <div>
+                <h3>${escapeHtml(label)}</h3>
+                <span>${found ? escapeHtml(found.status || `${found.source || 'user-prompts.json'}から取得済み`) : '未設定'}</span>
+              </div>
+              <button class="btn primary" type="button" data-name="${escapeAttr(name)}" data-group="${group}" ${found ? '' : 'disabled'}>コピー</button>
+            </div>
+            <label>貼り付け欄
+              <textarea data-prompt-output="${escapeAttr(name)}" placeholder="${escapeAttr(label)}の返答をここに貼る">${escapeHtml(state[promptOutputKey(name)] || '')}</textarea>
+            </label>
+            <p class="copy-note">ここにコピー</p>
+          </div>
+        `;
+      }).join('');
+      element.querySelectorAll('[data-name]').forEach((button) => {
+        button.onclick = () => copyPrompt(button.dataset.name, button.dataset.group);
+      });
+      element.querySelectorAll('[data-prompt-output]').forEach((textarea) => {
+        textarea.addEventListener('input', () => {
+          state[promptOutputKey(textarea.dataset.promptOutput)] = textarea.value;
+          persistProjectData();
+        });
+      });
+    }
+
+    function findPrompt(name) {
+      return prompts.find((prompt) => prompt.name === name);
+    }
+
+    function promptOutputKey(name) {
+      return `promptOutput::${name}`;
+    }
+
+    function buildPlanPrompt() {
+      const fmt = (state.planFormat || '').trim();
+      const data = (state.planBaseData || '').trim();
+      const inst = (state.planInstruction || '').trim();
+      if (!fmt && !data && !inst) return '';
+      return [
+        `#指示内容：${inst}`,
+        `#参考フォーマット：${fmt}`,
+        `#基本データ：${data}`
+      ].join('\n');
+    }
+
+    function updatePlanGeneratedPrompt() {
+      const out = document.getElementById('planGeneratedPrompt');
+      if (out) out.value = buildPlanPrompt();
+    }
+
+    function syncStateFromFields() {
+      document.querySelectorAll('[data-key]').forEach((field) => {
+        state[field.dataset.key] = field.value || '';
+      });
+      document.querySelectorAll('[data-prompt-output]').forEach((field) => {
+        state[promptOutputKey(field.dataset.promptOutput)] = field.value || '';
+      });
+      persistProjectData();
+    }
+
+    function renderProductPromptCards() {
+      const cards = [
+        {
+          title: '特徴',
+          fieldKey: 'productFeatures',
+          promptName: '商品特徴分析'
+        },
+        {
+          title: 'ベネフィット',
+          fieldKey: 'productBenefits',
+          promptName: 'ベネフィット転換プロンプト'
+        },
+        {
+          title: 'USP',
+          fieldKey: 'productUsp',
+          promptName: 'USP制作プロンプト'
+        }
+      ];
+      const element = document.getElementById('productPrompts');
+      element.innerHTML = cards.map((card) => {
+        const found = findPrompt(card.promptName);
+        return `
+          <div class="prompt-card">
+            <div class="prompt-head">
+              <div>
+                <h3>${escapeHtml(card.title)}</h3>
+                <span>${found ? 'user-prompts.jsonから取得済み' : '未設定'}</span>
+              </div>
+              <button class="btn primary" type="button" data-name="${escapeAttr(card.promptName)}" data-group="product" ${found ? '' : 'disabled'}>コピー</button>
+            </div>
+            <label>記入欄<textarea data-key="${escapeAttr(card.fieldKey)}">${escapeHtml(state[card.fieldKey] || '')}</textarea></label>
+          </div>
+        `;
+      }).join('');
+      element.querySelectorAll('[data-name]').forEach((button) => {
+        button.onclick = () => copyPrompt(button.dataset.name, button.dataset.group);
+      });
+      element.querySelectorAll('[data-key]').forEach((textarea) => {
+        textarea.addEventListener('input', () => {
+          state[textarea.dataset.key] = textarea.value;
+          persistProjectData();
+        });
+      });
+    }
+
+    async function copyPrompt(name, group) {
+      if (!promptsLoaded) {
+        showToast('プロンプト読込中です。もう一度押してください', true);
+        return;
+      }
+      const prompt = findPrompt(name);
+      if (!prompt) {
+        showToast('プロンプト未設定です', true);
+        return;
+      }
+      const text = fillVariables(prompt.body, group, name);
+      copyOutput.value = text;
+      const ok = await writeClipboard(text);
+      showToast(ok ? `${name}をコピーしました` : 'コピーできませんでした', !ok);
+    }
+
+    function mergeProductResearch() {
+      syncStateFromFields();
+      const merged = [
+        '## 商品調査',
+        '',
+        '### 商品内容',
+        state.productContent || '未入力',
+        '',
+        '### 特徴',
+        state.productFeatures || '未入力',
+        '',
+        '### ベネフィット',
+        state.productBenefits || '未入力',
+        '',
+        '### USP',
+        state.productUsp || '未入力',
+        ''
+      ].join('\n');
+      state.productResult = merged;
+      const textarea = document.querySelector('[data-key="productResult"]');
+      if (textarea) textarea.value = merged;
+      persistProjectData();
+      showToast('商品調査を統合しました');
+    }
+
+    function mergeMarketResearch() {
+      syncStateFromFields();
+      const marketOutput = state[promptOutputKey('市場動向プロンプト')] || '';
+      const merged = [
+        '## 市場調査',
+        '',
+        '### 市場動向',
+        marketOutput || '未入力',
+        '',
+        '### 採用する市場動向',
+        state.marketAdoptTrend || '未入力',
+        '',
+        '### 採用する機会・脅威',
+        state.marketAdoptOpportunityThreat || '未入力',
+        '',
+        '### 採用する根拠・出典',
+        state.marketAdoptSources || '未入力',
+        ''
+      ].join('\n');
+      state.marketResult = merged;
+      const textarea = document.querySelector('[data-key="marketResult"]');
+      if (textarea) textarea.value = merged;
+      persistProjectData();
+      showToast('市場調査を統合しました');
+    }
+
+    function mergeCompetitorResearch() {
+      syncStateFromFields();
+      const competitorOutput = state[promptOutputKey('競合分析')] || '';
+      const merged = [
+        '## 競合調査',
+        '',
+        '### 競合分析',
+        competitorOutput || '未入力',
+        '',
+        '### 採用する競合情報',
+        state.competitorAdoptInfo || '未入力',
+        '',
+        '### 採用する競合の強み・弱み',
+        state.competitorAdoptStrengthWeakness || '未入力',
+        '',
+        '### 採用する自社が勝てる隙間',
+        state.competitorAdoptGap || '未入力',
+        ''
+      ].join('\n');
+      state.competitorResult = merged;
+      const textarea = document.querySelector('[data-key="competitorResult"]');
+      if (textarea) textarea.value = merged;
+      persistProjectData();
+      showToast('競合調査を統合しました');
+    }
+
+    function mergeSwotResearch() {
+      syncStateFromFields();
+      const merged = [
+        '## SWOT分析',
+        '',
+        '### 強み',
+        state.swotStrength || '未入力',
+        '',
+        '### 弱み',
+        state.swotWeakness || '未入力',
+        '',
+        '### 機会',
+        state.swotOpportunity || '未入力',
+        '',
+        '### 脅威',
+        state.swotThreat || '未入力',
+        '',
+        '### クロスSWOT',
+        state.crossSwot || '未入力',
+        ''
+      ].join('\n');
+      state.swotResult = merged;
+      const textarea = document.querySelector('[data-key="swotResult"]');
+      if (textarea) textarea.value = merged;
+      persistProjectData();
+      showToast('SWOTを統合しました');
+    }
+
+    const WEBINAR_PREFIX = 'webinar-flow-tool';
+    // 🔴アカウント分離：ウェビナー側もログイン中アカウントの scoped 領域だけを読む（他アカウントのウェビナー案件漏洩防止）
+    function webinarScopedPrefix() {
+      const acct = String(localStorage.getItem(loginIdStorageKey) || '').trim();
+      return acct ? `${WEBINAR_PREFIX}-acct-${acct}` : WEBINAR_PREFIX;
+    }
+    function readWebinarCatalog() {
+      const SP = webinarScopedPrefix();
+      try {
+        const cat = JSON.parse(localStorage.getItem(`${SP}-projects-v1`) || '[]');
+        if (Array.isArray(cat) && cat.length) {
+          return cat.filter((x) => x && x.id).map((x) => ({ id: String(x.id), name: String(x.name || '案件').trim() || '案件' }));
+        }
+      } catch {}
+      const out = [];
+      Object.keys(localStorage).forEach((k) => {
+        if (k.startsWith(`${SP}-project-state-`)) {
+          const id = k.replace(`${SP}-project-state-`, '');
+          let name = `案件${id.slice(-4)}`;
+          try { const s = JSON.parse(localStorage.getItem(k) || '{}'); if (s && s.projectName) name = String(s.projectName); } catch {}
+          out.push({ id, name });
+        }
+      });
+      return out;
+    }
+    function getWebinarBaseData(id) {
+      try {
+        const s = JSON.parse(localStorage.getItem(`${webinarScopedPrefix()}-project-state-${id}`) || '{}');
+        return String(s.baseDataResult || s.baseData || '').trim();
+      } catch { return ''; }
+    }
+    function populateWebinarImport() {
+      const sel = document.getElementById('webinarImportSelect');
+      if (!sel) return;
+      const prev = sel.value;
+      const list = readWebinarCatalog();
+      sel.innerHTML = '<option value="">案件を選択</option>' + list.map((x) => `<option value="${escapeAttr(x.id)}">${escapeHtml(x.name)}</option>`).join('');
+      if (prev && list.some((x) => x.id === prev)) sel.value = prev;
+    }
+    function importWebinarBaseData() {
+      const sel = document.getElementById('webinarImportSelect');
+      if (!sel || !sel.value) { showToast('案件を選択してください'); return; }
+      const data = getWebinarBaseData(sel.value);
+      if (!data) { showToast('この案件の基本データが空です'); return; }
+      const ta = document.querySelector('[data-key="baseData"]');
+      if (ta) {
+        ta.value = ta.value.trim() ? `${ta.value.trim()}\n\n${data}` : data;
+        state.baseData = ta.value;
+      } else {
+        state.baseData = data;
+      }
+      persistProjectData();
+      showToast('ウェビナーの基本データを取り込みました');
+    }
+
+    function mergeBaseData() {
+      syncStateFromFields();
+      const merged = [
+        '## 基本データ 現時点版',
+        '',
+        '### 案件',
+        [
+          state.projectName && `案件名: ${state.projectName}`,
+          state.clientName && `顧客名: ${state.clientName}`,
+          state.projectMemo && `案件メモ:\n${state.projectMemo}`
+        ].filter(Boolean).join('\n') || '未入力',
+        '',
+        '### 資料収集',
+        state.materialsResult || state.materials || '未入力',
+        '',
+        '### ヒアリング',
+        state.hearingResult || state.conversationRecord || '未入力',
+        '',
+        '### 商品調査',
+        state.productResult || '未入力',
+        '',
+        '### 顧客調査',
+        state.customerResult || '未入力',
+        '',
+        '### 市場調査',
+        [
+          state.marketAdoptTrend && `採用する市場動向:\n${state.marketAdoptTrend}`,
+          state.marketAdoptOpportunityThreat && `採用する機会・脅威:\n${state.marketAdoptOpportunityThreat}`,
+          state.marketAdoptSources && `採用する根拠・出典:\n${state.marketAdoptSources}`,
+          state.marketResult && `まとめ:\n${state.marketResult}`
+        ].filter(Boolean).join('\n\n') || '未入力',
+        '',
+        '### 競合調査',
+        [
+          state.competitorAdoptInfo && `採用する競合情報:\n${state.competitorAdoptInfo}`,
+          state.competitorAdoptStrengthWeakness && `採用する競合の強み・弱み:\n${state.competitorAdoptStrengthWeakness}`,
+          state.competitorAdoptGap && `採用する自社が勝てる隙間:\n${state.competitorAdoptGap}`,
+          state.competitorResult && `まとめ:\n${state.competitorResult}`
+        ].filter(Boolean).join('\n\n') || '未入力',
+        '',
+        '### SWOT分析',
+        [
+          state.swotStrength && `採用する強み:\n${state.swotStrength}`,
+          state.swotWeakness && `採用する弱み:\n${state.swotWeakness}`,
+          state.swotOpportunity && `採用する機会:\n${state.swotOpportunity}`,
+          state.swotThreat && `採用する脅威:\n${state.swotThreat}`,
+          state.crossSwot && `採用するクロスSWOT:\n${state.crossSwot}`,
+          state.swotResult && `まとめ:\n${state.swotResult}`
+        ].filter(Boolean).join('\n\n') || '未入力',
+        '',
+        '### 会社概要を作る',
+        state[promptOutputKey('会社概要を作る')] || '未入力',
+        '',
+        '### 決算書概要分析',
+        state[promptOutputKey('決算書概要分析プロンプトパーツ')] || '未入力',
+        '',
+        '### 経営課題発見',
+        state[promptOutputKey('経営課題発見プロンプト【多視点リスト型】')] || '未入力',
+        '',
+        '### 経営方針作成',
+        state[promptOutputKey('経営方針作成プロンプト')] || '未入力',
+        ''
+      ].join('\n');
+      state.baseData = merged;
+      const textarea = document.querySelector('[data-key="baseData"]');
+      if (textarea) textarea.value = merged;
+      persistProjectData();
+      showToast('基本データを統合しました');
+    }
+
+    function mergeTrainingCreator() {
+      syncStateFromFields();
+      const trainingOutput = state[promptOutputKey('研修企画書生成テンプレート（Traingo標準）')] || '';
+      const merged = [
+        '## 研修企画クリエイター',
+        '',
+        '### 研修企画',
+        trainingOutput || '未入力',
+        '',
+        '### 採用する既存コンテンツ・教材素材',
+        state.trainingExistingContent || '未入力',
+        '',
+        '### 採用する研修化テーマ',
+        state.trainingThemes || '未入力',
+        '',
+        '### 採用する最優先テーマ',
+        state.trainingPriorityTheme || '未入力',
+        '',
+        '### 採用する研修タイトル',
+        state.trainingTitle || '未入力',
+        '',
+        '### 採用する対象者',
+        state.trainingAudience || '未入力',
+        '',
+        '### 採用する研修の目的',
+        state.trainingPurpose || '未入力',
+        '',
+        '### 採用する到達目標',
+        state.trainingGoals || '未入力',
+        '',
+        '### 採用するカリキュラム案',
+        state.trainingCurriculum || '未入力',
+        '',
+        '### 採用する教材化・オンラインコース化の方針',
+        state.trainingMaterialsPlan || '未入力',
+        '',
+        '### 採用する提供方法',
+        state.trainingDelivery || '未入力',
+        '',
+        '### 採用する販売・提案への導線',
+        state.trainingSalesPath || '未入力',
+        '',
+        '### 採用する成果測定・次に作る成果物',
+        state.trainingMetrics || '未入力',
+        ''
+      ].join('\n');
+      state.trainingCreatorResult = merged;
+      const textarea = document.querySelector('[data-key="trainingCreatorResult"]');
+      if (textarea) textarea.value = merged;
+      persistProjectData();
+      showToast('研修企画クリエイターを統合しました');
+    }
+
+    function buildMarkdownOutput() {
+      syncStateFromFields();
+      const text = buildMarkdown();
+      state.markdownOutput = text;
+      const output = document.getElementById('markdownOutput');
+      output.value = text;
+      persistProjectData(true);
+      scrollToSection('markdown');
+      output.focus();
+      showToast('MD形式まとめに作成しました');
+    }
+
+    async function copyMarkdownOutput() {
+      const output = document.getElementById('markdownOutput');
+      const text = output.value || buildMarkdown();
+      if (!output.value) {
+        output.value = text;
+        state.markdownOutput = text;
+        persistProjectData(true);
+      }
+      const ok = await writeClipboard(text);
+      showToast(ok ? 'MD形式をコピーしました' : 'MD形式をコピーできませんでした', !ok);
+    }
+
+    function buildMarkdown() {
+      syncStateFromFields();
+      const lines = [
+        '# コンサル案件まとめ',
+        '',
+        '## 案件',
+        `- 案件名: ${state.projectName || '未入力'}`,
+        `- 顧客名: ${state.clientName || '未入力'}`,
+        '',
+        '### 案件メモ',
+        state.projectMemo || '未入力',
+        '',
+        '## 資料収集',
+        '### 素材',
+        state.materials || '未入力',
+        '',
+        '### まとめ資料に追加する内容',
+        state.materialsResult || '未入力',
+        '',
+        '## ヒアリング',
+        // 「会話記録・文字起こし」欄(conversationRecord)の生ログはMDまとめに転記しない。
+        // 過去に貼った会話文が保存され続け、MD作成時に「入れていない過去の会話」が出てくるのを止めるため
+        // （2026-06-24 阿久津さん指示「MD作成で余計な過去の会話が出る・やめてくれ」）。
+        // ヒアリングの要点は直下の「まとめ資料に追加する内容」(hearingResult)に集約する。
+        '### まとめ資料に追加する内容',
+        state.hearingResult || '未入力',
+        ...promptOutputsMarkdown(promptGroups.hearing),
+        '',
+        '## 商品調査',
+        '### 商品内容',
+        state.productContent || '未入力',
+        '',
+        '### 特徴',
+        state.productFeatures || '未入力',
+        '',
+        '### ベネフィット',
+        state.productBenefits || '未入力',
+        '',
+        '### USP',
+        state.productUsp || '未入力',
+        '',
+        '### まとめ資料に追加する内容',
+        state.productResult || '未入力',
+        '',
+        '## 顧客調査',
+        '### まとめ資料に追加する内容',
+        state.customerResult || '未入力',
+        ...promptOutputsMarkdown(promptGroups.customer),
+        '',
+        '## 市場調査',
+        '### まとめ資料に追加する内容',
+        state.marketResult || '未入力',
+        '',
+        '### 採用する市場動向',
+        state.marketAdoptTrend || '未入力',
+        '',
+        '### 採用する機会・脅威',
+        state.marketAdoptOpportunityThreat || '未入力',
+        '',
+        '### 採用する根拠・出典',
+        state.marketAdoptSources || '未入力',
+        ...promptOutputsMarkdown(promptGroups.market),
+        '',
+        '## 競合調査',
+        '### まとめ資料に追加する内容',
+        state.competitorResult || '未入力',
+        '',
+        '### 採用する競合情報',
+        state.competitorAdoptInfo || '未入力',
+        '',
+        '### 採用する競合の強み・弱み',
+        state.competitorAdoptStrengthWeakness || '未入力',
+        '',
+        '### 採用する自社が勝てる隙間',
+        state.competitorAdoptGap || '未入力',
+        ...promptOutputsMarkdown(promptGroups.competitor),
+        '',
+        '## SWOT分析',
+        '### 強み',
+        state.swotStrength || '未入力',
+        '',
+        '### 弱み',
+        state.swotWeakness || '未入力',
+        '',
+        '### 機会',
+        state.swotOpportunity || '未入力',
+        '',
+        '### 脅威',
+        state.swotThreat || '未入力',
+        '',
+        '### クロスSWOT',
+        state.crossSwot || '未入力',
+        '',
+        '### まとめ資料に追加する内容',
+        state.swotResult || '未入力',
+        ...promptOutputsMarkdown(promptGroups.swot),
+        '',
+        '## 基本データ 現時点版',
+        state.baseData || '未入力',
+        ...promptOutputsMarkdown(promptGroups.baseData),
+        ''
+        // MD作成は「基本データ統合」までで止める。研修企画クリエイター・事業計画書の内容は
+        // MDまとめに入れない（2026-06-25 阿久津さん指示「MD作成のところに、研修クリエイターや
+        // 事業計画の内容入れないで欲しい」）。両者は各セクションの専用出力で別途扱う。
+      ];
+      return lines.join('\n');
+    }
+
+    function promptOutputsMarkdown(names) {
+      return names.flatMap((name) => [
+        '',
+        `### ${displayPromptName(name)}`,
+        state[promptOutputKey(name)] || '未入力'
+      ]);
+    }
+
+    function displayPromptName(name) {
+      return String(name || '').replace(/プロンプト/gu, '').trim();
+    }
+
+    function fillVariables(body, group, promptName) {
+      const productContent = state.productContent || state.materials || '%%input1%%';
+      const features = state.productFeatures || '%%input2%%';
+      const benefits = state.productBenefits || '%%input3%%';
+      const persona = [state.customerProspect, state.customerPain, state.customerExpectation].filter(Boolean).join('\n') || '%%input2%%';
+      const hearing = state.conversationRecord || state.materials || '%%input1%%';
+      const customer = [state.customerProspect, state.customerPain, state.customerExpectation, state.materials].filter(Boolean).join('\n\n') || '%%input1%%';
+      const market = [
+        state.baseData && `基本データ:\n${state.baseData}`,
+        state.productContent && `商品内容:\n${state.productContent}`,
+        state.productResult && `商品調査:\n${state.productResult}`,
+        state.customerResult && `顧客調査:\n${state.customerResult}`,
+        state.materialsResult && `資料収集:\n${state.materialsResult}`
+      ].filter(Boolean).join('\n\n') || state.materials || '%%input1%%';
+      const competitor = [
+        state.productContent && `自社商品・サービス:\n${state.productContent}`,
+        state.productResult && `商品調査:\n${state.productResult}`,
+        state.customerResult && `顧客調査:\n${state.customerResult}`,
+        state.marketResult && `市場調査:\n${state.marketResult}`,
+        state.materialsResult && `資料収集:\n${state.materialsResult}`
+      ].filter(Boolean).join('\n\n') || state.materials || '%%input1%%';
+      const swotAll = [
+        state.baseData && `基本データ:\n${state.baseData}`,
+        state.hearingResult && `ヒアリング:\n${state.hearingResult}`,
+        state.productResult && `商品調査:\n${state.productResult}`,
+        state.customerResult && `顧客調査:\n${state.customerResult}`,
+        state.marketResult && `市場調査:\n${state.marketResult}`,
+        state.competitorResult && `競合調査:\n${state.competitorResult}`
+      ].filter(Boolean).join('\n\n') || state.conversationRecord || state.materials || '%%input1%%';
+      const baseDataSource = [
+        state.projectName && `案件名:\n${state.projectName}`,
+        state.clientName && `会社名・顧客名:\n${state.clientName}`,
+        state.projectMemo && `案件メモ:\n${state.projectMemo}`,
+        state.materials && `資料:\n${state.materials}`,
+        state.materialsResult && `資料収集まとめ:\n${state.materialsResult}`,
+        state.conversationRecord && `会話記録:\n${state.conversationRecord}`,
+        state.hearingResult && `ヒアリングまとめ:\n${state.hearingResult}`,
+        state.productResult && `商品調査:\n${state.productResult}`,
+        state.customerResult && `顧客調査:\n${state.customerResult}`,
+        state.marketResult && `市場調査:\n${state.marketResult}`,
+        state.competitorResult && `競合調査:\n${state.competitorResult}`,
+        state.swotResult && `SWOT分析:\n${state.swotResult}`
+      ].filter(Boolean).join('\n\n') || state.conversationRecord || state.materials || '%%input1%%';
+      const trainingBase = [
+        state.baseData,
+        state.hearingResult,
+        state.productResult,
+        state.customerResult,
+        state.materialsResult
+      ].filter(Boolean).join('\n\n') || 'ここに会社情報、事業計画、社長発言、顧客課題、商品情報、既存教材情報を貼り付けてください';
+      const trainingContent = state.trainingExistingContent || state.materials || 'ここに既存動画、講座、台本、スライド、PDF、ウェビナー内容、販売ページ情報を貼り付けてください';
+      const trainingTemplate = [
+        state.trainingThemes && `研修化できるテーマ候補:\n${state.trainingThemes}`,
+        state.trainingPriorityTheme && `最優先テーマ:\n${state.trainingPriorityTheme}`,
+        state.trainingTitle && `研修タイトル:\n${state.trainingTitle}`,
+        state.trainingAudience && `対象者:\n${state.trainingAudience}`,
+        state.trainingPurpose && `研修の目的:\n${state.trainingPurpose}`,
+        state.trainingGoals && `到達目標:\n${state.trainingGoals}`,
+        state.trainingCurriculum && `カリキュラム案:\n${state.trainingCurriculum}`,
+        state.trainingMaterialsPlan && `教材化方針:\n${state.trainingMaterialsPlan}`,
+        state.trainingDelivery && `提供方法:\n${state.trainingDelivery}`,
+        state.trainingSalesPath && `販売・提案への導線:\n${state.trainingSalesPath}`,
+        state.trainingMetrics && `成果測定・次に作る成果物:\n${state.trainingMetrics}`
+      ].filter(Boolean).join('\n\n') || 'ここに既存の企画書フォーマット、または必要な項目を貼り付けてください。未指定の場合は、下記の標準構成で作成してください';
+      const planTemplate = state.planFormat || 'ここに事業計画書のテンプレートを貼り付けてください';
+      const planMaterial = [
+        state.baseData && `基本情報:\n${state.baseData}`,
+        state.planFormat && `テンプレート:\n${state.planFormat}`
+      ].filter(Boolean).join('\n\n');
+      const isBenefitPrompt = promptName === 'ベネフィット転換プロンプト';
+      const input1 =
+        isBenefitPrompt
+          ? features
+          : group === 'product'
+            ? productContent
+            : group === 'hearing'
+              ? hearing
+              : group === 'market'
+                ? market
+                : group === 'competitor'
+                  ? competitor
+                  : group === 'swot'
+                    ? (promptName === 'クロスSWOT分析' ? (state.swotStrength || '%%input1%%') : swotAll)
+                    : group === 'baseData'
+                      ? (promptName === '会社概要を作る' ? (state.clientName || '%%input1%%') : baseDataSource)
+                      : group === 'plan'
+                        ? (planMaterial || baseDataSource || '%%input1%%')
+                        : customer;
+      const input2 = isBenefitPrompt ? persona : group === 'product' ? features : group === 'swot' && promptName === 'クロスSWOT分析' ? (state.swotWeakness || '%%input2%%') : (state.customerPain || '%%input2%%');
+      const input3 = group === 'product' ? benefits : group === 'swot' && promptName === 'クロスSWOT分析' ? (state.swotOpportunity || '%%input3%%') : (state.customerExpectation || '%%input3%%');
+      const input4 = group === 'swot' && promptName === 'クロスSWOT分析' ? (state.swotThreat || '%%input4%%') : '%%input4%%';
+      return String(body || '')
+        .replaceAll('%%input1%%', input1)
+        .replaceAll('%%input2%%', input2)
+        .replaceAll('%%input3%%', input3)
+        .replaceAll('%%input4%%', input4)
+        .replaceAll('{商品情報}', productContent)
+        .replaceAll('{自社の製品・サービス名}', productContent)
+        .replaceAll('{製品・サービスの特徴}', features)
+        .replaceAll('{提供する価値}', benefits)
+        .replaceAll('{顧客ヒアリングの音声データ}', state.conversationRecord || customer)
+        .replaceAll('{顧客ニーズ}', state.customerExpectation || '顧客ニーズ')
+        .replaceAll('ここに、これまでの会話記録や経営数値を貼り付けてください', baseDataSource)
+        .replaceAll('{基本情報}', state.baseData || baseDataSource || '未設定')
+        .replaceAll('{テンプレート}', planTemplate)
+        .replaceAll('変数 ="\n会話記録\n"', `変数 ="\n${baseDataSource}\n"`)
+        .replaceAll('ここに会社情報、事業計画、社長発言、顧客課題、商品情報、既存教材情報を貼り付けてください', trainingBase)
+        .replaceAll('ここに既存動画、講座、台本、スライド、PDF、ウェビナー内容、販売ページ情報を貼り付けてください', trainingContent)
+        .replaceAll('ここに既存の企画書フォーマット、または必要な項目を貼り付けてください。未指定の場合は、下記の標準構成で作成してください', trainingTemplate);
+    }
+
+    async function writeClipboard(text) {
+      try {
+        if (navigator.clipboard?.writeText) {
+          await navigator.clipboard.writeText(text);
+          return true;
+        }
+      } catch {}
+      try {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.setAttribute('readonly', 'readonly');
+        textarea.style.position = 'fixed';
+        textarea.style.left = '-9999px';
+        textarea.style.top = '0';
+        document.body.appendChild(textarea);
+        textarea.focus();
+        textarea.select();
+        textarea.setSelectionRange(0, textarea.value.length);
+        const ok = document.execCommand('copy');
+        document.body.removeChild(textarea);
+        return ok;
+      } catch {
+        return false;
+      }
+    }
+
+    function showToast(message, bad = false) {
+      toast.textContent = message;
+      toast.style.background = bad ? 'var(--bad)' : 'var(--ok)';
+      toast.classList.add('show');
+      clearTimeout(showToast.timer);
+      showToast.timer = setTimeout(() => toast.classList.remove('show'), 1600);
+    }
+
+    function resolveToolBaseUrl() {
+      return location.protocol === 'file:' ? 'http://localhost:4174' : location.origin;
+    }
+
+    function renderRegistrationLinks() {
+      const base = resolveToolBaseUrl();
+      const primary = `${base}/consulting-flow-tool/index.html`;
+      const publicUrl = `${base}/outputs/consulting-flow-tool/index.html`;
+      const adminPrimary = `${base}/consulting-flow-tool/admin.html`;
+      const adminPublic = `${base}/outputs/consulting-flow-tool/admin.html`;
+      const primaryLink = document.getElementById('toolEntryLink');
+      const publicLink = document.getElementById('toolPublicLink');
+      const adminPrimaryLink = document.getElementById('toolAdminPrimaryLink');
+      const adminPublicLink = document.getElementById('toolAdminPublicLink');
+      if (primaryLink) {
+        primaryLink.href = primary;
+        primaryLink.textContent = primary;
+      }
+      if (publicLink) {
+        publicLink.href = publicUrl;
+        publicLink.textContent = publicUrl;
+      }
+      if (adminPrimaryLink) {
+        adminPrimaryLink.href = adminPrimary;
+        adminPrimaryLink.textContent = adminPrimary;
+      }
+      if (adminPublicLink) {
+        adminPublicLink.href = adminPublic;
+        adminPublicLink.textContent = adminPublic;
+      }
+    }
+
+    function handleLogin() {
+      const id = (loginIdInput.value || '').trim();
+      const password = (loginPasswordInput.value || '').trim();
+      const users = ensureUserRegistry();
+      const user = users.find((item) => item.id === id && item.password === password);
+      if (user && user.role === 'admin') {
+        showToast('管理画面は /consulting-flow-tool/admin.html へアクセスしてください', true);
+        return;
+      }
+      if (user && user.role === 'user') {
+        const companyName = loginCompanyInput?.value || '';
+        const userName = loginUserNameInput?.value || '';
+        saveSignedSession(id, companyName, userName);
+        if (!String(companyName || '').trim()) {
+          saveUserProfilePatch(id, user.companyName, user.userName);
+        }
+        localStorage.setItem(authKey, '1');
+        loginPasswordInput.value = '';
+        showToast('ログインしました');
+        init();
+        return;
+      }
+      showToast('IDまたはパスワードが違います', true);
+    }
+
+    function saveUserProfilePatch(id, companyName, userName) {
+      const users = loadUserRegistry();
+      const idx = users.findIndex((user) => user.id === id);
+      if (idx < 0) return;
+      users[idx].companyName = String(companyName || '').trim();
+      users[idx].userName = String(userName || '').trim();
+      localStorage.setItem(userRegistryKey, JSON.stringify(users));
+    }
+
+    function prefillHeaderProfile() {
+      let profile = { companyName: '', userName: '' };
+      try {
+        profile = JSON.parse(localStorage.getItem(profileKey) || '{}');
+      } catch {
+        profile = { companyName: '', userName: '' };
+      }
+      if (headerCompanyInput) headerCompanyInput.value = String(profile.companyName || '').trim();
+      if (headerUserNameInput) headerUserNameInput.value = String(profile.userName || '').trim();
+    }
+
+    function saveHeaderProfile() {
+      const id = String(localStorage.getItem('consulting-flow-tool-login-id') || '').trim();
+      if (!id) {
+        showToast('ログイン情報が見つかりません。ログインし直してください', true);
+        return;
+      }
+      const companyName = String(headerCompanyInput?.value || '').trim();
+      const userName = String(headerUserNameInput?.value || '').trim();
+      if (!companyName || !userName) {
+        showToast('会社名とあなたの名前を入力してください', true);
+        return;
+      }
+      saveSignedSession(id, companyName, userName);
+      saveUserProfilePatch(id, companyName, userName);
+      setSignedUserBadge();
+      if (profileEdit) profileEdit.open = false;
+      showToast('プロフィールを更新しました');
+    }
+
+    function handleLogout() {
+      localStorage.removeItem(authKey);
+      localStorage.removeItem(authSessionKey);
+      localStorage.removeItem('consulting-flow-tool-login-id');
+      showAuthGate();
+      showToast('ログアウトしました');
+    }
+
+    function getRegisterText() {
+      const entryLinks = [
+        `Traingo-consulting URL: ${resolveToolBaseUrl()}/consulting-flow-tool/index.html`,
+        `配布向けURL: ${resolveToolBaseUrl()}/outputs/consulting-flow-tool/index.html`,
+        '初回登録ID: 管理者が発行します',
+        '初回登録Pass: 管理者が発行します',
+        '運用注意: 同一ブラウザ同一プロフィールでは同じ案件データを共有します'
+      ];
+      return `${entryLinks[0]}\n${entryLinks[1]}\n${entryLinks[2]}\n${entryLinks[3]}`;
+    }
+
+    function buildMailBody() {
+      return encodeURIComponent(`Traingo-consulting 利用開始情報\n\n${getRegisterText()}\n\n必要ならこのアカウント情報でツールを開いて案件を作成してください。`);
+    }
+
+    function openMailShare() {
+      const to = String(shareEmailInput?.value || '').trim();
+      if (!to) {
+        showToast('メールアドレスを入力してください', true);
+        return;
+      }
+      const subject = encodeURIComponent('Traingo-consulting 利用開始情報');
+      const body = buildMailBody();
+      const mailto = `mailto:${encodeURIComponent(to)}?subject=${subject}&body=${body}`;
+      const a = document.createElement('a');
+      a.href = mailto;
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      showToast('メールアプリで下書きを開きました。送信ボタンを押すと相手に届きます。');
+    }
+
+    async function copyRegisterInfo() {
+      const text = getRegisterText();
+      const ok = await writeClipboard(text);
+      showToast(ok ? '登録情報をコピーしました' : 'コピーできませんでした', !ok);
+    }
+
+    mdTagFilterInput?.addEventListener('input', refreshMdHistorySelect);
+    loginBtn?.addEventListener('click', handleLogin);
+    profileEdit?.addEventListener('toggle', () => {
+      if (profileEdit.open) prefillHeaderProfile();
+    });
+    headerProfileSaveBtn?.addEventListener('click', saveHeaderProfile);
+    document.addEventListener('click', (event) => {
+      if (profileEdit && profileEdit.open && !profileEdit.contains(event.target)) {
+        profileEdit.open = false;
+      }
+    });
+    loginPasswordInput?.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        handleLogin();
+      }
+    });
+    logoutBtn?.addEventListener('click', handleLogout);
+    copyRegisterLinkBtn?.addEventListener('click', (event) => {
+      event.preventDefault();
+      copyRegisterInfo();
+    });
+    shareByEmailBtn?.addEventListener('click', (event) => {
+      event.preventDefault();
+      openMailShare();
+    });
+
+    function escapeHtml(text) {
+      return String(text || '').replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#039;');
+    }
+
+    function escapeAttr(text) {
+      return escapeHtml(text).replaceAll('`', '&#096;');
+    }
+
+    renderRegistrationLinks();
+    init();
+  </script>
+
+
+<div class="glasp-extension-toaster glasp-extension-toaster--youtube-summary" data-glasp-print="hide" style="display: block; width: 320px; margin: unset; padding: unset; border: unset; border-radius: unset; outline: unset; background-color: unset; box-shadow: unset; position: fixed; top: 40px; right: 24px; z-index: 9999;"><template shadowrootmode="open"><div class="glasp-extension" style="font-family: inherit;"></div></template></div></body><div class="glasp-extension" data-glasp-print="hide" id="glasp-web-summary-button" style="display: block; width: unset; margin: unset; padding: unset; border: unset; border-radius: unset; outline: unset; background-color: unset; box-shadow: unset; position: fixed; bottom: 16px; right: 16px; z-index: 9999;"><div class="glasp-extension" style="font-family: inherit;"></div></div></html>

@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小規模事業者持続化補助金｜採択後から実績報告までの実務ガイド</title>
+<style>
+:root{
+  --navy:#0f1f33;
+  --navy2:#18314f;
+  --ink:#1e293b;
+  --muted:#64748b;
+  --bg:#f5f7fa;
+  --white:#ffffff;
+  --line:#dbe2ea;
+  --red:#b42318;
+  --red-bg:#fff2f1;
+  --amber:#9a6700;
+  --amber-bg:#fff8df;
+  --green:#16794f;
+  --green-bg:#edf9f3;
+  --blue:#245b9e;
+  --blue-bg:#eef5ff;
+  --side:292px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP","Yu Gothic",Meiryo,sans-serif;
+  color:var(--ink);
+  background:var(--bg);
+  line-height:1.85;
+}
+a{color:inherit}
+button{font:inherit}
+.sidebar{
+  position:fixed;
+  inset:0 auto 0 0;
+  width:var(--side);
+  background:var(--navy);
+  color:#fff;
+  padding:24px 18px 28px;
+  overflow-y:auto;
+  z-index:50;
+  box-shadow:4px 0 20px rgba(15,31,51,.12);
+}
+.brand{
+  padding:0 8px 18px;
+  border-bottom:1px solid rgba(255,255,255,.14);
+  margin-bottom:14px;
+}
+.brand small{
+  display:block;
+  color:#aebed0;
+  font-size:12px;
+  letter-spacing:.08em;
+}
+.brand strong{
+  display:block;
+  margin-top:6px;
+  font-size:19px;
+  line-height:1.5;
+}
+.nav-label{
+  margin:18px 10px 7px;
+  font-size:11px;
+  color:#8fa1b7;
+  letter-spacing:.12em;
+}
+.sidebar a.nav{
+  display:block;
+  text-decoration:none;
+  color:#dce5ef;
+  padding:10px 12px;
+  border-radius:9px;
+  margin:2px 0;
+  font-size:14px;
+  border-left:3px solid transparent;
+}
+.sidebar a.nav:hover,.sidebar a.nav.active{
+  background:rgba(255,255,255,.10);
+  color:#fff;
+  border-left-color:#fff;
+}
+.side-alert{
+  margin:20px 4px 0;
+  padding:14px;
+  border-radius:10px;
+  background:rgba(180,35,24,.22);
+  border:1px solid rgba(255,255,255,.15);
+  font-size:12px;
+  line-height:1.65;
+}
+.side-alert strong{
+  display:block;
+  font-size:14px;
+  margin-bottom:4px;
+}
+main{margin-left:var(--side)}
+.hero{
+  padding:62px 58px 52px;
+  color:#fff;
+  background:linear-gradient(135deg,#0f1f33 0%,#1b3859 100%);
+}
+.hero .eyebrow{
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.12em;
+  color:#b9c8d8;
+}
+.hero h1{
+  max-width:960px;
+  margin:10px 0 16px;
+  font-size:40px;
+  line-height:1.35;
+}
+.hero p{
+  max-width:980px;
+  margin:0;
+  font-size:17px;
+  color:#dbe6f1;
+}
+.hero-warning{
+  max-width:980px;
+  margin-top:28px;
+  padding:20px 22px;
+  border-radius:10px;
+  border-left:7px solid var(--red);
+  background:#fff;
+  color:var(--ink);
+}
+.hero-warning strong{
+  color:var(--red);
+  font-size:20px;
+}
+.wrap{
+  max-width:1150px;
+  margin:0 auto;
+  padding:56px 42px;
+}
+section{scroll-margin-top:24px}
+h2{
+  margin:0 0 18px;
+  color:var(--navy);
+  font-size:30px;
+  line-height:1.45;
+}
+h3{
+  margin:0 0 10px;
+  color:var(--navy);
+  font-size:21px;
+  line-height:1.5;
+}
+p{margin:0 0 12px}
+.lead{
+  margin-bottom:28px;
+  font-size:17px;
+  color:#334155;
+}
+.badge{
+  display:inline-block;
+  margin-bottom:9px;
+  padding:5px 9px;
+  border-radius:999px;
+  background:#e8edf3;
+  color:#334155;
+  font-size:12px;
+  font-weight:800;
+}
+.notice{
+  margin:20px 0;
+  padding:20px 22px;
+  border-radius:12px;
+}
+.notice .label{
+  margin-bottom:4px;
+  font-weight:800;
+}
+.notice.danger{background:var(--red-bg);border:1px solid #f0b8b4;border-left:6px solid var(--red)}
+.notice.danger .label{color:var(--red)}
+.notice.warn{background:var(--amber-bg);border:1px solid #efd48d;border-left:6px solid #c58a00}
+.notice.info{background:var(--blue-bg);border:1px solid #c0d4ef;border-left:6px solid var(--blue)}
+.notice.good{background:var(--green-bg);border:1px solid #b9dfcf;border-left:6px solid var(--green)}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+}
+.card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:24px;
+  box-shadow:0 4px 16px rgba(20,35,55,.04);
+}
+.card .num{
+  display:inline-grid;
+  place-items:center;
+  width:34px;
+  height:34px;
+  margin-bottom:12px;
+  border-radius:50%;
+  background:var(--navy);
+  color:#fff;
+  font-weight:800;
+}
+.card p{color:#475569}
+.flow{display:grid;gap:14px}
+.step{
+  display:grid;
+  grid-template-columns:78px 1fr;
+  overflow:hidden;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+}
+.step-no{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--navy);
+  color:#fff;
+  font-weight:900;
+  font-size:21px;
+}
+.step-body{padding:22px 24px}
+.step-body p{margin:6px 0 0}
+.dangerline{
+  color:var(--red);
+  font-weight:800;
+}
+.mistakes{display:grid;gap:14px}
+.mistake{
+  padding:19px 21px;
+  background:#fff;
+  border:1px solid #ecc7c3;
+  border-left:6px solid var(--red);
+  border-radius:12px;
+}
+.mistake .wrong{
+  color:var(--red);
+  font-size:17px;
+  font-weight:800;
+}
+.mistake .right{
+  margin-top:6px;
+  color:#334155;
+}
+table{
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0;
+  overflow:hidden;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:12px;
+  font-size:14px;
+}
+th,td{
+  padding:15px 16px;
+  text-align:left;
+  vertical-align:top;
+  border-bottom:1px solid var(--line);
+}
+th{
+  background:#edf2f7;
+  color:var(--navy);
+  font-weight:800;
+}
+tr:last-child td{border-bottom:0}
+.checklist{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  gap:10px;
+}
+.checklist li{
+  position:relative;
+  padding:14px 16px 14px 48px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:10px;
+}
+.checklist li::before{
+  content:"✓";
+  position:absolute;
+  left:16px;
+  top:13px;
+  width:24px;
+  height:24px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:var(--green-bg);
+  color:var(--green);
+  font-weight:900;
+}
+.faq details{
+  margin:10px 0;
+  padding:0 18px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:10px;
+}
+.faq summary{
+  cursor:pointer;
+  padding:17px 0;
+  font-weight:800;
+}
+.faq details p{
+  margin:0 0 18px;
+  color:#475569;
+}
+.refbox{
+  padding:18px 20px;
+  background:#fff;
+  border:1px dashed #a9b6c5;
+  border-radius:10px;
+  color:#475569;
+  font-size:13px;
+}
+.footer-note{
+  margin-top:44px;
+  padding-top:20px;
+  border-top:1px solid var(--line);
+  color:#64748b;
+  font-size:13px;
+}
+.mobile-toggle{display:none}
+@media(max-width:900px){
+  .mobile-toggle{
+    display:block;
+    position:fixed;
+    top:14px;
+    right:14px;
+    z-index:80;
+    border:0;
+    border-radius:10px;
+    padding:11px 13px;
+    background:var(--navy);
+    color:#fff;
+    box-shadow:0 4px 14px rgba(0,0,0,.18);
+  }
+  .sidebar{
+    transform:translateX(-105%);
+    transition:.25s ease;
+  }
+  .sidebar.open{transform:translateX(0)}
+  main{margin-left:0}
+  .hero{padding:72px 22px 38px}
+  .hero h1{font-size:30px}
+  .wrap{padding:42px 20px}
+  .grid{grid-template-columns:1fr}
+  .step{grid-template-columns:58px 1fr}
+  th,td{padding:12px 10px;font-size:13px}
+  .table-wrap{overflow-x:auto}
+  table{min-width:760px}
+}
+</style>
+</head>
+<body>
+
+<button class="mobile-toggle" id="menuBtn">目次</button>
+
+<aside class="sidebar" id="sidebar">
+  <div class="brand">
+    <small>PRACTICAL GUIDE</small>
+    <strong>小規模事業者持続化補助金<br>採択後の実務ガイド</strong>
+  </div>
+
+  <div class="nav-label">CONTENTS</div>
+  <a class="nav" href="#top">最初に確認すること</a>
+  <a class="nav" href="#flow">採択後の全体の流れ</a>
+  <a class="nav" href="#mistake">間違えやすい注意点</a>
+  <a class="nav" href="#estimate">見積書・交付申請</a>
+  <a class="nav" href="#project">補助事業の進め方</a>
+  <a class="nav" href="#evidence">証拠書類の残し方</a>
+  <a class="nav" href="#change">内容変更がある場合</a>
+  <a class="nav" href="#report">実績報告</a>
+  <a class="nav" href="#documents">実績報告の主な書類</a>
+  <a class="nav" href="#deadline">提出期限</a>
+  <a class="nav" href="#check">最終チェックリスト</a>
+  <a class="nav" href="#faq">よくある勘違い</a>
+
+  <div class="side-alert">
+    <strong>最重要</strong>
+    採択通知を受けただけでは、補助事業を開始できません。交付決定日より前の発注・購入・契約等は補助対象外となる場合があります。
+  </div>
+</aside>
+
+<main>
+  <header class="hero" id="top">
+    <div class="eyebrow">採択された事業者向け</div>
+    <h1>採択後から実績報告まで、<br>「何を・いつ・どの順番で行うか」を迷わないための実務ガイド</h1>
+    <p>
+      このページは、小規模事業者持続化補助金の採択後に必要となる手続きを、
+      間違えやすい点を中心に整理したものです。採択後の確認、見積書の提出、交付決定、
+      補助事業の実施、証拠書類の整理、実績報告までを順番に確認できます。
+    </p>
+    <div class="hero-warning">
+      <strong>採択＝補助金が確定した、ではありません。</strong><br>
+      採択後は、申請内容や見積書等の確認を経て交付決定を受け、その後に補助事業を進めます。
+      特に、交付決定前の発注・購入・契約等は補助対象外となる可能性があるため、最初の行動を間違えないことが重要です。
+    </div>
+  </header>
+
+  <section class="wrap">
+    <span class="badge">まずここ</span>
+    <h2>最初に確認すること</h2>
+    <p class="lead">
+      採択通知が届いたら、すぐに買い物や発注へ進むのではなく、まず申請システムのマイページを開き、
+      採択通知書、差戻し内容、修正依頼、見積書の提出が必要かどうかを確認します。
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <div class="num">1</div>
+        <h3>採択通知書を確認する</h3>
+        <p>申請システムのマイページから採択通知書を確認します。採択されたことと、交付決定されたことは別です。</p>
+      </div>
+      <div class="card">
+        <div class="num">2</div>
+        <h3>差戻し・修正依頼を確認する</h3>
+        <p>申請内容に不備や確認事項がある場合は、対象項目に修正依頼が表示されます。放置せず、内容を確認して修正します。</p>
+      </div>
+      <div class="card">
+        <div class="num">3</div>
+        <h3>見積書等を準備する</h3>
+        <p>申請した経費について、必要な見積書や相見積等を準備します。応募時の金額との差異がある場合も確認が必要です。</p>
+      </div>
+      <div class="card">
+        <div class="num">4</div>
+        <h3>交付決定通知を待つ</h3>
+        <p>事務局による申請内容・見積書等の確認後、交付決定通知を確認してから補助事業を開始します。</p>
+      </div>
+    </div>
+
+    <div class="notice danger">
+      <div class="label">よくある重大な間違い</div>
+      「採択されたから今日発注してよい」と考えて先に契約・購入を進めることです。
+      補助対象として認められるかどうかは、交付決定日との前後関係が非常に重要です。
+    </div>
+  </section>
+
+  <section class="wrap" id="flow">
+    <span class="badge">全体像</span>
+    <h2>採択後の全体の流れ</h2>
+    <div class="flow">
+      <div class="step"><div class="step-no">1</div><div class="step-body"><h3>採択発表・通知</h3><p>採択結果を確認します。この時点ではまだ補助事業を開始しないでください。</p></div></div>
+      <div class="step"><div class="step-no">2</div><div class="step-body"><h3>マイページで採択通知書・差戻し内容を確認</h3><p>採択通知書、申請内容の修正有無、見積書提出の要否を確認します。</p></div></div>
+      <div class="step"><div class="step-no">3</div><div class="step-body"><h3>不備がある場合は修正</h3><p>修正依頼がある項目を確認し、必要な修正や追加資料の提出を行います。</p></div></div>
+      <div class="step"><div class="step-no">4</div><div class="step-body"><h3>見積書等を取得・提出</h3><p>申請した経費について必要な見積書等を準備して提出します。</p></div></div>
+      <div class="step"><div class="step-no">5</div><div class="step-body"><h3>事務局による確認</h3><p>再提出内容や見積書が確認されます。再修正や追加書類を求められる場合があります。</p></div></div>
+      <div class="step"><div class="step-no">6</div><div class="step-body"><h3>交付決定通知を確認</h3><p class="dangerline">交付決定通知書に記載された交付決定日を必ず確認します。</p></div></div>
+      <div class="step"><div class="step-no">7</div><div class="step-body"><h3>補助事業を開始</h3><p>交付決定後に、計画に沿って発注・契約・購入・実施を進めます。</p></div></div>
+      <div class="step"><div class="step-no">8</div><div class="step-body"><h3>証拠書類を都度保存</h3><p>見積、発注、契約、納品、請求、支払いなど、実績報告に必要な証拠をその都度整理します。</p></div></div>
+      <div class="step"><div class="step-no">9</div><div class="step-body"><h3>補助事業完了・実績報告</h3><p>必要書類をそろえ、申請システムから期限内に提出します。</p></div></div>
+    </div>
+  </section>
+
+  <section class="wrap" id="mistake">
+    <span class="badge">最重要</span>
+    <h2>間違えやすい注意点</h2>
+    <div class="mistakes">
+      <div class="mistake">
+        <div class="wrong">間違い1：採択されたら、すぐに発注してよい</div>
+        <div class="right">正しくは、交付決定通知を確認し、交付決定日以後に補助事業を開始します。交付決定日前の発注・購入・契約等は補助対象外となる可能性があります。</div>
+      </div>
+      <div class="mistake">
+        <div class="wrong">間違い2：採択通知書と交付決定通知書は同じ</div>
+        <div class="right">別のものです。採択後に申請内容や見積書等の確認があり、その後に交付決定となります。</div>
+      </div>
+      <div class="mistake">
+        <div class="wrong">間違い3：見積書は後で用意すればよい</div>
+        <div class="right">交付決定に向けて見積書等の提出が必要になるため、早い段階で準備します。必要に応じて相見積も確認します。</div>
+      </div>
+      <div class="mistake">
+        <div class="wrong">間違い4：経費の内容を変えても、同じ目的なら問題ない</div>
+        <div class="right">申請時の内容から変更がある場合、自己判断で進めると補助対象外となる可能性があります。変更の要否や手続きを事前に確認します。</div>
+      </div>
+      <div class="mistake">
+        <div class="wrong">間違い5：領収書だけあれば実績報告できる</div>
+        <div class="right">支出の事実だけでなく、見積、発注、契約、納品、請求、支払など、取引の流れが確認できる証拠書類が必要になることがあります。</div>
+      </div>
+      <div class="mistake">
+        <div class="wrong">間違い6：補助事業が終わってから証拠書類を集めればよい</div>
+        <div class="right">終了後では取得しにくい書類があります。事業実施中から、経費ごとに証拠書類を整理して保存します。</div>
+      </div>
+      <div class="mistake">
+        <div class="wrong">間違い7：実績報告は期限日に出せばよい</div>
+        <div class="right">不備があると再提出が必要になる可能性があります。期限直前ではなく、余裕をもって書類確認とアップロードを行います。</div>
+      </div>
+      <div class="mistake">
+        <div class="wrong">間違い8：システムに入力しただけで提出完了</div>
+        <div class="right">最終的に「提出する」操作まで行って、提出が完了しているか確認します。下書き保存のままでは提出扱いになりません。</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" id="estimate">
+    <span class="badge">交付決定前</span>
+    <h2>見積書・交付申請で気をつけること</h2>
+    <p class="lead">
+      採択後は、申請した経費の内容について見積書等を提出します。
+      申請内容に不備がある場合は修正したうえで、見積書とあわせて再提出します。
+    </p>
+    <div class="notice warn">
+      <div class="label">確認ポイント</div>
+      応募時の経費明細と実際の見積金額が異なる場合は、そのまま進めず、必要な対応方法を確認してください。
+    </div>
+    <ul class="checklist">
+      <li>申請した経費項目と見積書の内容が対応しているか</li>
+      <li>見積先、金額、商品・サービス内容が確認できるか</li>
+      <li>必要な場合、相見積が準備できているか</li>
+      <li>申請時の金額と差がある場合、その理由や手続きが確認できているか</li>
+      <li>差戻しや修正依頼が残っていないか</li>
+    </ul>
+  </section>
+
+  <section class="wrap" id="project">
+    <span class="badge">交付決定後</span>
+    <h2>補助事業の進め方</h2>
+    <p class="lead">
+      交付決定後は、申請した事業計画に沿って事業を進めます。
+      実績報告では「何をしたか」だけでなく、「いつ、誰に、いくらで発注し、納品され、支払いが完了したか」を確認できる状態が重要です。
+    </p>
+    <div class="grid">
+      <div class="card"><h3>発注前</h3><p>交付決定日を確認し、見積内容と申請内容にずれがないか確認します。</p></div>
+      <div class="card"><h3>契約・発注時</h3><p>発注書、注文書、契約書、メール等、取引開始を確認できる資料を保存します。</p></div>
+      <div class="card"><h3>納品・実施時</h3><p>納品書、完了報告、成果物、写真、画面キャプチャ等、実施したことがわかる資料を残します。</p></div>
+      <div class="card"><h3>請求・支払時</h3><p>請求書と支払記録を対応させて保存し、どの経費の支払いか追跡できる状態にします。</p></div>
+    </div>
+  </section>
+
+  <section class="wrap" id="evidence">
+    <span class="badge">実績報告の準備</span>
+    <h2>証拠書類は「経費ごと」にまとめる</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>段階</th><th>主な確認資料の例</th><th>注意点</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>見積</td><td>見積書、相見積等</td><td>申請内容との対応関係がわかるようにする</td></tr>
+          <tr><td>発注・契約</td><td>発注書、注文書、契約書、メール等</td><td>交付決定日より前になっていないか確認</td></tr>
+          <tr><td>納品・実施</td><td>納品書、作業完了資料、写真、成果物</td><td>実際に事業が行われたことを示せるようにする</td></tr>
+          <tr><td>請求</td><td>請求書</td><td>発注内容・納品内容と一致しているか確認</td></tr>
+          <tr><td>支払</td><td>振込記録、通帳記録等</td><td>誰から誰へ、いくら支払ったか追跡できる状態にする</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="notice info">
+      <div class="label">整理方法のおすすめ</div>
+      「01_機械装置」「02_広報費」のように経費ごとにフォルダを作り、その中に「見積→発注→納品→請求→支払」の順で保存すると、実績報告時の確認がしやすくなります。
+    </div>
+  </section>
+
+  <section class="wrap" id="change">
+    <span class="badge">途中で変更が出たら</span>
+    <h2>申請内容から変更がある場合</h2>
+    <p class="lead">
+      補助事業を進める途中で、購入先、仕様、金額、実施内容などが変わることがあります。
+      その場合は「同じ目的だから大丈夫」と自己判断せず、必要な変更手続きがあるか確認します。
+    </p>
+    <div class="notice danger">
+      <div class="label">先に変更して、後から報告する考え方は危険です</div>
+      変更内容によっては、事前の確認や手続きが必要になる場合があります。
+      迷った場合は、変更前に確認することを基本にしてください。
+    </div>
+  </section>
+
+  <section class="wrap" id="report">
+    <span class="badge">補助事業完了後</span>
+    <h2>実績報告の基本</h2>
+    <p class="lead">
+      補助事業が完了したら、実際に行った事業内容と支出内容をまとめ、申請システムから実績報告を提出します。
+      入力項目とアップロード書類をすべて確認し、最後に提出操作を行います。
+    </p>
+    <div class="flow">
+      <div class="step"><div class="step-no">1</div><div class="step-body"><h3>証拠書類をそろえる</h3><p>経費ごとに見積から支払までの資料を確認します。</p></div></div>
+      <div class="step"><div class="step-no">2</div><div class="step-body"><h3>実績報告書類を作成する</h3><p>全員必須の書類と、該当者のみ必要な書類を区別して準備します。</p></div></div>
+      <div class="step"><div class="step-no">3</div><div class="step-body"><h3>申請システムへ入力・アップロード</h3><p>入力内容と添付資料の整合を確認します。</p></div></div>
+      <div class="step"><div class="step-no">4</div><div class="step-body"><h3>「提出する」まで完了させる</h3><p>保存だけで終わらず、提出完了を確認します。</p></div></div>
+    </div>
+  </section>
+
+  <section class="wrap" id="documents">
+    <span class="badge">主な提出書類</span>
+    <h2>実績報告で確認しておきたい書類</h2>
+    <p class="lead">
+      実績報告では、全員が提出する書類と、条件に該当する場合のみ提出する書類があります。
+      自社がどれに該当するかを早めに確認してください。
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>書類</th><th>対象</th><th>確認ポイント</th></tr></thead>
+        <tbody>
+          <tr><td>実績報告に関する基本書類</td><td>全員</td><td>補助事業の実施内容を申請内容と照合する</td></tr>
+          <tr><td>支出内訳書</td><td>全員</td><td>経費区分、支出額、証拠書類との一致を確認する</td></tr>
+          <tr><td>収益納付に係る報告書</td><td>全員</td><td>該当の有無を含めて確認する</td></tr>
+          <tr><td>賃金引上げ特例・賃上げ加点に係る実績報告書</td><td>該当者のみ</td><td>該当する場合は要件確認と資料準備を行う</td></tr>
+          <tr><td>取得財産等管理明細表</td><td>該当者のみ</td><td>対象となる取得財産があるか確認する</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="wrap" id="deadline">
+    <span class="badge">期限厳守</span>
+    <h2>実績報告の提出期限</h2>
+    <div class="notice danger">
+      <div class="label">期限は「補助事業完了後30日」と「所定の提出期限」のいずれか早い日</div>
+      実績報告は、定められた提出期限または補助事業完了から起算して30日のいずれか早い日までに提出する必要があります。
+      期限までに提出がない場合、交付決定取消となる可能性があるため、補助事業完了後すぐに報告準備へ入ってください。
+    </div>
+    <div class="notice warn">
+      <div class="label">実務上のおすすめ</div>
+      補助事業完了日から逆算して準備を始めるのではなく、事業実施中から証拠書類をそろえ、完了時点では「報告書にまとめるだけ」の状態を目指します。
+    </div>
+  </section>
+
+  <section class="wrap" id="check">
+    <span class="badge">提出前</span>
+    <h2>最終チェックリスト</h2>
+    <ul class="checklist">
+      <li>交付決定日より前の発注・購入・契約が混ざっていない</li>
+      <li>申請内容と実際の実施内容に大きなずれがない</li>
+      <li>変更があった場合、必要な手続きを確認している</li>
+      <li>経費ごとに見積・発注・納品・請求・支払の証拠がそろっている</li>
+      <li>支出内訳と証拠書類の金額が一致している</li>
+      <li>該当者のみ必要な書類を見落としていない</li>
+      <li>提出期限を確認している</li>
+      <li>申請システムで入力内容と添付ファイルを最終確認した</li>
+      <li>「提出する」まで操作し、提出完了を確認した</li>
+    </ul>
+  </section>
+
+  <section class="wrap faq" id="faq">
+    <span class="badge">FAQ</span>
+    <h2>よくある勘違い</h2>
+    <details open>
+      <summary>採択通知が来たので、すぐ発注してもよいですか？</summary>
+      <p>原則として、まず交付決定通知を確認してください。交付決定日前に発注、購入、契約等を行ったものは補助対象外となる可能性があります。</p>
+    </details>
+    <details>
+      <summary>見積書を提出したら、すぐ事業を始めてもよいですか？</summary>
+      <p>見積書を提出しただけではなく、事務局の確認後に交付決定通知を確認してから開始します。</p>
+    </details>
+    <details>
+      <summary>領収書があれば支出の証明になりますか？</summary>
+      <p>領収書だけでは取引全体の流れが確認できない場合があります。見積、発注、契約、納品、請求、支払等の資料を経費ごとに整理しておくことが重要です。</p>
+    </details>
+    <details>
+      <summary>実績報告は郵送でもできますか？</summary>
+      <p>資料上では申請システムからの提出が案内されており、郵送での提出は受け付けていない旨が記載されています。</p>
+    </details>
+    <details>
+      <summary>実績報告の提出期限はいつですか？</summary>
+      <p>所定の提出期限または補助事業完了から起算して30日のいずれか早い日までと案内されています。自社の補助事業完了日と対象回の期限を必ず確認してください。</p>
+    </details>
+
+    <div class="refbox">
+      <strong>このページの使い方</strong><br>
+      実際の申請では、対象回の公募要領、交付規程、申請システム操作手引き、事務局からの通知を優先してください。
+      本ページは、採択後に起こりやすい手続き上の見落としを防ぐための実務整理用ガイドです。
+    </div>
+
+    <div class="footer-note">
+      参考資料：アップロードされた「採択後に必要な手続き」ページおよび「実績報告書の作成」ページの内容をもとに再構成。
+    </div>
+  </section>
+</main>
+
+<script>
+const menuBtn = document.getElementById('menuBtn');
+const sidebar = document.getElementById('sidebar');
+menuBtn.addEventListener('click',()=>sidebar.classList.toggle('open'));
+
+document.querySelectorAll('.sidebar a.nav').forEach(a=>{
+  a.addEventListener('click',()=>sidebar.classList.remove('open'));
+});
+
+const sections=[...document.querySelectorAll('main section[id], header[id]')];
+const links=[...document.querySelectorAll('.sidebar a.nav')];
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+entry.target.id));
+    }
+  });
+},{rootMargin:'-25% 0px -65% 0px'});
+sections.forEach(s=>observer.observe(s));
+</script>
+</body>
+</html>

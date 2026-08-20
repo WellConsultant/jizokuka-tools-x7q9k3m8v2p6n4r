@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中小企業省力化投資補助金（一般型）第5回 採択傾向分析</title>
+<style>
+  :root{
+    --navy:#16263F;
+    --navy-2:#1E3454;
+    --navy-3:#27405E;
+    --ink:#1B2430;
+    --line:#D8DEE7;
+    --line-2:#E8ECF2;
+    --bg:#F5F7FA;
+    --paper:#FFFFFF;
+    --muted:#5B6675;
+    --muted-2:#7A8595;
+    --bar:#16263F;
+    --bar-2:#5E7390;
+    --accent:#3E5C82;
+    --accent-soft:#E4EAF2;
+    --gold:#9A7B3F;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",Meiryo,system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.8;
+    letter-spacing:0.02em;
+    font-size:16px;
+  }
+  b,strong{font-weight:700;}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- header ---------- */
+  header.masthead{
+    background:var(--navy);
+    color:#fff;
+    border-bottom:3px solid var(--gold);
+  }
+  .masthead .wrap{padding:56px 24px 48px;}
+  .eyebrow{
+    font-size:13px;letter-spacing:0.18em;color:#A9B6C9;
+    text-transform:none;margin:0 0 18px;font-weight:700;
+  }
+  .masthead h1{
+    font-size:34px;line-height:1.4;margin:0 0 18px;font-weight:700;
+    letter-spacing:0.01em;
+  }
+  .masthead p.lead{
+    margin:0;color:#C7D1DE;font-size:15px;max-width:64ch;
+  }
+  .meta-row{
+    display:flex;flex-wrap:wrap;gap:24px;margin-top:28px;
+    padding-top:24px;border-top:1px solid rgba(255,255,255,0.16);
+    font-size:13px;color:#9FACBF;
+  }
+  .meta-row span b{color:#E6ECF3;}
+
+  /* ---------- KPI band ---------- */
+  .kpi-band{background:var(--navy-2);}
+  .kpi-band .wrap{
+    padding:0 24px;display:grid;grid-template-columns:repeat(4,1fr);
+  }
+  .kpi{
+    padding:28px 20px;color:#fff;
+    border-left:1px solid rgba(255,255,255,0.12);
+  }
+  .kpi:first-child{border-left:none;}
+  .kpi .num{font-size:30px;font-weight:700;line-height:1.1;letter-spacing:0.01em;}
+  .kpi .num small{font-size:15px;font-weight:700;margin-left:2px;}
+  .kpi .lbl{font-size:12.5px;color:#A9B6C9;margin-top:8px;line-height:1.6;}
+
+  /* ---------- sections ---------- */
+  main .wrap{padding:0 24px;}
+  section{padding:56px 0;border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px;}
+  .sec-no{
+    font-size:13px;font-weight:700;color:var(--gold);
+    letter-spacing:0.1em;min-width:34px;
+  }
+  h2{
+    font-size:23px;font-weight:700;margin:0;letter-spacing:0.01em;
+    color:var(--navy);line-height:1.45;
+  }
+  .sec-sub{color:var(--muted);font-size:14.5px;margin:14px 0 30px;max-width:70ch;}
+
+  /* ---------- the formula box ---------- */
+  .formula{
+    background:var(--navy);color:#fff;border-radius:4px;
+    padding:30px 28px;margin:8px 0 4px;
+  }
+  .formula .ttl{font-size:12.5px;color:#9FACBF;letter-spacing:0.1em;margin-bottom:18px;font-weight:700;}
+  .formula-grid{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px;}
+  .f-cell{
+    flex:1 1 160px;background:var(--navy-2);border:1px solid rgba(255,255,255,0.14);
+    border-radius:4px;padding:16px 16px;min-width:0;
+  }
+  .f-cell .k{font-size:12px;color:#8Fa0B6;margin-bottom:7px;font-weight:700;letter-spacing:0.04em;}
+  .f-cell .v{font-size:15px;font-weight:700;color:#fff;line-height:1.55;}
+  .f-plus{display:flex;align-items:center;color:#6E7E96;font-size:20px;font-weight:700;}
+  .formula-note{font-size:13.5px;color:#B7C2D2;margin:20px 0 0;line-height:1.7;}
+
+  /* ---------- bar chart ---------- */
+  .bars{margin:4px 0 0;}
+  .bar-row{
+    display:grid;grid-template-columns:200px 1fr 64px;align-items:center;
+    gap:14px;padding:9px 0;border-bottom:1px solid var(--line-2);
+  }
+  .bar-row:last-child{border-bottom:none;}
+  .bar-label{font-size:14px;font-weight:700;color:var(--ink);}
+  .bar-label small{display:block;font-weight:400;color:var(--muted-2);font-size:11.5px;margin-top:2px;letter-spacing:0;}
+  .bar-track{background:var(--line-2);border-radius:4px;height:22px;overflow:hidden;}
+  .bar-fill{
+    height:100%;background:var(--navy);border-radius:4px;
+    display:block;min-width:3px;
+  }
+  .bar-fill.lv2{background:var(--accent);}
+  .bar-fill.lv3{background:#7C90AC;}
+  .bar-val{font-size:14px;font-weight:700;text-align:right;color:var(--navy);font-variant-numeric:tabular-nums;}
+  .bar-val small{color:var(--muted-2);font-weight:400;font-size:11px;}
+
+  /* ---------- two col cards ---------- */
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:6px;}
+  .card{
+    background:var(--paper);border:1px solid var(--line);border-radius:4px;
+    padding:22px 22px;
+  }
+  .card h3{
+    margin:0 0 6px;font-size:16px;font-weight:700;color:var(--navy);
+    display:flex;align-items:baseline;gap:10px;
+  }
+  .card h3 .tag{
+    font-size:11px;font-weight:700;color:#fff;background:var(--accent);
+    padding:2px 8px;border-radius:4px;letter-spacing:0.04em;white-space:nowrap;
+  }
+  .card p{margin:8px 0 0;font-size:14px;color:var(--muted);line-height:1.75;}
+  .card .stat{font-size:13px;color:var(--navy);font-weight:700;margin-top:12px;}
+
+  /* ---------- trend list ---------- */
+  .trend{
+    display:grid;grid-template-columns:48px 1fr;gap:18px;
+    padding:24px 0;border-top:1px solid var(--line);
+  }
+  .trend:first-child{border-top:none;}
+  .trend .rank{
+    font-size:26px;font-weight:700;color:var(--gold);line-height:1;
+    font-variant-numeric:tabular-nums;
+  }
+  .trend h3{margin:0 0 6px;font-size:17px;font-weight:700;color:var(--navy);}
+  .trend p{margin:0;font-size:14.5px;color:var(--muted);line-height:1.8;}
+  .trend .why{
+    margin-top:10px;font-size:13px;color:var(--navy);background:var(--accent-soft);
+    border-radius:4px;padding:10px 14px;line-height:1.7;
+  }
+  .trend .why b{color:var(--navy);}
+
+  /* ---------- template ---------- */
+  .tpl{
+    background:var(--paper);border:1px solid var(--line);border-radius:4px;
+    overflow:hidden;margin-top:6px;
+  }
+  .tpl-row{display:grid;grid-template-columns:150px 1fr;border-top:1px solid var(--line-2);}
+  .tpl-row:first-child{border-top:none;}
+  .tpl-row .th{
+    background:var(--bg);padding:16px 18px;font-size:13px;font-weight:700;
+    color:var(--navy);border-right:1px solid var(--line-2);
+  }
+  .tpl-row .td{padding:16px 18px;font-size:14px;color:var(--ink);line-height:1.7;}
+  .tpl-row .td .ex{color:var(--muted);font-size:13px;margin-top:6px;display:block;}
+
+  .callout{
+    border-left:3px solid var(--gold);background:var(--paper);
+    padding:18px 22px;margin-top:24px;border-radius:0 4px 4px 0;
+    border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+  }
+  .callout p{margin:0;font-size:14.5px;color:var(--ink);line-height:1.8;}
+  .callout p+p{margin-top:10px;}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--navy);color:#fff;margin-top:0;}
+  footer .wrap{padding:40px 24px;}
+  footer .brand{font-size:16px;font-weight:700;letter-spacing:0.04em;}
+  footer .note{color:#9FACBF;font-size:12.5px;margin-top:10px;line-height:1.7;max-width:70ch;}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:760px){
+    .masthead h1{font-size:25px;}
+    .kpi-band .wrap{grid-template-columns:repeat(2,1fr);}
+    .kpi:nth-child(3){border-left:none;}
+    .kpi{border-top:1px solid rgba(255,255,255,0.12);}
+    .kpi:nth-child(1),.kpi:nth-child(2){border-top:none;}
+    .cards{grid-template-columns:1fr;}
+    .bar-row{grid-template-columns:128px 1fr 52px;gap:10px;}
+    .bar-label{font-size:12.5px;}
+    .tpl-row{grid-template-columns:1fr;}
+    .tpl-row .th{border-right:none;border-bottom:1px solid var(--line-2);}
+    .f-plus{display:none;}
+    h2{font-size:20px;}
+    section{padding:44px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <p class="eyebrow">採択傾向分析レポート ｜ Well Consultant</p>
+    <h1>中小企業省力化投資補助金（一般型）<br>第5回公募　採択1,248件の傾向分析</h1>
+    <p class="lead">採択決定事業者一覧（2026年6月5日更新）の全採択計画名を機械的に集計し、「採択される計画の型」「導入された設備」「業種傾向」、そして第6回・第7回で来そうな領域を整理した。</p>
+    <div class="meta-row">
+      <span>対象：<b>第5回公募 採択事業者一覧</b></span>
+      <span>分析件数：<b>1,248件</b></span>
+      <span>集計対象：<b>事業計画名（全文）</b></span>
+    </div>
+  </div>
+</header>
+
+<div class="kpi-band">
+  <div class="wrap">
+    <div class="kpi">
+      <div class="num">59.8<small>%</small></div>
+      <div class="lbl">計画名に「省力化」を<br>明記</div>
+    </div>
+    <div class="kpi">
+      <div class="num">22.6<small>%</small></div>
+      <div class="lbl">「自動化／自動」を<br>明記</div>
+    </div>
+    <div class="kpi">
+      <div class="num">16.3<small>%</small></div>
+      <div class="lbl">出口に「生産性向上」を<br>掲げる</div>
+    </div>
+    <div class="kpi">
+      <div class="num">10.4<small>%</small></div>
+      <div class="lbl">出口に「高付加価値化」を<br>掲げる</div>
+    </div>
+  </div>
+</div>
+
+<main>
+  <div class="wrap">
+
+    <!-- SECTION 1 -->
+    <section>
+      <div class="sec-head"><span class="sec-no">01</span><h2>採択計画名は「4要素構文」に収束している</h2></div>
+      <p class="sec-sub">採択された計画名の大半が、次の4つの要素を1行に収めている。「○○の効率化」のような曖昧名は採択リストにほぼ存在せず、<b>削る工程を名指しできているか</b>が事実上の足切りラインになっている。</p>
+
+      <div class="formula">
+        <div class="ttl">採択される計画名の基本構文</div>
+        <div class="formula-grid">
+          <div class="f-cell"><div class="k">① 設備（固有名詞）</div><div class="v">ファイバーレーザー／5軸MC／ICT建機 など</div></div>
+          <div class="f-plus">×</div>
+          <div class="f-cell"><div class="k">② 削る特定工程</div><div class="v">溶接／切断／検査／測量／包装 など</div></div>
+          <div class="f-plus">×</div>
+          <div class="f-cell"><div class="k">③ 手段＝省力化</div><div class="v">省力化／自動化／省人化</div></div>
+          <div class="f-plus">→</div>
+          <div class="f-cell"><div class="k">④ 出口＝経営成果</div><div class="v">生産性向上／高付加価値化／増産／賃上げ</div></div>
+        </div>
+        <p class="formula-note">省力化は<b>手段</b>であり、審査の建付けは一貫して「省力化 → 付加価値・賃上げ・増産」という<b>出口</b>を要求している。省力化だけで止まる計画名は弱い。</p>
+      </div>
+
+      <h3 style="font-size:15px;color:var(--navy);margin:30px 0 4px;">計画名に書かれた「出口（アウトカム）」の内訳</h3>
+      <div class="bars">
+        <div class="bar-row"><div class="bar-label">生産性向上</div><div class="bar-track"><span class="bar-fill" style="width:100%"></span></div><div class="bar-val">203<small>件</small></div></div>
+        <div class="bar-row"><div class="bar-label">高付加価値化</div><div class="bar-track"><span class="bar-fill" style="width:64%"></span></div><div class="bar-val">130<small>件</small></div></div>
+        <div class="bar-row"><div class="bar-label">人手不足対応／省人</div><div class="bar-track"><span class="bar-fill lv2" style="width:37%"></span></div><div class="bar-val">76<small>件</small></div></div>
+        <div class="bar-row"><div class="bar-label">増産・生産能力増強</div><div class="bar-track"><span class="bar-fill lv2" style="width:34%"></span></div><div class="bar-val">69<small>件</small></div></div>
+        <div class="bar-row"><div class="bar-label">新分野・事業転換・販路</div><div class="bar-track"><span class="bar-fill lv3" style="width:21%"></span></div><div class="bar-val">42<small>件</small></div></div>
+        <div class="bar-row"><div class="bar-label">賃上げ（明示）</div><div class="bar-track"><span class="bar-fill lv3" style="width:12%"></span></div><div class="bar-val">25<small>件</small></div></div>
+      </div>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section>
+      <div class="sec-head"><span class="sec-no">02</span><h2>計画名に頻出するキーワード</h2></div>
+      <p class="sec-sub">全1,248件の計画名から主要キーワードの出現率を集計した。手段語（省力化・自動化）が土台、その上に「工程集約」「基幹システム」「AI」「検査」が乗る構造になっている。</p>
+      <div class="bars">
+        <div class="bar-row"><div class="bar-label">省力化</div><div class="bar-track"><span class="bar-fill" style="width:100%"></span></div><div class="bar-val">746<small>件</small></div></div>
+        <div class="bar-row"><div class="bar-label">自動化／自動</div><div class="bar-track"><span class="bar-fill" style="width:38%"></span></div><div class="bar-val">282<small>件</small></div></div>
+        <div class="bar-row"><div class="bar-label">生産性向上</div><div class="bar-track"><span class="bar-fill" style="width:27%"></span></div><div class="bar-val">203<small>件</small></div></div>
+        <div class="bar-row"><div class="bar-label">高付加価値</div><div class="bar-track"><span class="bar-fill lv2" style="width:17.4%"></span></div><div class="bar-val">130<small>件</small></div></div>
+        <div class="bar-row"><div class="bar-label">AI</div><div class="bar-track"><span class="bar-fill lv2" style="width:14.2%"></span></div><div class="bar-val">106<small>件</small></div></div>
+        <div class="bar-row"><div class="bar-label">工程集約・統合</div><div class="bar-track"><span class="bar-fill lv2" style="width:12.3%"></span></div><div class="bar-val">92<small>件</small></div></div>
+        <div class="bar-row"><div class="bar-label">基幹／管理システム</div><div class="bar-track"><span class="bar-fill lv2" style="width:11.9%"></span></div><div class="bar-val">89<small>件</small></div></div>
+        <div class="bar-row"><div class="bar-label">検査・測定・測量</div><div class="bar-track"><span class="bar-fill lv2" style="width:9.9%"></span></div><div class="bar-val">74<small>件</small></div></div>
+        <div class="bar-row"><div class="bar-label">DX</div><div class="bar-track"><span class="bar-fill lv3" style="width:9.9%"></span></div><div class="bar-val">74<small>件</small></div></div>
+        <div class="bar-row"><div class="bar-label">建機・重機</div><div class="bar-track"><span class="bar-fill lv3" style="width:7.1%"></span></div><div class="bar-val">53<small>件</small></div></div>
+        <div class="bar-row"><div class="bar-label">5軸／NC／CNC／複合</div><div class="bar-track"><span class="bar-fill lv3" style="width:6.8%"></span></div><div class="bar-val">51<small>件</small></div></div>
+        <div class="bar-row"><div class="bar-label">ロボット</div><div class="bar-track"><span class="bar-fill lv3" style="width:5.6%"></span></div><div class="bar-val">42<small>件</small></div></div>
+        <div class="bar-row"><div class="bar-label">診療・獣医・歯科</div><div class="bar-track"><span class="bar-fill lv3" style="width:5.5%"></span></div><div class="bar-val">41<small>件</small></div></div>
+        <div class="bar-row"><div class="bar-label">溶接</div><div class="bar-track"><span class="bar-fill lv3" style="width:5.0%"></span></div><div class="bar-val">37<small>件</small></div></div>
+        <div class="bar-row"><div class="bar-label">内製化</div><div class="bar-track"><span class="bar-fill lv3" style="width:4.0%"></span></div><div class="bar-val">30<small>件</small></div></div>
+        <div class="bar-row"><div class="bar-label">熟練・技能承継</div><div class="bar-track"><span class="bar-fill lv3" style="width:3.4%"></span></div><div class="bar-val">25<small>件</small></div></div>
+        <div class="bar-row"><div class="bar-label">ICT</div><div class="bar-track"><span class="bar-fill lv3" style="width:5.1%"></span></div><div class="bar-val">38<small>件</small></div></div>
+        <div class="bar-row"><div class="bar-label">ドローン／UAV</div><div class="bar-track"><span class="bar-fill lv3" style="width:1.7%"></span></div><div class="bar-val">13<small>件</small></div></div>
+      </div>
+    </section>
+
+    <!-- SECTION 3 -->
+    <section>
+      <div class="sec-head"><span class="sec-no">03</span><h2>導入された設備・技術カテゴリ</h2></div>
+      <p class="sec-sub">計画名から読み取れる具体的な設備・技術を分類した。最多は「基幹／販売／生産管理システム」。単品の加工機より、複数工程をまとめて省く<b>工程集約型</b>の構成が好まれている。</p>
+      <div class="bars">
+        <div class="bar-row"><div class="bar-label">基幹／販売／生産管理システム</div><div class="bar-track"><span class="bar-fill" style="width:100%"></span></div><div class="bar-val">57<small>件</small></div></div>
+        <div class="bar-row"><div class="bar-label">ICT建機／チルトローテータ</div><div class="bar-track"><span class="bar-fill" style="width:39%"></span></div><div class="bar-val">22<small>件</small></div></div>
+        <div class="bar-row"><div class="bar-label">プレス／順送</div><div class="bar-track"><span class="bar-fill lv2" style="width:33%"></span></div><div class="bar-val">19<small>件</small></div></div>
+        <div class="bar-row"><div class="bar-label">破砕／砕石／リサイクル</div><div class="bar-track"><span class="bar-fill lv2" style="width:30%"></span></div><div class="bar-val">17<small>件</small></div></div>
+        <div class="bar-row"><div class="bar-label">マシニングセンタ／5軸</div><div class="bar-track"><span class="bar-fill lv2" style="width:28%"></span></div><div class="bar-val">16<small>件</small></div></div>
+        <div class="bar-row"><div class="bar-label">三次元測定／測定機</div><div class="bar-track"><span class="bar-fill lv2" style="width:25%"></span></div><div class="bar-val">14<small>件</small></div></div>
+        <div class="bar-row"><div class="bar-label">ファイバーレーザー</div><div class="bar-track"><span class="bar-fill lv2" style="width:25%"></span></div><div class="bar-val">14<small>件</small></div></div>
+        <div class="bar-row"><div class="bar-label">CNC旋盤／複合旋盤</div><div class="bar-track"><span class="bar-fill lv2" style="width:25%"></span></div><div class="bar-val">14<small>件</small></div></div>
+        <div class="bar-row"><div class="bar-label">ドローン／UAV測量</div><div class="bar-track"><span class="bar-fill lv3" style="width:23%"></span></div><div class="bar-val">13<small>件</small></div></div>
+        <div class="bar-row"><div class="bar-label">溶接ロボット／自動溶接</div><div class="bar-track"><span class="bar-fill lv3" style="width:21%"></span></div><div class="bar-val">12<small>件</small></div></div>
+        <div class="bar-row"><div class="bar-label">包装／充填／製函機</div><div class="bar-track"><span class="bar-fill lv3" style="width:19%"></span></div><div class="bar-val">11<small>件</small></div></div>
+        <div class="bar-row"><div class="bar-label">生成AI／AIエージェント／RPA</div><div class="bar-track"><span class="bar-fill lv3" style="width:18%"></span></div><div class="bar-val">10<small>件</small></div></div>
+        <div class="bar-row"><div class="bar-label">AI外観検査／画像検査</div><div class="bar-track"><span class="bar-fill lv3" style="width:18%"></span></div><div class="bar-val">10<small>件</small></div></div>
+        <div class="bar-row"><div class="bar-label">協働ロボット</div><div class="bar-track"><span class="bar-fill lv3" style="width:9%"></span></div><div class="bar-val">5<small>件</small></div></div>
+      </div>
+    </section>
+
+    <!-- SECTION 4 -->
+    <section>
+      <div class="sec-head"><span class="sec-no">04</span><h2>業種傾向：5つの安定採択ゾーン</h2></div>
+      <p class="sec-sub">製造業を母数の中心としつつ、業種ごとに「ほぼ確立した採択パターン」が見える。下記はいずれも計画の型が固まっており、再現性が高い領域。</p>
+      <div class="cards">
+        <div class="card">
+          <h3>金属加工・機械部品 <span class="tag">最大ゾーン</span></h3>
+          <p>プレス・5軸MC・CNC旋盤・ファイバーレーザー・三次元測定機による「工程集約・無人化・検査自動化」。単品設備ではなく複数工程を束ねる構成が王道。</p>
+          <p class="stat">関連：工程集約92件／5軸・NC系51件</p>
+        </div>
+        <div class="card">
+          <h3>建設・土木・解体 <span class="tag">安定</span></h3>
+          <p>ICT建機・チルトローテータ・マシンガイダンス。「丁張り廃止」「ワンマン施工」「国土強靱化」とセットで語られる定番。解体は重機導入で広く採択。</p>
+          <p class="stat">関連：建機・重機53件／ICT38件</p>
+        </div>
+        <div class="card">
+          <h3>検査・測量のデジタル化 <span class="tag">定番化</span></h3>
+          <p>三次元測定機・ドローン／UAV測量・3Dスキャナー。検査工程は人手依存・属人化の典型で、課題説明が通りやすい。</p>
+          <p class="stat">関連：検査・測定・測量74件</p>
+        </div>
+        <div class="card">
+          <h3>一次産業・食品 <span class="tag">拡大中</span></h3>
+          <p>スマート農機・色彩選別機・自動包装／充填・選果ライン・養殖DX（自動給餌・選別充填）。「休める農業」など労働環境の文脈が強い。</p>
+          <p class="stat">関連：包装・充填39件／選別11件</p>
+        </div>
+        <div class="card">
+          <h3>医療・獣医・歯科技工 <span class="tag">確立</span></h3>
+          <p>獣医療（CT・内視鏡・腹腔鏡）、歯科技工（CAD/CAM・アバットメント内製化）。「省力化→高度医療へ人員再配置」が共通ロジック。</p>
+          <p class="stat">関連：診療・獣医・歯科41件</p>
+        </div>
+        <div class="card">
+          <h3>専門サービス・バックオフィス <span class="tag">伸びしろ</span></h3>
+          <p>業種特化の管理システム（学習塾・整体院・美容室・保険代理店・不動産・人材）。製造設備が不要で、非製造の小規模事業者の入口になる。</p>
+          <p class="stat">関連：基幹・管理システム89件／AI106件</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5 -->
+    <section>
+      <div class="sec-head"><span class="sec-no">05</span><h2>第6回・第7回で来そうな領域</h2></div>
+      <p class="sec-sub">設備系が飽和に向かう一方、語彙として立ち上がりつつある領域を「これから増える勝ち筋」として抽出した。特に①は非製造クライアントの取り込み余地が大きい。</p>
+
+      <div class="trend">
+        <div class="rank">01</div>
+        <div>
+          <h3>生成AI・AIエージェント・RPAによる「間接業務」の省力化</h3>
+          <p>現時点で10件前後と少数だが、計画名の語彙として明確に出現（生成AI基幹業務省力化／AIエージェント提案営業DX／受発注請求AI開発）。設備系が飽和気味な中、事務・営業・見積・受発注のホワイトカラー工程は伸びしろが大きい。</p>
+          <div class="why"><b>狙える層：</b>士業・コンサル・不動産・人材・サービス業など、自社製品も加工設備も持たない小規模事業者。</div>
+        </div>
+      </div>
+      <div class="trend">
+        <div class="rank">02</div>
+        <div>
+          <h3>AI外観検査・画像検査の標準化</h3>
+          <p>AIカメラ・画像選別による検査自動化が10件。検査は「人手依存・属人化」の典型で課題が説明しやすく、製造業の定番候補として今後さらに増える見込み。</p>
+          <div class="why"><b>勝ち筋：</b>不良品検品・外観検査・選別の自動化は、増産と品質安定を同時に語れる。</div>
+        </div>
+      </div>
+      <div class="trend">
+        <div class="rank">03</div>
+        <div>
+          <h3>内製化 × 省力化のセット</h3>
+          <p>「外注工程を省力化設備で内製化する」型が30件。原価改善・付加価値・短納期を一度に語れるため審査適合性が高い。レーザー加工・塗装・鉄筋加工・家具建具・技工物などで頻出。</p>
+          <div class="why"><b>勝ち筋：</b>内製化は「外注費削減＝利益率改善」という数字で効果を示しやすい。</div>
+        </div>
+      </div>
+      <div class="trend">
+        <div class="rank">04</div>
+        <div>
+          <h3>業種特化SaaS・統合管理システムの導入</h3>
+          <p>学習塾・整体院・美容室・保険代理店・フィットネス・動物病院など、業種専用の管理システムが点在。横展開しやすく、介護・福祉・士業・建設のクライアント基盤と親和性が高い。</p>
+          <div class="why"><b>狙える層：</b>店舗・サービス系の多店舗運営者。POS・予約・顧客管理の統合が定番。</div>
+        </div>
+      </div>
+      <div class="trend">
+        <div class="rank">05</div>
+        <div>
+          <h3>熟練技能のデジタル承継</h3>
+          <p>「暗黙知をAIで形式知化」「多能工化」「技術承継」が25件。人手不足 × 事業承継の文脈に乗るため、政策的にも後押しされる見込み。</p>
+          <div class="why"><b>勝ち筋：</b>後継者不在・職人高齢化を抱える製造・建設の小規模事業者に刺さる。</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6 -->
+    <section>
+      <div class="sec-head"><span class="sec-no">06</span><h2>第7回向け：採択される計画名テンプレート</h2></div>
+      <p class="sec-sub">セクション01の4要素構文を、実際に書き起こすためのテンプレートに落とした。製造系と非製造（間接業務）系で型を分けると、クライアントの案件適合性が上がる。</p>
+
+      <div class="tpl">
+        <div class="tpl-row">
+          <div class="th">基本フォーマット</div>
+          <div class="td">〔設備の固有名詞〕導入による〔特定工程〕の省力化と〔経営成果〕
+            <span class="ex">※「○○の効率化」では弱い。削る工程を必ず名指しする。</span>
+          </div>
+        </div>
+        <div class="tpl-row">
+          <div class="th">製造業・型A</div>
+          <div class="td">ファイバーレーザー導入による切断・溶接工程の省力化と高付加価値受注の拡大
+            <span class="ex">設備 × 工程 × 省力化 × 出口（高付加価値）</span>
+          </div>
+        </div>
+        <div class="tpl-row">
+          <div class="th">建設・土木・型B</div>
+          <div class="td">ICT建機・マシンガイダンス導入による丁張り工程の省人化と施工能力増強
+            <span class="ex">設備 × 工程 × 省人化 × 出口（増産・対応案件数増）</span>
+          </div>
+        </div>
+        <div class="tpl-row">
+          <div class="th">検査・型C</div>
+          <div class="td">AI外観検査装置導入による検品工程の自動化と品質安定・増産の実現
+            <span class="ex">設備 × 工程 × 自動化 × 出口（品質・増産）</span>
+          </div>
+        </div>
+        <div class="tpl-row">
+          <div class="th">非製造・型D</div>
+          <div class="td">生成AI・基幹システム導入による受発注・見積業務の省力化と高付加価値営業への再配置
+            <span class="ex">士業・サービス・バックオフィス向け。間接業務の省力化＋人員再配置で出口を作る。</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <p><b>提案書づくりへの落とし込み：</b>「省力化」は計画名の中盤に置き、文末は必ず<b>経営成果（生産性向上・高付加価値化・増産・賃上げ・新分野参入）</b>で締める。採択名のほぼ全件がこの語順で書かれている。</p>
+        <p>製造業以外を狙う受講生・クライアントには<b>型D（間接業務省力化）</b>を別テンプレートとして用意すると、価格競争を抜けたい士業・コンサルの案件適合性が一段上がる。</p>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="brand">Well Consultant</div>
+    <p class="note">本レポートは中小企業省力化投資補助金（一般型）第5回公募 採択決定事業者一覧（2026年6月5日更新／全1,248件）の事業計画名を機械集計したもの。件数・比率は計画名テキストに含まれる語の出現状況に基づく概算であり、公式統計ではない。次回公募の採択を保証するものではなく、申請方針は最新の公募要領に基づき個別に判断すること。</p>
+  </div>
+</footer>
+
+</body>
+</html>

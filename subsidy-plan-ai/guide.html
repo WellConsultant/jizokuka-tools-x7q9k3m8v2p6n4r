@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>省力化投資補助金AI 使い方ガイド</title>
+<style>
+:root{--navy:#13233d;--blue:#2d6cdf;--pale:#f4f7fb;--line:#d9e1ec;--ink:#1b2638;--muted:#657083;--green:#23764b;--amber:#a76814;--white:#fff}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#eef3f9,#fff 48%,#f4f7fb);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",Meiryo,sans-serif;line-height:1.75}
+header{background:var(--navy);color:#fff;padding:28px max(24px,calc((100% - 1120px)/2));}header .eyebrow{color:#b9cae4;font-size:13px;font-weight:700;letter-spacing:.08em}header h1{margin:4px 0 6px;font-size:30px;line-height:1.35}header p{margin:0;color:#dce5f2}header a{color:#fff}
+main{max-width:1120px;margin:0 auto;padding:30px 24px 64px}.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;align-items:stretch}.card{background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:16px;box-shadow:0 10px 28px rgba(24,45,75,.08);padding:24px}.hero .card:first-child{background:var(--navy);color:#fff;border:0}.hero .card:first-child p{color:#dce5f2}.badge{display:inline-block;background:#e8f0ff;color:#1f56b0;border-radius:999px;padding:4px 10px;font-size:12px;font-weight:700}.hero .badge{background:#29456f;color:#e6efff}h2{font-size:22px;margin:0 0 12px}h3{font-size:17px;margin:0 0 6px}.lead{font-size:18px;margin:8px 0 0}.flow{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin:18px 0 28px}.flow .step{position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 10px;min-height:112px}.step .num{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--navy);color:#fff;font-weight:700;margin-bottom:8px}.step strong{display:block;font-size:14px;line-height:1.45}.step small{display:block;color:var(--muted);font-size:11px;line-height:1.45;margin-top:4px}.section{margin-top:28px}.phase-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.phase{border-left:5px solid var(--blue);background:#fff;border-radius:12px;padding:18px 20px;border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}.phase.pre{border-left-color:#4f8bd6}.phase.post{border-left-color:#39a36c}.phase.add{border-left-color:#d49a3a}.phase.merge{border-left-color:#8b63c7}.phase .label{font-size:12px;color:var(--muted);font-weight:700}.phase ul,.card ul{margin:8px 0 0;padding-left:20px}.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}.checklist{display:grid;grid-template-columns:1fr 1fr;gap:8px}.check{background:var(--pale);border-radius:10px;padding:10px 12px}.check b{color:var(--green)}.warning{background:#fff7e9;border:1px solid #f0d5a4;border-radius:12px;padding:16px 18px}.warning b{color:var(--amber)}.note{color:var(--muted);font-size:13px}.action{display:inline-block;background:var(--blue);color:#fff;text-decoration:none;border-radius:9px;padding:10px 16px;font-weight:700;margin-top:10px}.action.secondary{background:#fff;color:var(--navy);border:1px solid #9eb0c8}.mini-table{width:100%;border-collapse:collapse;font-size:14px}.mini-table th,.mini-table td{border-bottom:1px solid var(--line);padding:10px;text-align:left;vertical-align:top}.mini-table th{background:var(--pale);width:25%}footer{max-width:1120px;margin:0 auto;padding:0 24px 40px;color:var(--muted);font-size:12px}@media(max-width:800px){.hero,.two,.phase-grid{grid-template-columns:1fr}.flow{grid-template-columns:repeat(2,1fr)}.checklist{grid-template-columns:1fr}header h1{font-size:24px}.card{padding:18px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="eyebrow">利用者向けチュートリアル</div>
+  <h1>省力化投資補助金 事業計画書作成AI</h1>
+  <p>資料を整理し、面談の内容を段階的に追加して、参考フォーマットに沿った16項目の事業計画書を作成するためのガイドです。</p>
+  <a href="index.html?case=default">← 作成画面へ戻る</a>
+</header>
+<main>
+  <section class="hero">
+    <div class="card">
+      <span class="badge">最初に覚えること</span>
+      <h2 style="margin-top:10px">このAIは「一度に全部書く」道具ではありません。</h2>
+      <p class="lead">資料を先に読み込み、面談前・面談後・追加面談の情報を別々に保存し、確認した内容だけを整理して事業計画書へ使います。</p>
+    </div>
+    <div class="card">
+      <h3>この順番で進めます</h3>
+      <ol style="margin:8px 0 0;padding-left:22px">
+        <li>資料・会話記録・Brainデータを読み込む</li>
+        <li>面談前の情報として保存</li>
+        <li>面談後の確認内容を別保存</li>
+        <li>必要なら追加面談を別保存</li>
+        <li>整理プレビューを確認して統合</li>
+        <li>16項目を順番に作成・保存</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>画面上の6工程</h2>
+    <div class="flow">
+      <div class="step"><div class="num">1</div><strong>資料を読み込む</strong><small>PDF・TXT・MD・JSON・CSV・HTML・ZIP</small></div>
+      <div class="step"><div class="num">2</div><strong>面談前に保存</strong><small>既存資料から分かる範囲を保存</small></div>
+      <div class="step"><div class="num">3</div><strong>面談後に追記</strong><small>確認した事実・課題・数値を追加</small></div>
+      <div class="step"><div class="num">4</div><strong>追加面談</strong><small>後日分かった内容を別記録で保存</small></div>
+      <div class="step"><div class="num">5</div><strong>統合を確認</strong><small>重複・矛盾・未確定を確認</small></div>
+      <div class="step"><div class="num">6</div><strong>16項目を生成</strong><small>見出し別プロンプトと回答を作成</small></div>
+    </div>
+  </section>
+
+  <section class="section card">
+<h2>実際の画面操作はこの順番です</h2>
+<p>迷ったら、画面上部の「この案件の進め方」にある番号ボタンを押してください。現在の工程が太く表示され、次にすることが表示されます。</p>
+<div style="display:grid;gap:10px">
+<div style="display:grid;grid-template-columns:58px 1fr 1fr;gap:12px;align-items:start;background:#f4f7fb;border-radius:10px;padding:13px"><b style="background:#13233d;color:#fff;border-radius:50%;width:34px;height:34px;display:grid;place-items:center">1</b><div><b>「資料読込画面へ」を押す</b><br><span class="note">資料・会話記録・Brainデータを選択します。</span></div><div><b>次へ進める表示：</b><br><span class="note">「自動抽出結果」が表示されたら、内容を確認します。</span></div></div>
+<div style="display:grid;grid-template-columns:58px 1fr 1fr;gap:12px;align-items:start;background:#f4f7fb;border-radius:10px;padding:13px"><b style="background:#13233d;color:#fff;border-radius:50%;width:34px;height:34px;display:grid;place-items:center">2</b><div><b>入力フェーズを「面談前」にする</b><br><span class="note">資料から分かる会社情報・事業内容・設備情報だけを入力します。</span></div><div><b>次へ進める表示：</b><br><span class="note">「面談前」と日時が保存済みフェーズに表示されます。</span></div></div>
+<div style="display:grid;grid-template-columns:58px 1fr 1fr;gap:12px;align-items:start;background:#f4f7fb;border-radius:10px;padding:13px"><b style="background:#13233d;color:#fff;border-radius:50%;width:34px;height:34px;display:grid;place-items:center">3</b><div><b>面談後に同じ案件を開く</b><br><span class="note">入力フェーズを「面談後」に変更し、確認できた課題・ボトルネック・導入効果・数値目標を追記します。</span></div><div><b>次へ進める表示：</b><br><span class="note">面談前とは別に「面談後」の記録が増えます。</span></div></div>
+<div style="display:grid;grid-template-columns:58px 1fr 1fr;gap:12px;align-items:start;background:#f4f7fb;border-radius:10px;padding:13px"><b style="background:#13233d;color:#fff;border-radius:50%;width:34px;height:34px;display:grid;place-items:center">4</b><div><b>必要な場合だけ「追加面談・補足」で保存</b><br><span class="note">追加資料、見積、実施体制など、後から確認した内容を入力します。</span></div><div><b>注意：</b><br><span class="note">面談前・面談後の記録を編集して消さず、新しいフェーズとして残します。</span></div></div>
+<div style="display:grid;grid-template-columns:58px 1fr 1fr;gap:12px;align-items:start;background:#f4f7fb;border-radius:10px;padding:13px"><b style="background:#13233d;color:#fff;border-radius:50%;width:34px;height:34px;display:grid;place-items:center">5</b><div><b>整理するフェーズを1つ選ぶ</b><br><span class="note">「整理プロンプトをコピー」→ ChatGPT等へ貼付→回答を「整理プロンプトへの回答」欄へ貼付します。</span></div><div><b>次へ進める表示：</b><br><span class="note">回答を確認して「整理回答を確認して基本データへ反映」を押します。フェーズごとに繰り返します。</span></div></div>
+<div style="display:grid;grid-template-columns:58px 1fr 1fr;gap:12px;align-items:start;background:#f4f7fb;border-radius:10px;padding:13px"><b style="background:#13233d;color:#fff;border-radius:50%;width:34px;height:34px;display:grid;place-items:center">6</b><div><b>左側の項目を上から順に作成</b><br><span class="note">「現在のプロンプトをコピー」または「現在のプロンプトTXT保存」で、その項目の作成用データを使います。</span></div><div><b>完了の目印：</b><br><span class="note">回答を貼り付けて「次の項目」を押し、最後に「回答を最終統合」を押します。</span></div></div>
+</div>
+<div class="warning" style="margin-top:14px"><b>画面に「保存済み」が出るまで次へ進まないでください。</b><br>保存先・案件名・容量が表示されたら保存確認完了です。保存失敗と表示された場合は、統合や生成を続けず、保存状態を確認します。</div>
+</section>
+
+  <section class="section card">
+    <h2>各フェーズ内の整理工程</h2>
+    <p>フェーズを選ぶと、そのフェーズ専用の整理欄が表示されます。資料・面談前・面談後・追加面談を混ぜずに一つずつ整理できます。</p>
+    <ol style="margin:8px 0;padding-left:22px">
+      <li>入力欄に資料または面談で確認した内容を入れ、「このフェーズを保存」します。</li>
+      <li>「このフェーズの整理プロンプトをコピー」で、現在フェーズだけのプロンプトを使います。</li>
+      <li>ChatGPT等の回答を「整理回答」欄へ貼り付けます。</li>
+      <li>「回答を検査」を押し、文字数・重複候補・矛盾候補・要確認件数・出所を確認します。</li>
+      <li>確認後に「検査済み回答を基本データへ反映」を押します。反映失敗時は元の基本データを保持します。</li>
+      <li>親画面の基本データと保存済み表示を確認してから、次のフェーズへ進みます。</li>
+    </ol>
+    <p class="note">原記録全文はフェーズ記録として残り、基本データには整理回答だけが入ります。事実と未確定、矛盾候補は分け、数値や事実を推測で補いません。</p>
+  </section>
+
+  <section class="section">
+    <h2>フェーズごとの使い方</h2>
+    <div class="phase-grid">
+      <article class="phase pre"><div class="label">PHASE 1　面談前</div><h3>資料から分かることだけを先に入れる</h3><ul><li>会社情報、事業内容、過去実績、設備情報を確認します。</li><li>推測で補わず、「要確認」の情報はそのまま残します。</li><li>保存ボタンを押すと、面談前の記録として別に保存されます。</li></ul></article>
+      <article class="phase post"><div class="label">PHASE 2　面談後</div><h3>面談で確認した内容を追記する</h3><ul><li>経営課題、ボトルネック、導入効果、数値目標を入力します。</li><li>面談前の記録は上書きされません。</li><li>同じ項目の内容が変わった場合は、差分と出所を確認します。</li></ul></article>
+      <article class="phase add"><div class="label">PHASE 3　追加面談・補足</div><h3>後から分かった情報を別の記録にする</h3><ul><li>追加確認、資料差し替え、見積・体制の補足に使います。</li><li>既存フェーズを編集して消すのではなく、新しい記録として保存します。</li><li>必要なフェーズだけを統合対象に選べます。</li></ul></article>
+      <article class="phase merge"><div class="label">PHASE 4　整理・統合</div><h3>確認した情報だけを基本データへ反映する</h3><ul><li>「整理プレビューを更新」で統合前の状態を確認します。</li><li>重複はまとめ、矛盾候補と未確定情報は分けて表示します。</li><li>内容を確認してから「基本データへ反映」を押します。</li></ul></article>
+    </div>
+  </section>
+
+  <section class="section two">
+    <div class="card">
+      <h2>面談前にやること</h2>
+      <ol style="margin:8px 0;padding-left:22px">
+        <li>「資料読込画面へ」を開きます。</li>
+        <li>対象資料を複数選択します。</li>
+        <li>自動抽出された内容を確認します。</li>
+        <li>入力フェーズを「面談前」にして保存します。</li>
+        <li>保存済みの表示とフェーズ名を確認します。</li>
+      </ol>
+      <p class="note">資料の全文を基本データへ貼り付けるのではなく、後の整理工程で項目ごとにまとめます。</p>
+    </div>
+    <div class="card">
+      <h2>面談後にやること</h2>
+      <ol style="margin:8px 0;padding-left:22px">
+        <li>同じ案件を開きます。</li>
+        <li>入力フェーズを「面談後」に切り替えます。</li>
+        <li>面談で確認できた内容だけを追記します。</li>
+        <li>面談後として保存します。</li>
+        <li>必要なら「追加面談・補足」でもう一度保存します。</li>
+      </ol>
+      <p class="note">保存済みフェーズは日時・出所付きで残るため、前の記録を消す必要はありません。</p>
+    </div>
+  </section>
+
+  <section class="section card">
+    <h2>16項目の作成方法</h2>
+    <p>左側の「添付フォーマットの項目順」から、上から順番に進めます。各項目では、現在の見出しに対応するフォーマット部分だけがプロンプトへ入ります。</p>
+    <table class="mini-table">
+      <tr><th>基本データ</th><td>整理・確認済みの会社情報、課題、設備、数値など。ここにない事実はAIが作りません。</td></tr>
+      <tr><th>参考資料</th><td>公募要領など、制度上の条件・確認観点。</td></tr>
+      <tr><th>参考フォーマット</th><td>現在作成する見出しの表・注意書き・文字数目安だけ。</td></tr>
+      <tr><th>事業計画作成ガイド</th><td>その項目で何を説明するか、どの観点を確認するか。</td></tr>
+      <tr><th>回答欄</th><td>ChatGPT等から返ってきた回答を貼り付け、次の項目へ進みます。</td></tr>
+    </table>
+  </section>
+
+  <section class="section two">
+    <div class="card">
+      <h2>保存について</h2>
+      <div class="checklist">
+        <div class="check"><b>✓</b> フェーズ記録は別保存</div>
+        <div class="check"><b>✓</b> 前の内容を上書きしない</div>
+        <div class="check"><b>✓</b> 事業計画書は案件フォルダへ保存</div>
+        <div class="check"><b>✓</b> 同名ファイルは版番号を付ける</div>
+      </div>
+      <p>通常の利用では、ユーザーが保存ダイアログで保存先を選ぶ必要はありません。画面の保存結果に案件名・保存先・容量が表示されます。</p>
+    </div>
+    <div class="card">
+      <h2>困ったとき</h2>
+      <ul>
+        <li>「未確認」が残る → 面談で確認する情報として残します。</li>
+        <li>内容が重複する → 統合プレビューで整理してから反映します。</li>
+        <li>矛盾がある → どちらかを勝手に決めず、出所を確認します。</li>
+        <li>保存失敗と表示される → そのまま進めず、再保存後に表示を確認します。</li>
+        <li>項目を飛ばした → 左側の項目名から戻って修正できます。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section warning">
+    <b>重要な確認</b>
+    <p style="margin:4px 0 0">外部支援者や認定支援機関等の助言や作成の支援を受ける場合であっても、実際に事業を実施するのは事業者です。事業者自身が内容を理解し、目標達成できない場合の補助金返還可能性も踏まえ、実行可能な計画であることを確認してから提出用に整えてください。</p>
+  </section>
+
+  <section class="section card">
+    <h2>最後の確認チェック</h2>
+    <div class="checklist">
+      <div class="check">□ 会社情報を資料と面談で確認した</div>
+      <div class="check">□ 課題と導入目的がつながっている</div>
+      <div class="check">□ 設備名・金額・数値の根拠がある</div>
+      <div class="check">□ 面談前・面談後の記録が残っている</div>
+      <div class="check">□ 矛盾・未確定を確認した</div>
+      <div class="check">□ 16項目の回答を確認した</div>
+    </div>
+    <a class="action" href="index.html?case=default">作成画面を開く</a>
+    <a class="action secondary" href="shoryokuka-hearing-sheet.html?case=default">資料読込・ヒアリング画面を開く</a>
+  </section>
+</main>
+<footer>省力化投資補助金 事業計画書作成AI｜作業コピー内の利用者向けガイド</footer>
+</body>
+</html>

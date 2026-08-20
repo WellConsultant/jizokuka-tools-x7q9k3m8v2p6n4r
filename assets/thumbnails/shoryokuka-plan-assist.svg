@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="中小企業省力化投資補助金 事業計画書作成補助ツール">
+  <rect width="1200" height="675" fill="#edf1f2"/>
+  <rect x="72" y="72" width="1056" height="531" rx="18" fill="#fff" stroke="#cfd6da" stroke-width="4"/>
+  <rect x="72" y="72" width="1056" height="104" rx="18" fill="#142844"/>
+  <rect x="72" y="158" width="1056" height="18" fill="#142844"/>
+  <text x="130" y="128" fill="#fff" font-family="Arial,'Hiragino Sans',sans-serif" font-size="28" font-weight="700">PLAN SUPPORT TOOL</text>
+  <rect x="135" y="226" width="930" height="86" rx="12" fill="#f4ebe6" stroke="#d8c7bd" stroke-width="3"/>
+  <text x="180" y="280" fill="#253646" font-family="Arial,'Hiragino Sans',sans-serif" font-size="30" font-weight="700">基本データを貼り付け</text>
+  <g fill="#253646"><rect x="180" y="356" width="22" height="22" rx="4"/><rect x="225" y="358" width="600" height="18" rx="9"/><rect x="180" y="408" width="22" height="22" rx="4"/><rect x="225" y="410" width="510" height="18" rx="9"/><rect x="180" y="460" width="22" height="22" rx="4"/><rect x="225" y="462" width="680" height="18" rx="9"/></g>
+  <rect x="72" y="572" width="1056" height="31" fill="#e08b5f" opacity=".9"/>
+</svg>

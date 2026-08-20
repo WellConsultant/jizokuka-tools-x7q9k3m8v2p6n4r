@@ -1,0 +1,775 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中小企業省力化投資補助金（一般型）事業計画書 作成補助ツール</title>
+<style>
+  :root{
+    --bg:#f5f6f8; --panel:#fff; --panel2:#f5f6f8; --line:#e1e4ea;
+    --txt:#1a1d24; --sub:#6b7280; --accent:#4f7cff; --accent2:#3b63d6;
+    --ok:#34c759; --aoji:#1d4ed8; --aojibg:#eef3ff;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;background:var(--bg);color:var(--txt);line-height:1.7;}
+  .wrap{max-width:780px;margin:0 auto;padding:26px 18px 110px;}
+  header h1{font-size:21px;margin:0 0 8px;}
+  header .lead{margin:0 0 16px;color:var(--sub);font-size:13.5px;}
+  .gov-link{display:inline-block;margin:0 0 22px;font-size:13px;color:var(--accent2);text-decoration:none;border:1px solid var(--line);background:#fff;border-radius:8px;padding:8px 12px;}
+  .gov-link:hover{border-color:var(--accent);}
+
+  .mode{display:flex;gap:8px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:6px;margin-bottom:20px;}
+  .mode button{flex:1;border:none;background:transparent;border-radius:7px;padding:10px 8px;font-size:13px;font-weight:700;cursor:pointer;color:var(--sub);font-family:inherit;}
+  .mode button.on{background:var(--accent);color:#fff;}
+
+  /* 基本データ */
+  .base{background:#fff;border:2px solid var(--accent);border-radius:14px;padding:18px;margin-bottom:14px;}
+  .base h2{font-size:15px;margin:0 0 4px;}
+  .base .desc{margin:0 0 12px;font-size:12.5px;color:var(--sub);}
+  textarea{width:100%;background:var(--panel2);border:1px solid var(--line);border-radius:9px;color:var(--txt);padding:10px 12px;font-size:14px;font-family:inherit;line-height:1.6;resize:vertical;transition:border-color .15s;}
+  textarea:focus,input:focus{outline:none;border-color:var(--accent);}
+  #baseData{min-height:130px;}
+
+  .howto{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:20px;font-size:12.5px;color:var(--sub);}
+  .howto b{color:var(--txt);}
+
+  /* 基本データ整理＆自動入力 */
+  .organize{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:14px;}
+  .organize h2{font-size:15px;margin:0 0 4px;}
+  .organize .desc{margin:0 0 12px;font-size:12.5px;color:var(--sub);}
+  .organize .step{font-size:12px;font-weight:700;color:var(--sub);margin:10px 0 4px;}
+  .organize textarea{width:100%;min-height:90px;}
+  .org-btns{display:flex;gap:8px;flex-wrap:wrap;margin:4px 0 4px;}
+  .btn-org{border:1px solid var(--line);background:#fff;color:var(--accent2);border-radius:9px;padding:10px 16px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:border-color .15s,background .15s;}
+  .btn-org:hover{border-color:var(--accent);}
+  .btn-org.primary{background:var(--accent);color:#fff;border-color:var(--accent);}
+  .btn-org.primary:hover{background:var(--accent2);}
+  .btn-org.copied{background:var(--ok)!important;color:#fff!important;border-color:var(--ok)!important;}
+
+  /* 項目カード */
+  .item{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:16px;}
+  .item h3{font-size:15px;margin:0 0 4px;display:flex;align-items:center;gap:8px;}
+  .item h3 .num{flex:0 0 auto;width:24px;height:24px;background:var(--accent);color:#fff;border-radius:50%;font-size:12.5px;display:inline-flex;align-items:center;justify-content:center;}
+  .item h3 .cat{font-size:11px;font-weight:700;color:#fff;background:var(--sub);border-radius:5px;padding:1px 7px;margin-left:auto;}
+  .item h3 .cat.s3{background:#0f9d58;}
+  .aoji{background:var(--aojibg);border:1px solid #d4e0ff;border-radius:9px;margin:8px 0 12px;font-size:12px;color:var(--aoji);overflow:hidden;}
+  details.aoji>summary{list-style:none;cursor:pointer;padding:9px 11px;font-size:11px;font-weight:700;color:#3756b5;display:flex;align-items:center;gap:6px;user-select:none;}
+  details.aoji>summary::-webkit-details-marker{display:none;}
+  details.aoji>summary::before{content:"▶";font-size:9px;transition:transform .15s;flex:0 0 auto;}
+  details.aoji[open]>summary::before{transform:rotate(90deg);}
+  details.aoji>summary:hover{background:rgba(55,86,181,.06);}
+  .aoji-body{padding:0 11px 10px;}
+  .aoji b{display:block;margin-bottom:2px;font-size:11px;color:#3756b5;}
+  .inputs label{display:block;font-weight:700;font-size:12.5px;margin:10px 0 3px;}
+  .inputs input,.inputs textarea{width:100%;background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:13.5px;font-family:inherit;}
+  .inputs textarea{min-height:54px;line-height:1.55;}
+  .item-foot{display:flex;justify-content:flex-end;margin-top:12px;}
+  .btn-copy-item{border:none;border-radius:8px;padding:9px 18px;font-size:12.5px;font-weight:700;cursor:pointer;font-family:inherit;background:var(--accent);color:#fff;transition:filter .15s;}
+  .btn-copy-item:hover{filter:brightness(.93);}
+  .btn-copy-item.copied{background:var(--ok)!important;}
+
+  /* 設備分析カード（紫） */
+  .item.bunseki{border-color:#ddd0f7;background:#fdfcff;}
+  .item.bunseki h3 .num{background:#7c3aed;}
+  .item h3 .cat.bun{background:#7c3aed;}
+  .item.bunseki .aoji{background:#f5f0ff;border-color:#e0d4fb;color:#5b21b6;}
+  .item.bunseki .aoji b{color:#6d28d9;}
+  .item.bunseki .btn-copy-item{background:#7c3aed;}
+  .note{background:#fff7ed;border:1px solid #f0c891;border-radius:9px;padding:9px 11px;margin:8px 0 0;font-size:12px;color:#9a6207;}
+
+  /* 1項目1プロンプトのプレビュー */
+  .inputs-hint{font-size:12px;color:var(--accent2);background:var(--aojibg);border:1px solid #d4e0ff;border-radius:8px;padding:7px 10px;margin:2px 0 8px;}
+  .preview-label{font-size:11.5px;font-weight:700;color:var(--sub);margin:14px 0 4px;}
+  pre.preview{background:#1e2330;border-radius:9px;padding:12px 14px;margin:0;white-space:pre-wrap;word-break:break-word;font-family:"SFMono-Regular",Consolas,monospace;font-size:12px;line-height:1.6;color:#dfe4ee;max-height:260px;overflow:auto;}
+  pre.preview .var{color:#ffd479;}
+
+  /* 生成結果（AIの回答）を貼り付けて保存する欄 */
+  .result-label{font-size:11.5px;font-weight:700;color:#0f7a43;margin:16px 0 4px;}
+  textarea.result{width:100%;min-height:130px;background:#f3fbf6;border:1.5px solid #bfe6cf;border-radius:9px;padding:11px 13px;font-size:13px;font-family:inherit;line-height:1.65;color:#143a27;resize:vertical;box-sizing:border-box;}
+  textarea.result::placeholder{color:#9bbfa9;}
+  textarea.result:focus{outline:none;border-color:#0f9d58;background:#fff;}
+  .result-merge{border-color:#0f7a43;}
+  pre#resultOut:empty::before{content:"各項目の「生成結果」欄にAIの回答を貼り付けてから「完成原稿をまとめてコピー」を押すと、ここに全文が表示されます。";color:#5a6273;}
+
+  /* 統合 */
+  .merge{background:var(--panel);border:2px solid #0f9d58;border-radius:14px;padding:18px;margin-top:26px;}
+  .merge h2{font-size:16px;margin:0 0 4px;}
+  .merge .desc{margin:0 0 12px;font-size:12.5px;color:var(--sub);}
+  .merge-btns{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;}
+  .merge-btns button{border:none;border-radius:9px;padding:11px 18px;font-size:13.5px;font-weight:700;cursor:pointer;font-family:inherit;transition:background .15s,transform .08s;}
+  .merge-btns button:active{transform:scale(.97);}
+  .btn-merge{background:#0f9d58;color:#fff;}
+  .btn-merge:hover{background:#0c8a4d;}
+  .btn-merge.copied{background:#34c759;}
+  .btn-clear{background:transparent;color:var(--sub);border:1px solid var(--line)!important;}
+  pre#mergeOut,pre#resultOut{background:#1e2330;border-radius:10px;padding:16px;margin:0;white-space:pre-wrap;word-break:break-word;font-family:"SFMono-Regular",Consolas,monospace;font-size:12.5px;line-height:1.65;color:#dfe4ee;max-height:480px;overflow:auto;}
+  pre#mergeOut:empty::before{content:"上の各項目を入力して「全項目を統合してコピー」を押すと、ここに全文プロンプトが表示されます。";color:#5a6273;}
+  footer{margin-top:28px;color:var(--sub);font-size:11.5px;text-align:center;line-height:1.8;}
+</style>
+<script>window.__TRAINGO_UID__="e33d5413-e4ea-49fe-b981-54b3a716a464";</script></head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>中小企業省力化投資補助金（一般型）<br>事業計画書 作成補助ツール</h1>
+    <p class="lead">コンサルティングで作った<b>基本データ</b>を最上部に貼り、各項目では<b>買うもの・対象経費など決まっていることだけ</b>入力します。項目ごとにプロンプトをコピーしてAIに渡せば、その項目の文章が出てきます。最後に「統合」で全項目を一括化できます。</p>
+    <a class="gov-link" href="https://portal.shoryokuka.smrj.go.jp/ippan/login" target="_blank" rel="noopener">▶ 省力化投資補助金 申請システム（電子申請ポータル）を開く（別タブ）</a>
+  </header>
+
+  <div class="mode">
+    <button id="modeNormal" class="on" type="button">通常版</button>
+    <button id="modeKanzei" type="button">米国関税の影響を受けている版</button>
+  </div>
+
+  <!-- 基本データ -->
+  <div class="base">
+    <h2>基本データ（コンサルティングで作成済みのものを貼り付け）</h2>
+    <p class="desc">会社概要・強み弱み・決算・経営課題など。ここに貼った内容が、全項目のプロンプトに自動で差し込まれます。</p>
+    <textarea id="baseData" placeholder="（コンサルティングで作成した会社の基本データをここに貼り付けてください）"></textarea>
+  </div>
+
+  <!-- 基本データ整理＆自動入力 -->
+  <div class="organize">
+    <h2>基本データを各項目へ自動入力（任意・おすすめ）</h2>
+    <p class="desc">上の「基本データ」がこのツールの項目と並びが合っていなくても大丈夫です。① の整理プロンプトをAIに渡すと、AIが基本データを<b>このツールの各項目に合う形に整理</b>してJSONで返します。② にそれを貼って「各項目へ自動入力」を押すと、<b>下の各入力欄が自動で埋まります</b>。</p>
+    <div class="step">① まず整理プロンプトをコピーして、基本データと一緒にAI（ChatGPT等）に渡す</div>
+    <div class="org-btns">
+      <button class="btn-org" id="orgPromptBtn" type="button">① 整理プロンプトをコピー</button>
+    </div>
+    <div class="step">② AIが返したJSON（{ ... } のかたまり）をここに貼り付け</div>
+    <textarea id="orgPaste" placeholder='AIが返した {"s1_mission":"...","s1_target":"...", ...} の形のJSONを貼り付け'></textarea>
+    <div class="org-btns">
+      <button class="btn-org primary" id="orgApplyBtn" type="button">② 各項目へ自動入力</button>
+    </div>
+  </div>
+
+  <div class="howto">
+    <b>使い方</b>　① 基本データを貼る → ② 各項目の入力欄を埋める → ③ 各項目の「この項目のプロンプトをコピー」→ AIに貼る → ④ 最後に「全項目を統合してコピー」<br>
+    各項目の入力欄は<b>すべて任意</b>です。空欄なら上の「基本データ」から自動で補われるので、<b>全部を手書きする必要はありません</b>。入力した内容は<b>このブラウザに自動保存</b>され、次に開いたときも残ります（消すときは下の「すべてクリア」）。
+  </div>
+
+  <!-- 項目カードはJSで生成 -->
+  <div id="items"></div>
+
+  <!-- 統合 -->
+  <div class="merge">
+    <h2>全項目を統合</h2>
+    <p class="desc">入力済みの全項目を1つのプロンプトにまとめます。AIに一括で事業計画書を作らせたいときに使います。</p>
+    <div class="merge-btns">
+      <button class="btn-merge" id="mergeBtn" type="button">全項目を統合してコピー</button>
+      <button class="btn-merge" id="mergeDlBtn" type="button">MDファイルで保存</button>
+      <button class="btn-clear" id="clearBtn" type="button">すべてクリア</button>
+    </div>
+    <pre id="mergeOut"></pre>
+  </div>
+
+  <!-- 完成原稿（AIの回答を統合） -->
+  <div class="merge result-merge">
+    <h2>完成原稿をまとめる</h2>
+    <p class="desc">各項目の「生成結果（AIの回答）」欄に貼り付けた本文を、1つの事業計画書の原稿としてまとめます。申請システムへの貼り付け・最終確認用です。</p>
+    <div class="merge-btns">
+      <button class="btn-merge" id="resultMergeBtn" type="button">完成原稿をまとめてコピー</button>
+      <button class="btn-merge" id="resultDlBtn" type="button">MDファイルで保存</button>
+    </div>
+    <pre id="resultOut"></pre>
+  </div>
+
+  <footer>
+    中小企業省力化投資補助金（一般型）事業計画書 作成ツール ／ Traingo組み込み用<br>
+    ※生成されるのは下書きです。数値・固有名・見積金額は実際の資料で確認し、申請システムで最終確認してください。
+  </footer>
+</div>
+
+<script>
+/* ===== 項目データ（青字＝参考情報、inputs＝利用者が入力する項目） ===== */
+var STEPS = [
+  { kind:"keikaku", cat:"その1・2", name:"1. 事業概要・自社の強み弱み・市場動向・経営課題",
+    aoji:"【様式の青字（省略なし）】\n"+
+      "※活動の目的・取組課題と社会的意義（ミッション・ビジョン）がわかるように記載ください。\n"+
+      "※経営理念を実現するための、具体的な戦略（事業領域、成長戦略、事業者の経営資源、事業者の経営哲学を浸透させる取り組み等）がわかるように記載ください。\n"+
+      "※対象エリア、具体的ターゲット、提供サービス・商品がわかるようにご記入下さい。\n"+
+      "※５年後１０年後どのような未来、事業モデルを描いているのか記載してください。\n"+
+      "※決算期と申請時期を鑑み、直近３年の実績値または、直近２年の実績+応募申請年度の見込値を記載してください。\n"+
+      "※このほか、商品サービス別の売上の構成や、利益率が高い商品・サービスなどがわかるように適宜記載してください。\n"+
+      "※参考ガイドや補助金ナビを参照するなどして、自社の経営状況を俯瞰し、現状分析を記載してください。自社の市場環境と競争優位性について記載してください。\n"+
+      "※各種フレームワークを活用するなどして、自社の特徴や取り巻く事業環境と自社の経営戦略の関係を記載してください。フレームワーク例：SWOT分析、5フォース分析、ＰＥＳＴ分析、３Ｃ分析、４Ｐ分析。\n"+
+      "≪ＳＷＯＴ分析≫…強み（内部環境のプラス要素：自社や自社商品の長所や得意とするところ）、弱み（内部環境のマイナス要素：短所や苦手とするところ、悪影響を及ぼすと考えられる要素）、機会（外部環境のプラス要素：社会や市場の変化などにより自社や自社商品にとってプラスに働く要素）、脅威（外部環境のマイナス要素：社会や市場の変化などにより悪影響を及ぼすと考えられる要素）をマトリックスで組み合わせ、多面的に分析する。\n"+
+      "※1－1現状分析で自社の経営環境を分析した結果、認識している経営課題を記載してください。（参考サイト：利益を増やしたい経営深堀マップ｜経済産業省 中小企業庁）\n"+
+      "※1-２経営課題を踏まえて本事業に取り組む経緯や目的、必要性を記載してください。例えば、売上拡大や生産性向上等の経営課題を解決するためボトルネックとなっている業務プロセスを省力化して、捻出した労働力をより付加価値の高い業務へ振り向けるため等。\n"+
+      "※本補助金を活用した省力化の設備投資が、経営課題の解決につながることがわかるように記載してください。",
+    chars:"様式の青字すべてに沿って具体的に",
+    note:"※この7項目はすべて任意です。空欄なら上の「基本データ」から自動で補われます。基本データに無い情報や、特に強調したい点だけ書けばOK（全部を手書きする必要はありません）。",
+    inputs:[
+      {id:"s1_mission", label:"事業の目的・社会的意義（ミッション・ビジョン）", ta:true},
+      {id:"s1_senryaku", label:"経営理念・経営戦略（事業領域・成長戦略・経営資源）", ta:true},
+      {id:"s1_target", label:"対象エリア・ターゲット・提供サービス／商品", ta:true},
+      {id:"s1_mirai", label:"5年後・10年後に描く未来／事業モデル", ta:true},
+      {id:"s1_jisseki", label:"直近の売上実績（直近3年 or 直近2年＋当年見込）・売上構成・高利益商品", ta:true},
+      {id:"s1_swot", label:"SWOT（強み・弱み・機会・脅威）", ta:true},
+      {id:"s1_kadai", label:"経営課題（省力化したいボトルネック業務）と本事業に取り組む経緯・目的・必要性", ta:true}
+    ]},
+
+  /* ▼ 設備分析（項目2の前段・下ごしらえ） ▼ */
+  { kind:"bunseki", sub:"tokucho", cat:"設備分析", name:"設備① 特徴分析",
+    aoji:"これは様式の項目ではなく『下ごしらえ』です。導入する設備の特徴を多角的に洗い出します。ここで出た特徴を、次の「設備②ベネフィット分析」と「項目2」に使います。",
+    chars:"特徴の抽出",
+    inputs:[
+      {id:"b_equip", label:"設備情報（買うもの・スペック・メーカー・価格・対応工程など分かる範囲で）", ta:true,
+        ph:"例）AI画像認識搭載 自動外観検査装置／処理能力◯個/分／検査精度◯◯／メーカー◯◯／価格2,000万円 …"}
+    ]},
+  { kind:"bunseki", sub:"benefit", cat:"設備分析", name:"設備② ベネフィット分析",
+    aoji:"設備①で出た特徴を貼り付け、この設備が自社業務にもたらす本当の価値（ベネフィット）を深掘りします。ここで出た価値を「項目2の効果」「項目3の新たな付加価値」に使います。",
+    chars:"ベネフィットの深掘り",
+    inputs:[
+      {id:"b_tokucho", label:"①特徴分析の結果（AIが出した特徴を貼り付け）", ta:true, ph:"設備①特徴分析でAIが出力した内容を貼り付け"},
+      {id:"b_genba", label:"この設備を使う自社の現場・対象業務", ta:true, ph:"例）検査工程（現状は熟練工3名が手作業で目視検査）"}
+    ]},
+  /* ▲ 設備分析ここまで ▲ */
+
+  { kind:"keikaku", cat:"その1・2", name:"2. 導入する省力化設備等の概要と期待される効果",
+    aoji:"【様式の青字（省略なし）】\n"+
+      "※本事業にて導入予定の機械設備等について、それぞれの性能等を記載してください。以下の点に留意の上、わかりやすく記載してください。\n"+
+      "※発注予定先が決まっている場合は、それも合わせて記載してください。\n"+
+      "・人手不足の解消に向けて、デジタル技術等を活用した専用設備（オーダーメイド設備）の導入等により、革新的な生産プロセス・サービス提供方法の効率化・高度化を図る取り組みに必要な設備・システム投資等となっていること。\n"+
+      "・デジタル技術等を活用した専用設備（以下「オーダーメイド設備」という。）とは、ICTやIoT、AI、ロボット、センサー等を活用し、単一もしくは複数の生産工程を自動化するために、外部のシステムインテグレータ（SIer）との連携などを通じて、事業者の個々の業務に応じて専用で設計された機械装置やシステム（ロボットシステム等）のことをいう。\n"+
+      "・汎用設備であっても、事業者の導入環境に応じて周辺機器や構成する機器の数、搭載する機能等が変わることや、省力化に資する汎用設備を組み合わせて複数導入することでより高い省力化効果や付加価値を生み出すことが示されていること。\n"+
+      "・中小企業省力化投資補助事業（カタログ注文型）の製品カタログに登録されているカテゴリに該当する製品について、本事業で導入する場合は審査の際に考慮します。ただし単体導入する場合は、カタログ注文型の補助金をご活用ください。\n"+
+      "※別添指定様式事業計画書（その３）の「省力化業務プロセス図」を作成してください。また、その他人員の再配置や製造ラインのレイアウト変更など適宜、配置図や写真などで、ビフォーアフターがわかるように記載してください。\n"+
+      "※別添指定様式事業計画書（その３）の「省力化算定シート」により「省力化指数」を算出してください。\n"+
+      "・補助事業の目的・内容に沿って、省力化投資により期待される効果及び有用性の評価を説明してください。\n"+
+      "・省力化効果が高い取組みであれば、審査において考慮しますので、それがわかるように記載してください。\n"+
+      "・省力化投資が事業者全体の事業や業務に対してどう影響するかも記載してください。",
+    chars:"様式の青字すべてに沿って具体的に",
+    note:"※「削減・改善される業務／効果」は、上の設備①特徴分析・設備②ベネフィット分析の結果を踏まえて記入してください。",
+    inputs:[
+      {id:"s2_kau", label:"買うもの（導入する設備・システム名）と性能", ta:false},
+      {id:"s2_keihi", label:"対象経費（金額・内訳）", ta:false},
+      {id:"s2_hatchu", label:"発注予定先（決まっていれば）", ta:false},
+      {id:"s2_ordermade", label:"オーダーメイド性（専用設計／汎用設備のカスタマイズ・組合せの工夫）", ta:true},
+      {id:"s2_benefit", label:"設備の特徴・ベネフィット（②の分析結果の要点を貼り付け）", ta:true, ph:"設備②ベネフィット分析でAIが出した『真の価値』の要点を貼り付け"},
+      {id:"s2_gyomu", label:"削減・改善される業務／期待される効果（省力化が会社全体に与える影響）", ta:true}
+    ]},
+  { kind:"keikaku", cat:"その1・2", name:"3. 省力化で生まれる経営資源の活用による新たな付加価値の創出",
+    aoji:"【様式の青字（省略なし）】\n"+
+      "※省力化により生まれたリソース（時間や労働力等）をどのように活かすのか具体的に記載してください。例えば、既存業務で人手が足りていない高付加価値業務に振り向けることや、新規顧客開拓、新しい製品やサービス開発に充てるなどが考えられます。\n"+
+      "・省力化投資により会社全体のリソースの最適化を図った上で今後の事業運営を行うことにより、より効率的な事業運営を実現するとともに、貴重な経営資源を高付加価値業務に注力して、別添指定様式事業計画書（その３）の会社全体の事業計画の数値を実現していくことがわかるように記載してください。\n"+
+      "※新商品・新サービス開発を行う場合は、１-１に記載の分析手法を参照して市場環境と競争優位性を踏まえた経営戦略を適宜記載してください。自社の弱みを省力化投資で克服して、強みを活かしてどの市場（機会・顧客ターゲット）を取りに行くのか、脅威への対応策（他社との差別化）や販売方法などはどうするかなどがわかるように、実施・展開の体制等を示しつつ説明してください。\n"+
+      "※同じ人材を省力化する既存業務から別の高付加価値業務にシフトするには、場合によって人材育成を合わせて行う必要があると考えられます。従業員のスキルアップを支援し、働きがいを高める環境整備などを通じて、成果・成長につながるような取り組みをする場合は、その旨記載してください。\n"+
+      "※地域資源の活用、地域経済への貢献やシナジー効果、国の経済政策に合致する取り組みであるかなどは必要に応じて記載してください。",
+    chars:"様式の青字すべてに沿って具体的に",
+    inputs:[
+      {id:"s3_haichi", label:"浮いた人員・時間の再配置先（高付加価値業務・新規開拓・新製品開発等）", ta:true},
+      {id:"s3_koufukakachi", label:"新たに取り組む高付加価値業務と、狙う市場・差別化・販売方法", ta:true},
+      {id:"s3_ikusei", label:"人材育成・スキルアップ支援（必要に応じて）", ta:true},
+      {id:"s3_chiiki", label:"地域貢献・シナジー・国の経済政策との合致（必要に応じて）", ta:true}
+    ]},
+  { kind:"keikaku", cat:"その1・2", name:"4. 本事業の実施体制及びスケジュール",
+    aoji:"【様式の青字（省略なし）】\n"+
+      "※事業者内での役割分担や外部との連携を明らかにし、誰が何をするのかについて具体的に記載してください。\n"+
+      "・導入する設備等を活用する技術力を保有しているかもわかるように記載してください。\n"+
+      "・自社の経営資源や経営体力を考慮して、現実的に実行可能なスケジュールを作成してください。\n"+
+      "・賃上げ計画について、採択された場合は、従業員に対して賃上げの表明が必要になります。実行可能な計画を作成してください。\n"+
+      "（参考）前述の補助事業の内容に沿い機械装置等の取得時期や技術の導入時期を含めたスケジュールを示してください。構想設計→機能設計（システム要件定義・構成策定・機能一覧定義）→周辺機器の手配（機械装置発注・部品調達）→機能試作・システム組み立て→評価（テスト・リリース）→調整改善→稼働・実装（保守・管理）。",
+    chars:"様式の青字すべてに沿って具体的に",
+    inputs:[
+      {id:"s4_tokatsu", label:"役割分担（統括責任者・社内体制）", ta:false},
+      {id:"s4_renkei", label:"外部との連携（SIer等）", ta:false},
+      {id:"s4_giryoku", label:"設備を活用する技術力の保有状況", ta:true},
+      {id:"s4_schedule", label:"実施スケジュール（設備取得時期・導入時期を含む）", ta:true}
+    ]},
+  { kind:"keikaku", cat:"その1・2", name:"5. 賃上げの計画",
+    aoji:"【様式の青字（省略なし）】\n"+
+      "※事業者が自ら設定し、実現可能性が高いと見込まれる「高い」賃上げ目標は審査において考慮しますので、適宜説明してください。\n"+
+      "・なお、大幅賃上げに係る補助上限額引き上げの特例を利用し、大幅賃上げに取り組む事業者については、達成に向けた具体的かつ詳細な取り組みをこちらに記載してください。",
+    chars:"様式の青字すべてに沿って具体的に",
+    inputs:[
+      {id:"s5_chingin", label:"事業場内最低賃金の目標額", ta:false},
+      {id:"s5_zoukaritsu", label:"給与支給総額の増加率（年平均3.5％／大幅賃上げ特例6.0％以上）", ta:false},
+      {id:"s5_year", label:"達成年", ta:false},
+      {id:"s5_torikumi", label:"（特例利用時）大幅賃上げ達成に向けた具体的・詳細な取り組み", ta:true}
+    ]},
+  { kind:"keikaku", cat:"その1・2", name:"6. 収益計画（その３の数値実現の道筋）",
+    aoji:"【様式の青字（省略なし）】\n"+
+      "※別添指定様式事業計画書（その３）を作成の上、計画した数値の実現の道筋を説明してください。\n"+
+      "（「会社全体の事業計画（表）」「付加価値額」「労働生産性」「１人当たり給与支給総額」「投資回収期間」実現の根拠について）",
+    chars:"様式の青字すべてに沿って具体的に",
+    inputs:[
+      {id:"s6_uriage", label:"年度別の売上高見込み", ta:true},
+      {id:"s6_eigyo", label:"年度別の営業利益見込み", ta:true},
+      {id:"s6_michisuji", label:"その３の各数値（付加価値額・労働生産性・給与・投資回収期間）を実現する道筋", ta:true}
+    ]},
+  { kind:"keikaku", cat:"その1・2", name:"7. 資金調達の方法",
+    aoji:"【様式の青字（省略なし）】\n"+
+      "※補助事業に必要な資金をどのように用意するのかがわかるように簡単に記載してください。\n"+
+      "・補助金が活用できない場合の資金調達の代替策の検討もあれば記載してください。",
+    chars:"様式の青字すべてに沿って具体的に",
+    inputs:[
+      {id:"s7_hojo", label:"補助金額", ta:false},
+      {id:"s7_jiko", label:"自己資金", ta:false},
+      {id:"s7_kariire", label:"借入額", ta:false},
+      {id:"s7_daitai", label:"補助金が活用できない場合の代替策（あれば）", ta:true}
+    ]},
+  { kind:"keikaku", cat:"その3", name:"8. 業務プロセスの設計と省力化指数（別紙1・2）",
+    aoji:"別紙1（省力化計算シート）で設備導入前後の業務プロセス・作業工程を洗い出し、省力化指数を算出。別紙2（業務プロセス図）で詳細を説明してください。「設備導入により削減される業務に要していた時間」÷「設備導入後に発生する業務に要する時間」が省力化指数です。",
+    chars:"プロセス表＋説明文",
+    inputs:[
+      {id:"s8_before", label:"【導入前】各作業の工程名・作業名と作業時間（分）", ta:true,
+        ph:"例）受入検査 30分 ／ 寸法測定 45分 ／ 記録入力 20分 …"},
+      {id:"s8_after", label:"【導入後】各作業の工程名・作業時間（分）・作業種別（新規追加／内容変化なし／時間削減）・対応する導入前No", ta:true,
+        ph:"例）自動検査(時間削減,導入前No.1-2) 10分 ／ 結果確認(内容変化なし) 20分 …"}
+    ]},
+  { kind:"keikaku", cat:"その3", name:"9. 付加価値額（数値計画）",
+    aoji:"会社全体の事業計画表の「付加価値額（＝営業利益＋人件費＋減価償却費）」がその数値で推移する根拠を、売上の伸びやコスト削減など構成要素を示しながら計算式を用いて示してください。",
+    chars:"算定根拠の説明文",
+    inputs:[
+      {id:"s9_uriage", label:"売上高（基準年・各計画年）", ta:false},
+      {id:"s9_genka", label:"売上原価", ta:false},
+      {id:"s9_hankan", label:"販売費及び一般管理費", ta:false},
+      {id:"s9_jinken", label:"人件費（給与＋福利厚生＋法定福利＋退職金）", ta:false},
+      {id:"s9_genka2", label:"減価償却費（既存設備分／本補助金で導入する設備分）", ta:false}
+    ]},
+  { kind:"keikaku", cat:"その3", name:"10. 労働生産性（数値計画）",
+    aoji:"労働生産性（＝1人当たり付加価値額＝付加価値額÷（役員数＋常勤従業員数））が、その数値で推移する根拠を計算式を用いて示してください。年平均成長率4.0％以上が必要です。",
+    chars:"算定根拠の説明文",
+    inputs:[
+      {id:"s10_yakuin", label:"労働者数のうち役員数（人）", ta:false},
+      {id:"s10_jokin", label:"労働者数のうち常勤従業員数（人）", ta:false}
+    ]},
+  { kind:"keikaku", cat:"その3", name:"11. 1人当たり給与支給総額（数値計画）",
+    aoji:"1人当たり給与支給総額が、その数値で推移する根拠を計算式を用いて示してください。年平均3.5％以上（大幅な賃上げ特例なら6.0％以上）が必要です。",
+    chars:"算定根拠の説明文",
+    inputs:[
+      {id:"s11_kyuyo", label:"給与支給総額（全月分の給与等の支給を受けた従業員分）", ta:false},
+      {id:"s11_taisho", label:"対象従業員数（人）", ta:false}
+    ]},
+  { kind:"keikaku", cat:"その3", name:"12. 投資回収期間（数値計画）",
+    aoji:"別紙3（投資回収期間計算シート）の算定根拠となる計算式を記載してください。投資総額÷（削減工数×年間稼働日数×人件費単価＋増加した付加価値額）で算出します。",
+    chars:"算定根拠の説明文",
+    inputs:[
+      {id:"s12_toushi", label:"投資総額（円）", ta:false},
+      {id:"s12_kosu", label:"削減工数（時間）", ta:false},
+      {id:"s12_kado", label:"年間稼働日数（日）", ta:false},
+      {id:"s12_tanka", label:"人件費単価（円/時）", ta:false},
+      {id:"s12_fukakachi", label:"増加した付加価値額（円）", ta:false}
+    ]}
+];
+
+/* 関税版でだけ出す追加項目（関税版様式の固有青字・省略なし） */
+var KANZEI_STEP = { kind:"keikaku", cat:"その1・2", name:"6-1. 米国の追加関税措置により影響を受けている事業の現状と課題及び今後の方向性",
+  aoji:"【関税版様式の青字（省略なし）】\n"+
+    "※関税の影響を受けている事業について、現状と課題、及びそれらを踏まえた今後の方向性について記載してください。\n"+
+    "※米国の追加関税措置により大きな影響を受けている場合は、米国の追加関税措置の対象となっているいずれの品目のサプライチェーンに属するか等、具体的にどのような影響があったのかを示してください。\n"+
+    "例：米国の追加関税措置の対象品目である●●（製品目名）を製造する●●社（供給先名）に対し、●●（供給製品名）を供給しているが、米国の追加関税措置により取引先からの受注量が●％減少し、売上高が●円減少（対前年比●％減）の見込み。こうした中、これまで培ってきた●●という技術を活かし、本事業では●●に取り組み省力化を図る。\n"+
+    "※自社のみならずサプライチェーン上の他社の省力化に広く寄与することが期待できる場合は、どのように効果があるかを具体的に記載してください。\n"+
+    "※振興事業計画（受託中小企業振興法第5条第1項に基づく計画）を作成している等、サプライチェーン上の他企業とも連携して取組を進めている点があれば記載してください。\n"+
+    "例：A社、B社、C社が参画する振興事業計画（計画承認日：令和○年○月○日）を作成し、○○（振興事業）を実施するなど生産性向上を図るとともに、取引条件の改善も進めている。",
+  chars:"関税版様式の青字すべてに沿って具体的に",
+  inputs:[
+    {id:"k_eikyo", label:"受けている関税の影響（対象品目・サプライチェーン上の位置・取引先・受注/売上の減少見込み）", ta:true},
+    {id:"k_taiou", label:"本事業での対応（活かす技術・省力化の方向性）", ta:true},
+    {id:"k_supply", label:"サプライチェーン上の他社への省力化波及効果（あれば）", ta:true},
+    {id:"k_shinko", label:"振興事業計画等の連携取組（あれば）", ta:true}
+  ]};
+
+var HOSOKU =
+  "#補足\n" +
+  "- 出力形式＝マークダウン形式\n" +
+  "- 出力方法＝コードブロック出力\n" +
+  "- 指示の復唱はしないでください。\n" +
+  "- 自己評価はしないでください。\n" +
+  "- 余計な前置き・結論・まとめは書かないでください。\n" +
+  "- 所定の文字数で作成してください。";
+
+/* ===== 設備の特徴分析・ベネフィット分析（Traingo-Consultingの本物プロンプトを設備用に移植） ===== */
+function buildTokuchoPrompt(base, equip){
+  return ""+
+"# 前提条件\n"+
+"- タイトル: 導入設備・システムの特徴抽出プロンプト\n"+
+"- 依頼者条件: 導入する省力化設備の潜在的な価値を深く理解したい。\n"+
+"- 制作者条件: 設備やシステムを多角的に分析し、詳細な特徴を抽出できる。\n"+
+"- 目的と目標: 設備のあらゆる側面を明らかにし、まだ認識されていない価値を発見する。\n\n"+
+"# 実行命令\n"+
+"{設備情報}をもとに、以下の要件を満たして設備の特徴を抽出してください。\n"+
+"1.「パッと見てわからないことに宝の山が眠っているかもしれない」という視点で、隠れた特徴を探求する。\n"+
+"2.「特徴」とは、機能、スペック、処理能力、精度、対応工程、ソフト、連携性、保守、歴史、メーカー、価格、競合との比較など、設備を構成する事実を網羅的に洗い出す。\n"+
+"3. 可能な限り詳細な情報を記述する。\n"+
+"4. カテゴリー（物理的特徴／機能的特徴／導入・運用面 など）を設け体系的に記述する。\n"+
+"5. 各特徴がもたらす価値や意味を考察する。\n"+
+"6. 具体的な数値データや客観的な情報を可能な限り含める。\n"+
+"7. 抽象表現ではなく具体的な言葉で記述する。\n"+
+"8. 現場（使う側）視点と導入側視点の両方から評価する。\n"+
+"9. さらに調査が必要な点があれば言及する。\n\n"+
+"#基本データ\n"+ (base||"（基本データ未入力）") +"\n\n"+
+"#設備情報＝\n\""+ (equip||"（設備情報が未入力です。買うもの・スペック・メーカー・価格などを入力してください）") +"\"\n\n"+
+"#出力フォーマット\n"+
+"## 設備名：[　]\n### 1. 物理的特徴\n### 2. 機能的特徴（処理能力・精度・対応工程）\n### 3. 導入・運用面（連携・保守・価格）\n### 4. 競合・代替手段との比較\n### 5. 価値と意味（現場視点／導入側視点）\n### 6. 今後の調査・確認ポイント\n\n"+
+HOSOKU;
+}
+function buildBenefitPrompt(base, tokucho, genba){
+  return ""+
+"# 前提条件\n"+
+"- タイトル: 導入設備の多角的ベネフィット深掘りプロンプト\n"+
+"- 依頼者条件: 設備が自社にもたらす真の価値を明確化したい。\n"+
+"- 制作者条件: 設備のもたらす価値の分析に精通している。\n"+
+"- 目的と目標: 設備の特徴を多角的に分析し、自社業務にとっての真の価値を引き出す。\n\n"+
+"特徴＝\n\""+ (tokucho||"（①特徴分析の結果をここに貼ってください）") +"\"\n"+
+"自社の現場・対象業務＝\n\""+ (genba||"（この設備を使う現場・業務を入力してください）") +"\"\n\n"+
+"#基本データ\n"+ (base||"（基本データ未入力）") +"\n\n"+
+"# 実行命令（ステップ形式）\n"+
+"## ステップ1: 特徴の分析\n"+
+"1. {特徴}を明確に提示する。\n"+
+"2. 特徴を基に、機能的／感情的（現場の負担軽減等）／社会的／経済的ベネフィットを段階的に深掘りする。\n\n"+
+"## ステップ2: ベネフィットの深掘り\n"+
+"1. 各ベネフィットについて「だから何？」の問いを10回繰り返し、具体的な価値を導出する。\n"+
+"2. 競合手段（人手・他設備）に対する優位性も同様に10回深掘りする。\n\n"+
+"## ステップ3: 自社現場への適用\n"+
+"1. {自社の現場・対象業務}を想定し、現場視点でベネフィットを再評価し最重要の価値を抽出する。\n\n"+
+"## ステップ4: 優先順位付け\n"+
+"1. 最重要／次点／その他のベネフィットに優先順位をつける。\n"+
+"2. 最終的に「この設備が自社業務にもたらす真の価値」を簡潔に表現する。\n\n"+
+HOSOKU;
+}
+
+var itemsEl = document.getElementById("items");
+var isKanzei = false;
+
+/* ===== 入力の自動保存（このブラウザのlocalStorageに保存・リロードで消えないように） ===== */
+var SK = "shoryokuka-jigyokeikaku-tool-v1";
+function saveAll(){
+  try{
+    var d = { _kanzei: isKanzei };
+    document.querySelectorAll("input,textarea").forEach(function(el){ if(el.id) d[el.id] = el.value; });
+    localStorage.setItem(SK, JSON.stringify(d));
+  }catch(e){}
+}
+function loadAll(){ try{ return JSON.parse(localStorage.getItem(SK) || "{}"); }catch(e){ return {}; } }
+function restoreValues(){
+  var d = loadAll();
+  Object.keys(d).forEach(function(k){
+    if(k.charAt(0) === "_") return; // _kanzei 等の内部キーは除外
+    var el = document.getElementById(k);
+    if(el) el.value = d[k];
+  });
+}
+
+/* ===== 基本データ整理プロンプト → 各項目へ自動入力 ===== */
+// このツールの全入力項目（id＋見出し）を一覧化する。設備分析（下ごしらえ）も含める。
+function allToolInputs(){
+  var list = [];
+  var seen = {};
+  var steps = STEPS.concat([KANZEI_STEP]); // 通常版＋関税版の全項目を対象（モードに関係なく整理しておく）
+  steps.forEach(function(step){
+    var groupName = step.name;
+    step.inputs.forEach(function(inp){
+      if(seen[inp.id]) return;
+      seen[inp.id] = true;
+      list.push({ id: inp.id, label: inp.label, group: groupName });
+    });
+  });
+  return list;
+}
+
+// AIに渡す「整理プロンプト」。基本データを各項目idに振り分け、JSONひとかたまりで返させる。
+function buildOrganizePrompt(){
+  var base = val("baseData");
+  var list = allToolInputs();
+  var fields = "";
+  list.forEach(function(f){
+    fields += '- "' + f.id + '"：' + f.label + '（事業計画書「' + f.group + '」の項目）\n';
+  });
+  return ""+
+"#指示\n"+
+"あなたは中小企業省力化投資補助金（一般型）の事業計画書づくりを補助するアシスタントです。\n"+
+"下の【#基本データ】を読み、このツールの各入力項目に振り分けて整理してください。\n"+
+"基本データの並びや見出しがツールの項目と合っていなくても、内容の意味から判断して、最も適切な項目に割り当て直してください。\n\n"+
+"#ルール\n"+
+"1. 出力は JSON オブジェクト1つだけ。キーは下の項目idを使い、値は日本語の文字列にする。\n"+
+"2. 基本データに該当情報がない項目は、値を空文字 \"\" にする（無理に作文しない・事実をねつ造しない）。\n"+
+"3. 基本データにあるがツール項目と表現がずれている内容は、その項目の意図に合うように要約・言い換えして入れる。\n"+
+"4. 1項目に複数の情報が入る場合は、改行（\\n）でつないで1つの文字列にまとめる。\n"+
+"5. 数値・固有名詞・金額は基本データのとおり正確に転記する。\n"+
+"6. 指定したid以外のキーを作らない。説明文・前置き・まとめは書かない。コードブロックでJSONだけを出力する。\n\n"+
+"#出力する項目（キー：意味）\n"+ fields + "\n"+
+"#基本データ\n"+ (base||"（基本データ未入力。基本データを貼ってから整理プロンプトを使ってください）") + "\n\n"+
+"#出力フォーマット（この形のJSONだけを出力）\n"+
+"```json\n"+
+"{\n"+
+'  "s1_mission": "（ミッション・ビジョン。なければ空文字）",\n'+
+'  "s1_target": "（対象エリア・ターゲット・提供サービス。なければ空文字）"\n'+
+"  // …上の全idぶんのキーを出力\n"+
+"}\n"+
+"```";
+}
+
+// AIが返したテキストからJSON部分だけ取り出してパースする（```や前後の説明が混ざっていても拾う）。
+function parseLooseJson(t){
+  if(!t) return null;
+  var s = String(t).trim();
+  s = s.replace(/```json/gi, "").replace(/```/g, "").trim(); // コードフェンス除去
+  var a = s.indexOf("{"), b = s.lastIndexOf("}");
+  if(a === -1 || b === -1 || b < a) return null;
+  var body = s.slice(a, b+1);
+  try{ return JSON.parse(body); }catch(e){ return null; }
+}
+
+// ②ボタン：貼られたJSONを各入力欄へ反映する。
+function applyOrganized(){
+  var raw = document.getElementById("orgPaste").value;
+  var obj = parseLooseJson(raw);
+  if(!obj || typeof obj !== "object"){
+    showToast("JSONを読み取れませんでした。AIが返した { … } のかたまりを貼り付けてください。");
+    return;
+  }
+  var valid = {};
+  allToolInputs().forEach(function(f){ valid[f.id] = true; });
+  var n = 0;
+  // 保存データにも書き込んでから render() で画面へ反映（render内 restoreValues が拾う）。
+  var saved = loadAll();
+  Object.keys(obj).forEach(function(k){
+    if(!valid[k]) return;                 // 知らないキーは無視
+    var v = obj[k];
+    if(v === null || v === undefined) v = "";
+    if(typeof v !== "string") v = String(v);
+    saved[k] = v;
+    n++;
+  });
+  saved._kanzei = isKanzei;
+  try{ localStorage.setItem(SK, JSON.stringify(saved)); }catch(e){}
+  render();                                // 各カードを作り直し→restoreValuesで値が入る
+  document.getElementById("orgPaste").value = "";
+  showToast(n + "項目を自動入力しました。下の各項目を確認してください。");
+}
+
+// 画面下に短く出るトースト通知。
+function showToast(msg){
+  var el = document.getElementById("orgToast");
+  if(!el){
+    el = document.createElement("div");
+    el.id = "orgToast";
+    Object.assign(el.style, {
+      position:"fixed", left:"50%", bottom:"28px", transform:"translateX(-50%)",
+      background:"#1a1d24", color:"#fff", padding:"12px 18px", borderRadius:"10px",
+      fontSize:"13px", fontWeight:"700", zIndex:"99999", boxShadow:"0 6px 18px rgba(0,0,0,.25)",
+      maxWidth:"90%", textAlign:"center"
+    });
+    document.body.appendChild(el);
+  }
+  el.textContent = msg;
+  el.style.opacity = "1";
+  clearTimeout(showToast._t);
+  showToast._t = setTimeout(function(){ el.style.opacity = "0"; }, 2600);
+  el.style.transition = "opacity .4s";
+}
+
+function currentSteps(){
+  if(!isKanzei) return STEPS;
+  // 関税版：項目6の直後に 6-1 を挿入
+  var arr = [];
+  STEPS.forEach(function(s){
+    arr.push(s);
+    if(s.name.indexOf("6. 収益計画")===0) arr.push(KANZEI_STEP);
+  });
+  return arr;
+}
+
+function val(id){ var el=document.getElementById(id); return el?el.value.trim():""; }
+
+function nl2br(s){ return String(s).replace(/\n/g,"<br>"); }
+
+// 生成結果（AIの回答）欄の安定したID用。関税版で番号がずれても変わらないよう、
+// 項目は最初の入力ID接頭辞（s1,s2…,k）、設備分析は sub（tokucho/benefit）を使う。
+function stepKey(step){
+  if(step.kind==="bunseki") return "bun_"+step.sub;
+  return step.inputs[0].id.split("_")[0];
+}
+
+function buildPrompt(step){
+  var base = val("baseData");
+  if(step.kind==="bunseki"){
+    if(step.sub==="tokucho") return buildTokuchoPrompt(base, val("b_equip"));
+    if(step.sub==="benefit") return buildBenefitPrompt(base, val("b_tokucho"), val("b_genba"));
+  }
+  var sanko = step.aoji + "\n\n【利用者の入力】\n";
+  step.inputs.forEach(function(inp){
+    sanko += "・" + inp.label + "：" + (val(inp.id)||"（未入力）") + "\n";
+  });
+  return ""+
+    "#指示\n" +
+    "中小企業省力化投資補助金（一般型）の事業計画書の項目「" + step.name + "」を、" + step.chars + "作成してください。\n\n" +
+    "#基本データ\n" + (base||"（基本データ未入力）") + "\n\n" +
+    "#参考情報\n" + sanko + "\n" +
+    HOSOKU + "\n\n" +
+    "#実行命令\n" +
+    "上記の【#基本データ】を参考に、【#参考情報】（様式の青字の記載指示すべて）に従って、「" + step.name + "」の本文を作成してください。【#補足】の条件を必ず守ってください。";
+}
+
+function escapeHtml(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+function highlightVars(text){ return escapeHtml(text).replace(/（未入力[^）]*）/g, '<span class="var">$&</span>'); }
+
+function render(){
+  itemsEl.innerHTML = "";
+  currentSteps().forEach(function(step, idx){
+    var card = document.createElement("div");
+    card.className = "item" + (step.kind==="bunseki" ? " bunseki" : "");
+    var catClass = step.cat==="その3" ? "cat s3" : (step.kind==="bunseki" ? "cat bun" : "cat");
+    var inputsHtml = "";
+    step.inputs.forEach(function(inp){
+      var ph = inp.ph || "";
+      if(inp.ta){
+        inputsHtml += '<label>'+inp.label+'</label><textarea id="'+inp.id+'" placeholder="'+ph+'"></textarea>';
+      } else {
+        inputsHtml += '<label>'+inp.label+'</label><input type="text" id="'+inp.id+'" placeholder="'+ph+'">';
+      }
+    });
+    var aojiTitle = step.kind==="bunseki" ? "このステップの役割" : "参考情報（様式の青字＝この項目に書く内容）";
+    var noteHtml = step.note ? '<div class="note">'+step.note+'</div>' : '';
+    // 生成結果（AIの回答）欄。設備分析（下ごしらえ）も含め、全項目に付ける。
+    var resultHtml =
+      '<div class="result-label">▼ 生成結果（AIの回答）をここに貼り付けて保存</div>'+
+      '<textarea class="result" id="out_'+stepKey(step)+'" placeholder="AIから返ってきたこの項目の本文を、ここに貼り付けてください。入力内容と一緒にこのブラウザへ自動で保存されます。"></textarea>';
+    card.innerHTML =
+      '<h3><span class="num">'+(idx+1)+'</span>'+step.name+'<span class="'+catClass+'">'+step.cat+'</span></h3>'+
+      '<details class="aoji" open><summary>'+aojiTitle+'</summary><div class="aoji-body">'+nl2br(step.aoji)+'</div></details>'+
+      '<div class="inputs-hint">下の欄に記入すると、その内容が <b>この項目の生成プロンプトに自動で反映</b> されます（空欄なら上の「基本データ」から自動で補われます）。</div>'+
+      '<div class="inputs">'+inputsHtml+'</div>'+
+      noteHtml+
+      '<div class="preview-label">▼ この項目の生成プロンプト（上の入力欄を埋めると、ここに自動で反映されます）</div>'+
+      '<pre class="preview" id="prev_'+idx+'"></pre>'+
+      '<div class="item-foot"><button class="btn-copy-item" type="button">この項目のプロンプトをコピー</button></div>'+
+      resultHtml;
+    itemsEl.appendChild(card);
+
+    var prev = card.querySelector("#prev_"+idx);
+    function refresh(){ prev.innerHTML = highlightVars(buildPrompt(step)); }
+    card.querySelectorAll("input,textarea").forEach(function(el){ el.addEventListener("input", refresh); });
+    refresh();
+
+    var btn = card.querySelector(".btn-copy-item");
+    btn.addEventListener("click", function(){ copyText(buildPrompt(step), btn, "この項目のプロンプトをコピー"); });
+  });
+  // 自動保存した入力を画面へ復元 → 全プレビューを更新
+  restoreValues();
+  currentSteps().forEach(function(step, idx){
+    var prev = document.getElementById("prev_"+idx);
+    if(prev) prev.innerHTML = highlightVars(buildPrompt(step));
+  });
+  // 基本データ変更で全プレビュー更新
+  var bd=document.getElementById("baseData");
+  bd.oninput = function(){
+    currentSteps().forEach(function(step, idx){
+      var prev=document.getElementById("prev_"+idx);
+      if(prev) prev.innerHTML = highlightVars(buildPrompt(step));
+    });
+  };
+}
+
+function buildMerge(){
+  var out = "";
+  out += "# 中小企業省力化投資補助金（一般型）事業計画書 一括作成プロンプト" + (isKanzei? "（米国関税の影響を受けている版）":"") + "\n";
+  out += "以下の各項目を、それぞれ指定の参考情報と文字数に従って順番に作成してください。\n";
+  out += "全項目共通の条件：\n" + HOSOKU.replace("#補足\n","") + "\n";
+  out += "\n========================================\n";
+  out += "#基本データ（全項目共通）\n" + (val("baseData")||"（基本データ未入力）") + "\n";
+  out += "========================================\n";
+  currentSteps().forEach(function(step, idx){
+    if(step.kind==="bunseki") return; // 設備分析は下ごしらえなので統合計画書には含めない
+    out += "\n【項目"+(idx+1)+"】" + step.name + "（"+step.cat+"）\n";
+    out += "#参考情報\n" + step.aoji + "\n【利用者の入力】\n";
+    step.inputs.forEach(function(inp){
+      out += "・" + inp.label + "：" + (val(inp.id)||"（未入力）") + "\n";
+    });
+  });
+  out += "\n========================================\n";
+  out += "上記すべての項目を、各項目の#参考情報と文字数に従い、基本データを踏まえて順番に作成してください。";
+  return out;
+}
+
+// 各項目の「生成結果（AIの回答）」欄に貼った本文を1つの原稿にまとめる
+function buildResultMerge(){
+  var out = "# 中小企業省力化投資補助金（一般型）事業計画書 完成原稿" + (isKanzei? "（米国関税の影響を受けている版）":"") + "\n\n";
+  var any = false;
+  currentSteps().forEach(function(step, idx){
+    var v = val("out_"+stepKey(step));
+    if(!v) return;
+    any = true;
+    var heading = step.kind==="bunseki" ? "【下ごしらえ】" + step.name : "■ " + step.name;
+    out += heading + "\n" + v + "\n\n";
+  });
+  return any ? out : "";
+}
+
+function copyText(text, btn, restoreLabel){
+  function done(){ btn.textContent="コピーしました ✓"; btn.classList.add("copied"); setTimeout(function(){ btn.textContent=restoreLabel; btn.classList.remove("copied"); },1500); }
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(done).catch(function(){ fb(text); done(); });
+  } else { fb(text); done(); }
+}
+function fb(text){ var ta=document.createElement("textarea"); ta.value=text; document.body.appendChild(ta); ta.select(); try{document.execCommand("copy");}catch(e){} document.body.removeChild(ta); }
+
+// 基本データ整理プロンプト：①コピー／②各項目へ自動入力
+document.getElementById("orgPromptBtn").addEventListener("click", function(){
+  copyText(buildOrganizePrompt(), this, "① 整理プロンプトをコピー");
+});
+document.getElementById("orgApplyBtn").addEventListener("click", applyOrganized);
+
+document.getElementById("mergeBtn").addEventListener("click", function(){
+  var t = buildMerge();
+  document.getElementById("mergeOut").textContent = t;
+  copyText(t, this, "全項目を統合してコピー");
+});
+document.getElementById("resultMergeBtn").addEventListener("click", function(){
+  var t = buildResultMerge();
+  document.getElementById("resultOut").textContent = t;
+  if(t) copyText(t, this, "完成原稿をまとめてコピー");
+});
+
+// .md ファイルでローカルに保存（ダウンロード）
+function downloadMd(text, baseName, btn, restoreLabel){
+  if(!text){ if(btn){ btn.textContent="まだ内容がありません"; setTimeout(function(){ btn.textContent=restoreLabel; },1500);} return; }
+  var fname = baseName + (isKanzei? "_関税版":"") + ".md";
+  try{
+    var blob = new Blob([text], {type:"text/markdown;charset=utf-8"});
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = fname;
+    a.style.display = "none";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1000);
+    if(btn){ btn.textContent="保存しました ✓"; btn.classList.add("copied"); setTimeout(function(){ btn.textContent=restoreLabel; btn.classList.remove("copied"); },1500); }
+  }catch(e){ if(btn){ btn.textContent="保存に失敗しました"; setTimeout(function(){ btn.textContent=restoreLabel; },1500);} }
+}
+document.getElementById("mergeDlBtn").addEventListener("click", function(){
+  var t = buildMerge();
+  document.getElementById("mergeOut").textContent = t;
+  downloadMd(t, "省力化投資補助金_統合プロンプト", this, "MDファイルで保存");
+});
+document.getElementById("resultDlBtn").addEventListener("click", function(){
+  var t = buildResultMerge();
+  document.getElementById("resultOut").textContent = t;
+  downloadMd(t, "省力化投資補助金_事業計画書_完成原稿", this, "MDファイルで保存");
+});
+document.getElementById("clearBtn").addEventListener("click", function(){
+  document.querySelectorAll("input,textarea").forEach(function(el){ el.value=""; });
+  document.getElementById("mergeOut").textContent = "";
+  document.getElementById("resultOut").textContent = "";
+  try{ localStorage.removeItem(SK); }catch(e){} // 保存内容も消す
+  render();
+  window.scrollTo({top:0,behavior:"smooth"});
+});
+
+var mNormal=document.getElementById("modeNormal"), mKanzei=document.getElementById("modeKanzei");
+mNormal.addEventListener("click", function(){ isKanzei=false; mNormal.classList.add("on"); mKanzei.classList.remove("on"); render(); saveAll(); });
+mKanzei.addEventListener("click", function(){ isKanzei=true; mKanzei.classList.add("on"); mNormal.classList.remove("on"); render(); saveAll(); });
+
+// どの入力欄でも、打ち込むたびに自動保存
+document.addEventListener("input", saveAll);
+
+// 起動時：保存済みモード（通常版／関税版）を復元してから描画
+(function(){ var s=loadAll(); if(s._kanzei){ isKanzei=true; mKanzei.classList.add("on"); mNormal.classList.remove("on"); } })();
+
+render();
+</script>
+</body>
+</html>

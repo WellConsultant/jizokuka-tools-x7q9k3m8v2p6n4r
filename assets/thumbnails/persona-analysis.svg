@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="補助金ペルソナ分析">
+  <rect width="1200" height="675" fill="#edf1f2"/>
+  <rect x="72" y="72" width="1056" height="531" rx="18" fill="#ffffff" stroke="#cfd6da" stroke-width="4"/>
+  <rect x="72" y="72" width="1056" height="104" rx="18" fill="#253646"/>
+  <rect x="72" y="158" width="1056" height="18" fill="#253646"/>
+  <circle cx="137" cy="124" r="28" fill="#e08b5f"/>
+  <path d="M130 111h16v26h-16zM124 119h28v10h-28z" fill="#fff"/>
+  <text x="193" y="119" fill="#ffffff" font-family="Arial,'Hiragino Sans',sans-serif" font-size="29" font-weight="700">SUBSIDY PERSONA</text>
+  <rect x="135" y="228" width="430" height="272" rx="12" fill="#f4ebe6" stroke="#d8c7bd" stroke-width="3"/>
+  <rect x="177" y="269" width="346" height="34" rx="7" fill="#253646"/>
+  <rect x="177" y="330" width="275" height="16" rx="8" fill="#8a9299"/>
+  <rect x="177" y="366" width="310" height="16" rx="8" fill="#cbd2d5"/>
+  <rect x="177" y="402" width="230" height="16" rx="8" fill="#cbd2d5"/>
+  <rect x="177" y="450" width="151" height="30" rx="15" fill="#e08b5f"/>
+  <path d="M711 252h252v252H711z" fill="#edf1ec" stroke="#c5d0c7" stroke-width="3"/>
+  <circle cx="837" cy="352" r="70" fill="#253646"/>
+  <path d="M811 353l19 19 38-45" fill="none" stroke="#fff" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="837" y="477" text-anchor="middle" fill="#56646c" font-family="Arial,'Hiragino Sans',sans-serif" font-size="25" font-weight="700">資料 → 会社 → 判断</text>
+  <rect x="72" y="572" width="1056" height="31" fill="#e08b5f" opacity=".9"/>
+</svg>

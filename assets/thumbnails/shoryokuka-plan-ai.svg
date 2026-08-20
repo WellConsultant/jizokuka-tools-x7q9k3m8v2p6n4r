@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="省力化投資補助金 事業計画書作成AI">
+  <rect width="1200" height="675" fill="#edf1f2"/>
+  <rect x="72" y="72" width="1056" height="531" rx="18" fill="#fff" stroke="#cfd6da" stroke-width="4"/>
+  <rect x="72" y="72" width="1056" height="104" rx="18" fill="#142844"/>
+  <rect x="72" y="158" width="1056" height="18" fill="#142844"/>
+  <circle cx="137" cy="124" r="28" fill="#e08b5f"/>
+  <path d="M124 124h26M137 111v26" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+  <text x="193" y="119" fill="#fff" font-family="Arial,'Hiragino Sans',sans-serif" font-size="28" font-weight="700">SHORYOKUKA PLAN AI</text>
+  <rect x="135" y="226" width="430" height="276" rx="12" fill="#f4ebe6" stroke="#d8c7bd" stroke-width="3"/>
+  <text x="177" y="273" fill="#253646" font-family="Arial,'Hiragino Sans',sans-serif" font-size="27" font-weight="700">基本データ</text>
+  <rect x="177" y="302" width="335" height="17" rx="8" fill="#8a9299"/>
+  <rect x="177" y="340" width="287" height="17" rx="8" fill="#cbd2d5"/>
+  <rect x="177" y="378" width="316" height="17" rx="8" fill="#cbd2d5"/>
+  <rect x="177" y="427" width="150" height="34" rx="17" fill="#e08b5f"/>
+  <text x="252" y="450" text-anchor="middle" fill="#fff" font-family="Arial,'Hiragino Sans',sans-serif" font-size="21" font-weight="700">整理</text>
+  <rect x="646" y="226" width="414" height="276" rx="12" fill="#edf1ec" stroke="#c5d0c7" stroke-width="3"/>
+  <text x="690" y="273" fill="#253646" font-family="Arial,'Hiragino Sans',sans-serif" font-size="27" font-weight="700">16項目を作成</text>
+  <g fill="#253646"><rect x="690" y="310" width="19" height="19" rx="4"/><rect x="730" y="310" width="270" height="16" rx="8"/><rect x="690" y="350" width="19" height="19" rx="4"/><rect x="730" y="350" width="230" height="16" rx="8"/><rect x="690" y="390" width="19" height="19" rx="4"/><rect x="730" y="390" width="285" height="16" rx="8"/><rect x="690" y="430" width="19" height="19" rx="4"/><rect x="730" y="430" width="250" height="16" rx="8"/></g>
+  <rect x="72" y="572" width="1056" height="31" fill="#e08b5f" opacity=".9"/>
+</svg>

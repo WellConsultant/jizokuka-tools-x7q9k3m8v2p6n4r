@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="省力化投資補助金AI 使い方ガイド">
+  <rect width="1200" height="675" fill="#edf1f2"/>
+  <rect x="72" y="72" width="1056" height="531" rx="18" fill="#fff" stroke="#cfd6da" stroke-width="4"/>
+  <rect x="72" y="72" width="1056" height="104" rx="18" fill="#142844"/>
+  <rect x="72" y="158" width="1056" height="18" fill="#142844"/>
+  <text x="130" y="128" fill="#fff" font-family="Arial,'Hiragino Sans',sans-serif" font-size="30" font-weight="700">使い方ガイド</text>
+  <text x="130" y="270" fill="#253646" font-family="Arial,'Hiragino Sans',sans-serif" font-size="31" font-weight="700">この順番で進めます</text>
+  <g font-family="Arial,'Hiragino Sans',sans-serif" font-size="25" font-weight="700" fill="#253646">
+    <circle cx="170" cy="332" r="25" fill="#e08b5f"/><text x="170" y="341" text-anchor="middle" fill="#fff">1</text><text x="220" y="341">資料を読み込む</text>
+    <circle cx="170" cy="399" r="25" fill="#e08b5f"/><text x="170" y="408" text-anchor="middle" fill="#fff">2</text><text x="220" y="408">面談前に保存</text>
+    <circle cx="170" cy="466" r="25" fill="#e08b5f"/><text x="170" y="475" text-anchor="middle" fill="#fff">3</text><text x="220" y="475">面談後・追加面談</text>
+    <circle cx="705" cy="332" r="25" fill="#e08b5f"/><text x="705" y="341" text-anchor="middle" fill="#fff">4</text><text x="755" y="341">整理して統合</text>
+    <circle cx="705" cy="399" r="25" fill="#e08b5f"/><text x="705" y="408" text-anchor="middle" fill="#fff">5</text><text x="755" y="408">基本データへ反映</text>
+    <circle cx="705" cy="466" r="25" fill="#e08b5f"/><text x="705" y="475" text-anchor="middle" fill="#fff">6</text><text x="755" y="475">16項目を生成</text>
+  </g>
+  <rect x="72" y="572" width="1056" height="31" fill="#e08b5f" opacity=".9"/>
+</svg>

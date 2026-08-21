@@ -170,6 +170,17 @@ const assetMap = {
     ];
     files.push("3_実績報告/実績報告書テンプレート/実績報告テンププレート（2021年版）.pdf");
     files.push("1_申請/Traingo-Consulting/Traingo-consulting.html");
+    /* 旧版の事業計画書作成ツールは、現行の省力化投資補助金ツールと混在させない。 */
+    const legacyPlanningTools=files.filter(file=>
+      file.includes("/2_014_スマートプロンプトメーカー")||
+      file.includes("/1_014_スマートプロンプトメーカー")||
+      file.includes("持続化補助金v1.html")||
+      file.includes("持続化補助金v2.html")||
+      file.includes("持続化補助金v3.html")||
+      file.includes("持続化補助金_事業計画作成プロンプト作成ツールv5.html")||
+      file.includes("持続化補助金_見出し別プロンプト")
+    );
+    legacyPlanningTools.forEach(file=>files.splice(files.indexOf(file),1));
     const unavailableFiles=files.filter(file=>file.includes("8-0.経営革新計画（料金解説省略"));
     unavailableFiles.forEach(file=>files.splice(files.indexOf(file),1));
     const labels={"1_申請":"1｜申請","2_交付申請・実績報告":"2｜交付申請・実績報告","3_実績報告":"3｜実績報告"};

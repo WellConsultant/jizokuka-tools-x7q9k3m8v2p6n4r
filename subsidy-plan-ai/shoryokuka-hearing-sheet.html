@@ -1,8 +1,19 @@
 <!doctype html>
-<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>省力化投資補助金 ヒアリングシート</title>
+<html lang="ja"><head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P2Q4SMX4');</script>
+<!-- End Google Tag Manager --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>省力化投資補助金 ヒアリングシート</title>
 <style>
 :root{--navy:#13233d;--ink:#182235;--muted:#657083;--line:#d8dee8;--bg:#eef1f5}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",Meiryo,sans-serif}.top{background:var(--navy);color:#fff;padding:16px 22px}.top b{font-size:18px}.top span{float:right;font-size:12px;color:#d9e1ec}.wrap{max-width:1000px;margin:auto;padding:20px}.notice,.card{background:#fff;border:1px solid var(--line);border-radius:9px;padding:16px;margin-bottom:14px}.notice{border-left:4px solid var(--navy);line-height:1.7}.card h2{margin:0 0 8px;font-size:18px}.card p{font-size:13px;color:var(--muted);line-height:1.6;margin:4px 0 12px}.q{margin:14px 0}.q label{display:block;font-weight:700;font-size:14px;line-height:1.5;margin-bottom:6px}textarea{width:100%;min-height:90px;border:1px solid #abb6c5;border-radius:6px;padding:10px;font:inherit;line-height:1.6;resize:vertical}.short{min-height:52px}.btn{border:1px solid #aeb7c4;border-radius:6px;padding:10px 14px;background:#fff;font-weight:700;cursor:pointer}.primary{background:var(--navy);color:#fff;border-color:var(--navy)}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.meta,.status{color:var(--muted);font-size:12px}.status{padding:8px 0}.actions{position:sticky;bottom:0;background:rgba(238,241,245,.96);padding:12px 0;display:flex;gap:8px;flex-wrap:wrap}.json-prompt{min-height:270px;font:12px ui-monospace,monospace}.json-answer{min-height:160px}@media(max-width:700px){.wrap{padding:12px}.top span{float:none;display:block;margin-top:5px}}
 </style></head><body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P2Q4SMX4"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <header class="top"><b>省力化投資補助金 ヒアリングシート</b><span>面談内容を整理して基本データへ追加・APIなし</span></header><main class="wrap">
 <div class="notice"><b>このシートの使い方</b><br>面談前に分かる資料・会話記録・Brain情報を入力し、面談後は同じ欄へ追記します。入力内容は自動保存されます。<br>「① JSON整理プロンプトをコピー」→ ChatGPT等のJSON回答を貼り付け →「② JSONを各項目へ反映」→ 内容を確認して「③ 整理済み内容を基本データへ追加」の順に進めます。分からない内容は推測せず空欄または「要確認」としてください。</div>
 <section class="card"><h2>JSONで入力内容を整理</h2><p>入力欄の文章を、見出しごとに重複除去・要確認分離して整理します。元の入力欄は消えません。</p><div class="row"><button class="btn primary" id="orgPromptBtn" type="button">① JSON整理プロンプトをコピー</button><button class="btn primary" id="orgApplyBtn" type="button">② JSONを各項目へ反映</button><button class="btn" id="basicApplyBtn" type="button">③ 整理済み内容を基本データへ追加</button></div><div id="orgState" class="status">入力後、①から始めてください。</div><label>①でコピーしたプロンプトの回答（JSON）</label><textarea id="orgPaste" class="json-answer" placeholder='{"事業者情報":"確認できた事実", "経営課題":"課題と出所"}'></textarea><label>コピーされるJSON整理プロンプト（確認用）</label><textarea id="orgPrompt" class="json-prompt" readonly></textarea></section>

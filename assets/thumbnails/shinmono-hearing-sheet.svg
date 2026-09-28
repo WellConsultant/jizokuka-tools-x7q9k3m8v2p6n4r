@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="新ものづくり補助金 申請枠判定ヒアリングシート">
+  <rect width="1200" height="675" fill="#edf1f2"/>
+  <rect x="72" y="72" width="1056" height="531" rx="18" fill="#fff" stroke="#cfd6da" stroke-width="4"/>
+  <rect x="72" y="72" width="1056" height="108" rx="18" fill="#253646"/>
+  <rect x="72" y="158" width="1056" height="22" fill="#253646"/>
+  <circle cx="137" cy="126" r="28" fill="#e08b5f"/>
+  <path d="M125 126h24M137 114v24" stroke="#fff" stroke-width="8" stroke-linecap="round"/>
+  <text x="193" y="121" fill="#fff" font-family="Arial,'Hiragino Sans',sans-serif" font-size="28" font-weight="700">SHINMONO HEARING SHEET</text>
+  <text x="193" y="153" fill="#dbe4e8" font-family="Arial,'Hiragino Sans',sans-serif" font-size="18">申請枠判定ヒアリングシート</text>
+  <rect x="135" y="231" width="930" height="72" rx="10" fill="#f4ebe6" stroke="#d8c7bd" stroke-width="3"/>
+  <text x="169" y="276" fill="#253646" font-family="Arial,'Hiragino Sans',sans-serif" font-size="26" font-weight="700">現在の事業と新しい取組を整理</text>
+  <g fill="#eef1ec" stroke="#c5d0c7" stroke-width="3">
+    <rect x="135" y="345" width="270" height="140" rx="12"/>
+    <rect x="465" y="345" width="270" height="140" rx="12"/>
+    <rect x="795" y="345" width="270" height="140" rx="12"/>
+  </g>
+  <g fill="#253646" font-family="Arial,'Hiragino Sans',sans-serif" font-size="23" font-weight="700" text-anchor="middle">
+    <text x="270" y="402">既存事業</text><text x="600" y="402">新しい価値</text><text x="930" y="402">申請枠</text>
+  </g>
+  <g stroke="#e08b5f" stroke-width="8" stroke-linecap="round" fill="none"><path d="M420 415h30"/><path d="M750 415h30"/></g>
+  <text x="600" y="548" text-anchor="middle" fill="#56646c" font-family="Arial,'Hiragino Sans',sans-serif" font-size="24" font-weight="700">会社の状況 → 取組 → 枠を判断</text>
+  <rect x="72" y="572" width="1056" height="31" fill="#e08b5f" opacity=".9"/>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="新ものづくり補助金 電子申請入力シート">
+  <rect width="1200" height="675" fill="#edf1f2"/>
+  <rect x="72" y="72" width="1056" height="531" rx="18" fill="#fff" stroke="#cfd6da" stroke-width="4"/>
+  <rect x="72" y="72" width="1056" height="108" rx="18" fill="#253646"/>
+  <rect x="72" y="158" width="1056" height="22" fill="#253646"/>
+  <circle cx="137" cy="126" r="28" fill="#7b9db3"/>
+  <path d="M123 112h28v29h-28zM129 105h16v7h-16z" fill="#fff"/>
+  <text x="193" y="121" fill="#fff" font-family="Arial,'Hiragino Sans',sans-serif" font-size="28" font-weight="700">SHINMONO APPLICATION</text>
+  <text x="193" y="153" fill="#dbe4e8" font-family="Arial,'Hiragino Sans',sans-serif" font-size="18">電子申請入力シート</text>
+  <rect x="135" y="231" width="930" height="54" rx="8" fill="#e9eff3"/>
+  <rect x="135" y="318" width="930" height="42" rx="7" fill="#f4ebe6"/>
+  <g fill="#d4dde1"><rect x="135" y="389" width="440" height="22" rx="11"/><rect x="625" y="389" width="440" height="22" rx="11"/><rect x="135" y="433" width="330" height="22" rx="11"/><rect x="515" y="433" width="550" height="22" rx="11"/><rect x="135" y="477" width="930" height="22" rx="11"/></g>
+  <g fill="#253646" font-family="Arial,'Hiragino Sans',sans-serif" font-size="24" font-weight="700"><text x="164" y="267">申請者情報・事業計画・経費を入力</text><text x="164" y="350">電子申請の入力項目を順番に確認</text></g>
+  <circle cx="1010" cy="545" r="34" fill="#7b9db3"/><path d="M994 545l11 11 23-27" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="72" y="572" width="1056" height="31" fill="#7b9db3" opacity=".9"/>
+</svg>
